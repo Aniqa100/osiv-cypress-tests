@@ -16,9 +16,9 @@ describe('Test with Page Objects',() => {
       expect(text).to.equal('Hulk1');
     })
     navigateTo.folderAdressen();
-    cy.wait(1000);
+    cy.wait(10000);
     cy.get('[akid="AdresseQueryGrid-AdresseNew"]').click();
-    cy.wait(1000);
+    cy.wait(10000);
     dropdownValue.adressTypeValue();
     dropdownValue.languageTypeValue();
     dropdownValue.salutationValue();
