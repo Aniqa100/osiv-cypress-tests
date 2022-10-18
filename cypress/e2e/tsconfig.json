@@ -1,0 +1,21 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "display": "node 14",
+
+    "compilerOptions": {
+    "lib": ["ES2022", "dom", "dom.iterable"],
+    "target": "es2022",
+    "module": "CommonJS",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "noEmit": true,
+    "types": ["cypress", "cypress-file-upload", "node", "moment"] 
+
+        },
+    "include": ["**/*.ts", "../placeholder.ts"],
+    "exclude": ["node_modules"],
+    "files": ["../placeholder.ts"]
+  }
