@@ -7,7 +7,7 @@ const {postcodeValue} = require("../support/page_objects/dropdownSelection")
 
 describe('Test with Page Objects',() => {
     it('adress', () => {
-    cy.visit('');
+    cy.visit('/');
     cy.wait(10000);
     cy.typeLogin({ email: 'hulk1', password: 'hulk1{enter}' })
 
