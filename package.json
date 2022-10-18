@@ -1,4 +1,13 @@
 {
+  "name": "cypress-tests",
+  "scripts": {
+    "test": "test",
+    "cypress:open": "cypress open",
+    "cypress:runDefault": "cypress run --spec cypress/e2e/newAdress.js",
+    "cypress:runChrome": "cypress run --browser chrome --spec cypress/e2e/newAdress.js",
+    "cypress:runChromeHeadless": "cypress run --headless --browser chrome --spec cypress/e2e/newAdress.js"
+
+  },
   "devDependencies": {
     "@babel/code-frame": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
