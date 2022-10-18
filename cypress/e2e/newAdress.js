@@ -7,11 +7,11 @@ const {postcodeValue} = require("../support/page_objects/dropdownSelection")
 
 describe('Test with Page Objects',() => {
     it('adress', () => {
-    cy.visit('/');
-    cy.wait(10000);
+    cy.visit('');
+    cy.wait(30000);
     cy.typeLogin({ email: 'hulk1', password: 'hulk1{enter}' })
 
-    cy.wait(10000);
+    cy.wait(30000);
     cy.get('[class="akUserInfo"]').invoke('text').then( text => {
       expect(text).to.equal('Hulk1');
     })
