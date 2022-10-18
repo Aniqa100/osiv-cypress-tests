@@ -6,7 +6,6 @@
     "cypress:runDefault": "cypress run --spec cypress/e2e/newAdress.js",
     "cypress:runChrome": "cypress run --browser chrome --spec cypress/e2e/newAdress.js",
     "cypress:runChromeHeadless": "cypress run --headless --browser chrome --spec cypress/e2e/newAdress.js"
-
   },
   "devDependencies": {
     "@babel/code-frame": "^7.18.6",
@@ -17,7 +16,6 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "cypress": "^10.10.0",
     "moment": "^2.29.4"
   },
   "browser": {
