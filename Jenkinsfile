@@ -1,4 +1,3 @@
-@Library('jenkins-joylib@v1.0.8') _
 
 pipeline {
 
@@ -15,8 +14,11 @@ pipeline {
     }
 
     stages {
-        stage('Building') {
-           echo "Building the application"
+        stage('Building'){
+            steps{
+       echo "Building the application"
+            }
+           
                 }
         stage('Testing'){
             steps{
