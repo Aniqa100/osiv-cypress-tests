@@ -26,7 +26,7 @@ export class DropdownSelection{
     titleValue(){
         cy.get('[class="dhxwin_active"][modalwindow="true"]').find('[akid="sAdresseDetailOverviewForm-titel_adresstitel"]')
     .click('top').get('[class="select2-search select2-search--dropdown"]').type('Dr')
-    .get('[class="select2-results__options"]').find('[akid="titel_adresstitel-A6D:111:000005900065"]').click();
+    .get('[class="select2-results__options"]').wait(100).find('[akid="titel_adresstitel-A6D:111:000005900065"]').click();
     }
 
     postalcodeValue(){
