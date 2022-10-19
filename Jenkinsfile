@@ -9,7 +9,7 @@ pipeline {
      }
 
     options {
-        asiColor('xterm')
+        ansiColor('xterm')
 
     }
 
