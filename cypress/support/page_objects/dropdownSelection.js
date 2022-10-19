@@ -4,15 +4,15 @@ export class DropdownSelection{
     adressTypeValue(){
 
     cy.get('[class="dhxwin_active"][modalwindow="true"]')
-    .find('[akid="sAdresseDetailOverviewForm-adresstyp"]')
-    .click().type('024').wait(500).get('[class="select2-results__options"]').find('[akid="adresstyp-A05:111:000000238504"]').click();
+    .find('[akid="sAdresseDetailOverviewForm-adresstyp"]').click().type('024').wait(500).get('[class="select2-results__options"]').find('[akid="adresstyp-A05:111:000000238504"]').click();
+    
     }
 
     languageTypeValue(){
 
     cy.get('[class="dhxwin_active"][modalwindow="true"]')
-    .find('[akid="sAdresseDetailOverviewForm-sprache_bez"]')
-    .click().type('D').wait(100).get('[class="select2-results__options"]').click();
+    .find('[akid="sAdresseDetailOverviewForm-sprache_bez"]').click().type('D').wait(100).get('[class="select2-results__options"]').click();
+
     }
 
     salutationValue(){
