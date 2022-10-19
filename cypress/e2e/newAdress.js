@@ -13,7 +13,7 @@ describe('Test with Page Objects',() => {
     cy.typeLogin({ email: 'hulk1', password: 'hulk1{enter}' })
 
     cy.wait(30000);
-    userInfor.elements().invoke('text').then( text => {
+    cy.get('[class="akUserInfo"]').invoke('text').then( text => {
       expect(text).to.equal('Hulk1');
     })
     navigateTo.folderAdressen();
