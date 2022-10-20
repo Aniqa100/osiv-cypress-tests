@@ -13,7 +13,7 @@ export class DropdownSelection{
 
     cy.get('[class="dhxwin_active"][modalwindow="true"]')
     .find('[akid="sAdresseDetailOverviewForm-sprache_bez"]').click().type('D').wait(100)
-    .get('[class="select2-results__options"]').click();
+    .get('[class="select2-results__options"]').find('[akid="sprache_bez-A5E:000:090015857114"]').click();
 
     }
 
