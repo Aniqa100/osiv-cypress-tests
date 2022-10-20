@@ -15,9 +15,8 @@ pipeline {
             }
            
                 }
-        stage('Testing'){
+        stage('Testing')
                    
-            }
             steps{
                 bat "npm install cypress --save-dev"
                 bat "npx cypress run --browser ${BROWSER} --spec ${SPEC} --record --key 76d7db74-4a96-437c-b64c-7f8462e45c4b"
