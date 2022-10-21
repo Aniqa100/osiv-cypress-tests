@@ -28,7 +28,7 @@ describe('Test with Page Objects',() => {
     inputTo.City();
     dropdownValue.postalcodeValue();
     pressButton.Generate(); 
-    pressButton.modatOk();
+    pressButton.modalOk();
     cy.wait(2000);
     cy.get('[class="swal-modal warningModal"]').find('[class="swal-button swal-button--replyok"]').contains('Ok').click()
     //cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]').click();
