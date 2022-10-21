@@ -1,5 +1,5 @@
 export class inputField{
-  NameAndSurname(){
+  NameAndSurename(){
     cy.get('[class="dhxwin_active"][modalwindow="true"]').find('[akid="sAdresseDetailOverviewForm-nachname"]')
     .find('input').type('Anna').tab().type('Striha');
   }
