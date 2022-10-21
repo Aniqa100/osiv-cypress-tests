@@ -24,7 +24,7 @@ describe('Test with Page Objects',() => {
     dropdownValue.languageTypeValue();
     dropdownValue.salutationValue();
     dropdownValue.titleValue();
-    inputTo.NameAndSurname();
+    inputTo.NameAndSurename();
     inputTo.City();
     dropdownValue.postalcodeValue();
     pressButton.Generate(); 
