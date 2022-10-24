@@ -2,7 +2,8 @@ describe('First test', () => {
 
 
     it('create protocol and remove it', () => {
-    cy.visit('');
+      let url = Cypress.config().baseUrl; //accesing baseUrl
+      cy.visit(url);
     cy.wait(30000);
     cy.typeLogin({ email: 'hulk1', password: 'hulk1{enter}' })
 
