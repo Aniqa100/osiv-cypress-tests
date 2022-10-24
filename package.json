@@ -5,7 +5,10 @@
     "cypress:open": "cypress open",
     "cypress:runDefault": "cypress run --spec cypress/e2e/newAdress.js",
     "cypress:runChrome": "cypress run --browser chrome --spec cypress/e2e/newAdress.js",
-    "cypress:runChromeHeadless": "cypress run --headless --browser chrome --spec cypress/e2e/newAdress.js"
+    "cypress:runChromeHeadless": "cypress run --headless --browser chrome --spec cypress/e2e/newAdress.js",
+    "cy:run:fr":"cypress run  --env FR",
+    "cy:run:nr":"cypress run  --env NR"
+
   },
   "devDependencies": {
     "@babel/code-frame": "^7.18.6",
