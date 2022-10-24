@@ -23,7 +23,7 @@ module.exports = defineConfig({
     },
     //baseUrl: 'https://demo.osiv.ch',
     //baseUrl: 'https://osiv-nrtest.ivnet.ch',
-    baseUrl: 'https://osiv-frtest.ivnet.ch',
+    //baseUrl: 'https://osiv-frtest.ivnet.ch',
     specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
     excludeSpecPattern: ['**/1-getting-started/*', '**/2-advanced-examples/*','**/DemoProtocolwithoutsession.js', '**/testWithPageObjects.js'],
     //requestTimeout : 30000,
