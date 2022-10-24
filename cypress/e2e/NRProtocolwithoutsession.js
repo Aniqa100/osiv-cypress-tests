@@ -1,9 +1,10 @@
+import { Utility } from "../support/Utility"
+const url = new Utility().getBaseUrl();
 describe('First test', () => {
 
 
     it('create protocol and remove it', () => {
-      let url = Cypress.config().baseUrl; //accesing baseUrl
-      cy.visit(url);
+    cy.visit(url);
     cy.wait(30000);
     cy.typeLogin({ email: 'hulk1', password: 'hulk1{enter}' })
 

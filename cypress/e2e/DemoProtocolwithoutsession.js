@@ -1,3 +1,4 @@
+import { Utility } from "../support/Utility"
 const { navigateTo } = require("../support/page_objects/navigationPage");
 
 describe('First test', () => {
