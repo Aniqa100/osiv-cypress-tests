@@ -52,52 +52,21 @@ describe('First test', () => {
       cy.wait(2000);
       cy.get('[class="dhx_cell_toolbar_def"]').click();
       cy.wait(2000);
-      /* cy.contains('Liste der Protokolleinträge')
-      .parents('[class="dhx_cell_hdr"]')
-      .find('[title="Refresh"][class="alwaysVisiblePanelBtn class-headerPanelFontIcon-btn"]')
-      .click();
-      cy.get('[title="Toggle Geloescht"]').click();
-      cy.wait(5000);  */
-      
-      //Need to add assertion for checkbox in class .fas
-       /* cy.get('[akid="ProtokollQueryGrid-A53-8f475bac9111d1819e14ccd767c3d0a6"]').parents('tbody').contains('tr', 'test').then (firstTableRow => {
-       cy.wrap(firstTableRow).find('.fas').click()
-       cy.wrap(firstTableRow).dblclick()
-       cy.wait(5000); 
-      })
-       cy.get('[class="dhx_cell_toolbar_def"]').click();
-       cy.wait(1000);
- */
-       cy.get('[class="dhxrb_3rows_button"][title="Wiederherstellen"]').click()
-       cy.wait(2000);
-       cy.get('[class="swal-button-container"]').contains('[class="swal-button swal-button--okreply default"]', 'Ok').click()
-  
-  
+      cy.get('[class="dhxrb_3rows_button"][title="Wiederherstellen"]').click()
+      cy.wait(2000);
+      cy.get('[class="swal-button-container"]').contains('[class="swal-button swal-button--okreply default"]', 'Ok').click()
       cy.get('[class="dhxrb_3rows_button"][title="In den Papierkorb"]').click();
       cy.get('[akid="sProtokollInPapierkorbForm-geloeschtgrund"]').click();
-      cy.get('[class="select2-results"]').type('Falsche').wait(100).get('[class="select2-results__options"]').click().wait(1000);
-
+      //cy.get('[class="select2-results"]').contains('Falsche Information').click();
+      //cy.get('[akid="sProtokollInPapierkorbForm"]').click('center');
+      cy.get('[class="select2-results"]').type('Falsche{enter}');
+      cy.wait(1000);
       cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]').click(); 
-      cy.wait(2000);
-      cy.get('[class="dhx_cell_toolbar_def"]').click();
-      cy.wait(2000);
-  /* 
-      cy.contains('Liste der Protokolleinträge')
-      .parents('[class="dhx_cell_hdr"]')
-      .find('[title="Refresh"][class="alwaysVisiblePanelBtn class-headerPanelFontIcon-btn"]')
-      .click(); */
-  
-      /* cy.get('[akid="ProtokollQueryGrid-A53-8f475bac9111d1819e14ccd767c3d0a6"]').parents('tbody').contains('tr', 'test').then (firstTableRow => {
-        cy.wrap(firstTableRow).find('.fas').click()
-        cy.wrap(firstTableRow).dblclick()
-        cy.wait(3000); 
-        
-      }) */
-
+      cy.wait(4000);
       /* cy.get('[class="dhx_cell_toolbar_def"]').click();
-      cy.wait(1000); */
-      cy.wait(2000);
-      cy.get('.ribbonBlock_ProtokollBearbeitenBlock > .dhxrb_block_items > :nth-child(3) > .dhxrb_3rows_button > .dhxrb_label_button').click()
+      cy.wait(2000); */
+      cy.contains('Löschen').click();
+      //cy.get('.ribbonBlock_ProtokollBearbeitenBlock > .dhxrb_block_items > :nth-child(3) > .dhxrb_3rows_button > .dhxrb_label_button').click()
       cy.get('[class="swal-modal confirmModal"]').find('[class="swal-button swal-button--confirm"]').contains('Bestätigen').click()
       cy.wait(1000)
   
