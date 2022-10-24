@@ -1,4 +1,4 @@
 {
-    "extends": "./cypress.json",
+    "extends": "./cypress.config.js",
     "baseUrl": "https://osiv-nrtest.ivnet.ch/"
   }
