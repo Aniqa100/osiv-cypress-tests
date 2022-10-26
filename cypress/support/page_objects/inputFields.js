@@ -1,10 +1,14 @@
+
 export class inputField{
-  NameAndSurename(){
+  NameAndSurename(name, surename){
     cy.get('[class="dhxwin_active"][modalwindow="true"]').find('[akid="sAdresseDetailOverviewForm-nachname"]')
-    .find('input').type('Anna').tab().type('Striha');
+    .find('input').type(name).tab().type(surename);
   }
-   City(){
-    cy.get('[class="dhxwin_active"][modalwindow="true"]').find('[akid="sAdresseDetailOverviewForm-ort"]').click().type('Amsterdam');
+   City(city){
+    cy.get('[class="dhxwin_active"][modalwindow="true"]').find('[akid="sAdresseDetailOverviewForm-ort"]').click().type(city);
 }
+   VersichertenName(name){
+    cy.get('[akid="sStammQueryB-BRS_Versicherten_Name"]').type(name);
+   }
 }
 export const inputTo = new inputField()
