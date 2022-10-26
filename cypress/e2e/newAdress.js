@@ -12,27 +12,23 @@ describe('Test with Page Objects ' + url,() => {
     cy.visit(url);
     cy.wait(30000);
     cy.typeLogin({ email: 'hulk1', password: 'hulk1{enter}' })
-
     cy.wait(30000);
-    cy.get('[class="akUserInfo"]').invoke('text').then( text => {
-      expect(text).to.equal('Hulk1');
-    })
+    userInfor.UserName();
     navigateTo.folderAdressen();
     cy.wait(10000);
-    cy.get('[akid="AdresseQueryGrid-AdresseNew"]').click();
+    pressButton.newAdress();
     cy.wait(10000);
     dropdownValue.adressTypeValue();
     dropdownValue.languageTypeValue();
     dropdownValue.salutationValue();
     dropdownValue.titleValue();
-    inputTo.NameAndSurename();
-    inputTo.City();
+    inputTo.NameAndSurename('Anna', 'Striha');
+    inputTo.City('Amsterdam');
     dropdownValue.postalcodeValue();
     pressButton.Generate(); 
     pressButton.modalOk();
     cy.wait(2000);
-    cy.get('[class="swal-modal warningModal"]').find('[class="swal-button swal-button--replyok"]').contains('Ok').click()
-    //cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]').click();
+    pressButton.confirm();
     
 })
 })

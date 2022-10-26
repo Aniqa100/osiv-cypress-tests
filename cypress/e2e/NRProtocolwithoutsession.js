@@ -1,3 +1,4 @@
+import { navigateTo } from "../support/page_objects/navigationPage";
 import { Utility } from "../support/Utility"
 const url = new Utility().getBaseUrl();
 describe('First test', () => {
@@ -7,15 +8,12 @@ describe('First test', () => {
     cy.visit(url);
     cy.wait(30000);
     cy.typeLogin({ email: 'hulk1', password: 'hulk1{enter}' })
-
-     cy.wait(30000);
-     cy.get('[class="akUserInfo"]').invoke('text').then( text => {
-      expect(text).to.equal('Hulk1');
-      })
+      cy.wait(30000);
+      userInfor.UserName();
       cy.wait(4000);
-      cy.get('[akid="itFolder-Versicherte"]').click();
+      navigateTo.folderVersicherte();
       cy.wait(10000);
-      cy.get('[akid="sStammQueryB-BRS_Versicherten_Name"]').type('oco{enter}');
+      inputTo.VersichertenName('oco{enter}');
       cy.wait(2000);
       cy.get('[akid="sStammQueryB-A60-ca8f6374a0d24fb9931417f238627d0a"]').dblclick();
       cy.wait(10000);
