@@ -6,14 +6,14 @@
     "cypress:runDefault": "cypress run --spec cypress/e2e/newAdress.js",
     "cypress:runChrome": "cypress run --browser chrome --spec cypress/e2e/newAdress.js",
     "cypress:runChromeHeadless": "cypress run --headless --browser chrome --spec cypress/e2e/newAdress.js",
-    "cy:run:fr":"cypress run --env FR",
-    "cy:run:nr":"cypress run --env NR"
-
+    "cy:run:fr": "cypress run --env FR",
+    "cy:run:nr": "cypress run --env NR"
   },
   "devDependencies": {
     "@babel/code-frame": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
     "@cypress/webpack-preprocessor": "^5.14.0",
+    "cypress": "^10.11.0",
     "cypress-file-upload": "^5.0.8",
     "cypress-plugin-tab": "^1.0.5",
     "typescript": "^4.8.4"

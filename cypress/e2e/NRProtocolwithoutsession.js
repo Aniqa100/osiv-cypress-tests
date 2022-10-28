@@ -1,4 +1,5 @@
 import { navigateTo } from "../support/page_objects/navigationPage";
+import { tabTo } from "../support/page_objects/Tabs";
 import { Utility } from "../support/Utility"
 const url = new Utility().getBaseUrl();
 describe('First test', () => {
@@ -19,7 +20,7 @@ describe('First test', () => {
       cy.wait(10000);
       cy.get('[class="dhx_cell_toolbar_def"]').click();
       cy.wait(10000);
-      cy.get('[akid="SimpleSwatTabbar-Protokoll"]').click();
+      tabTo.Protocol();
       cy.wait(4000);
        //Creating a new protocol
       cy.contains('[class="dhxrb_block_label"]', 'Versicherter - Protokolleintrag')
