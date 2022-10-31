@@ -13,7 +13,7 @@ import 'Moment';
 //
 
 Cypress.Commands.add('typeLogin', (user) => {
-  cy.get('[name="login_name"]').type(user.email)
+  cy.get('[name="login_name"]',{timeout: 10000}).type(user.email).should('be.visible')
   cy.get('[name="login_password"]').type(user.password)
   
 })

@@ -6,6 +6,7 @@ import { tabTo } from "../support/page_objects/Tabs";
 import { pressButton } from "../support/page_objects/Buttons";
 import { fillForm } from "../support/page_objects/FillForm";
 import { compareValuesOf } from "../support/page_objects/assertionValues";
+import { selectDate } from "../support/page_objects/DatePicker";
 
 
 
@@ -37,7 +38,6 @@ describe('Verify Environment Config ' + url, () => {
         cy.get('.active-taskbar-items > .active');
         compareValuesOf.DetailsTabColor()
         compareValuesOf.BasicDataColor()
-        //cy.get('[akid="EntscheidDetailBasisFrameTabbar-Durchführungsstellen"]').should('have.css', 'display', 'block')
         cy.get('[akid="EntscheidDetailBasisFrameTabbar-Durchführungsstellen"]').should('be.visible')
         compareValuesOf.HilflosigkeitColor()
         cy.wait(500)
@@ -46,5 +46,43 @@ describe('Verify Environment Config ' + url, () => {
         compareValuesOf.EntscheidEditor()
         fillForm.EditEntscheidDatenForm('Zusprache', '3205', 'Mitteilung der')
         fillForm.EditErweiterteInfoForm('101', '01')
+        selectDate.forBegin()
+        pressButton.SpeichernBearb()
+        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Entscheid-Sendungen"]').should('be.visible')
+        compareValuesOf.BasicDataNotColor()
+        cy.contains('Es müssen noch folgende Felder ausgefüllt werden: Entscheid, Supertext, Entscheidtyp, Gebrechen, Funktionsausfall. (OSCIENT:523)').should('not.exist')
+
+        pressButton.BearbeitungEinleiten()
+        pressButton.modalOk()
+        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Freitexte"]').should('be.visible')
+        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Diskutieren"]').should('be.visible')
+        cy.get('[akid="EntscheidDetailBasisDatenForm-fieldsetbasisinformationen"]').then(basicdataeditor => {
+
+            cy.wrap(basicdataeditor).get('[akid="EntscheidDetailBasisDatenForm-arbeitslistevalue"]')
+            .find('input').then( input => {
+                cy.wrap(input).invoke('prop', 'value').should('contain', 'Bearbeiten')
+     })
+
     })
+
+       cy.get('[akid="EntscheidDetailBasisFrameTabbar-Hilflosigkeit"]').click()
+
+       cy.get('[akid="EntscheidHilflosigkeitForm-verfahrenbez"]').click()
+       .get('[class="select2-search select2-search--dropdown"]').type('Langdauernde').wait(500)
+       .get('[class="select2-results__options"]').click();
+
+       cy.get('[akid="EntscheidHilflosigkeitForm-akbez"]').click()
+       .get('[class="select2-search select2-search--dropdown"]').type('Freiburg').wait(500)
+       .get('[class="select2-results__options"]').find('[akid="akbez-A0A:111:000004078894"]').click();
+
+       cy.get('[akid="EntscheidHilflosigkeitForm-aufenthaltbez"]').click()
+       .get('[class="select2-search select2-search--dropdown"]').type('Zu').wait(500)
+       .get('[class="select2-results__options"]').click();
+       selectDate.AnAuskleiden()
+       selectDate.AufstehenAbsitzen()
+       selectDate.Essen()
+
+
+       pressButton.SpeichernHilf()
+})
 })

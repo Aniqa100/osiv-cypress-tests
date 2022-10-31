@@ -58,7 +58,8 @@ export class AssertValues{
   }
 
      DetailsTabColor() {
-  cy.get('[akid="EntscheidDetailWindowTabbar-Details"]').should('have.css', 'border-left-color', 'rgb(255, 165, 0)');
+     cy.get('[akid="EntscheidDetailWindowTabbar-Details"]')
+     .should('have.css', 'border-left-color', 'rgb(255, 165, 0)');
      }
 
      BasicDataColor() {
@@ -70,5 +71,10 @@ export class AssertValues{
      cy.get('[akid="EntscheidDetailBasisFrameTabbar-Hilflosigkeit"]')
      .should('have.css', 'border-left-color', 'rgb(255, 165, 0)'); 
      }
+     BasicDataNotColor(){
+      cy.get('[akid="EntscheidDetailBasisFrameTabbar-Basisdaten"]')
+      .should('not.have.css', 'border-left-color', 'rgb(255, 165, 0)'); 
+      }
+
 }
   export const compareValuesOf = new AssertValues()
