@@ -10,10 +10,10 @@ const url = new Utility().getBaseUrl();
 describe('Test with Page Objects ' + url,() => {
     it('adress', () => {
     cy.visit(url);
-    //cy.wait(30000);
     cy.typeLogin({ email: 'hulk1', password: 'hulk1{enter}' })
-    cy.wait(30000);
-    userInfor.UserName();
+    //cy.wait(30000);
+    cy.waitUntil(()=> cy.get('[class="akUserInfo"]').should('be.visible'))
+    userInfor.UserName()
     navigateTo.folderAdressen();
     cy.wait(10000);
     pressButton.newAdress();
