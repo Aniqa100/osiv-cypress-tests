@@ -29,7 +29,8 @@ module.exports = defineConfig({
     //requestTimeout : 30000,
     //numTestsKeptInMemory: 0,
     //responseTimeout : 50000,
-    pageLoadTimeout: 100000,
+    pageLoadTimeout: 10_000,
+    defaultCommandTimeout: 10_000,
     hideXHR: true,
     chromeWebSecurity: false
   
