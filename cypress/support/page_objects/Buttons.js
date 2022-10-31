@@ -25,6 +25,28 @@ export class Buttons{
           .find('[class="dhxrb_3rows_button"][title="Neu"]')
           .click();
     }
+
+    BearbeitungEinleiten(){
+        cy.contains('[class="dhxrb_block_label"]', 'Entscheid spezifische Funktionen')
+          .parents('[class="dhxrb_block_base ribbonBlock_EntscheidSpezifischeBlock"]')
+          .find('[class="dhxrb_3rows_button"][title="Bearbeitung einleiten"]')
+          .click();
+    }
+
+    SpeichernHilf(){
+        cy.contains('[class="dhxrb_block_label"]', 'Entscheid - Hilflosigkeit')
+          .parents('[class="dhxrb_block_base ribbonBlock_EntscheidHilflosigkeitBlock"]')
+          .find('[class="dhxrb_3rows_button"][title="Speichern"]')
+          .click();
+
+    }
+    SpeichernBearb(){
+        cy.contains('[class="dhxrb_block_label"]', 'Entscheid bearbeiten')
+          .parents('[class="dhxrb_block_base ribbonBlock_EntscheidBearbeitenBlock"]')
+          .find('[class="dhxrb_3rows_button"][title="Speichern"]')
+          .click();
+
+    }
     
 }
 
