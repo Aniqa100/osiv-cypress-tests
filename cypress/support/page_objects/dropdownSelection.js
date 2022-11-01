@@ -1,6 +1,7 @@
-import { type } from "os";
 
 export class DropdownSelection{
+
+  //Adress dropdowns
     adressTypeValue(){
 
     cy.get('[class="dhxwin_active"][modalwindow="true"]')
@@ -38,7 +39,26 @@ export class DropdownSelection{
       .get('[class="select2-results__options"]').find('[akid="postleitzahl-A52:ce043a166bb566939c1497ce242b3e34"]').click();
 
     }
-    
+    //Entscheid dropdowns
+
+    verfahrenbezVaue(value){
+      cy.get('[akid="EntscheidHilflosigkeitForm-verfahrenbez"]').click()
+       .get('[class="select2-search select2-search--dropdown"]').type(value).wait(500)
+       .get('[class="select2-results__options"]').click();
+    }
+
+    akbezValue(value){
+      cy.get('[akid="EntscheidHilflosigkeitForm-akbez"]').click()
+        .get('[class="select2-search select2-search--dropdown"]').type(value).wait(500)
+        .get('[class="select2-results__options"]').click();
+        //find('[akid="akbez-A0A:111:000004078894"]').click();
+    }
+
+    aufenthaltbezValue(value){
+      cy.get('[akid="EntscheidHilflosigkeitForm-aufenthaltbez"]').click()
+        .get('[class="select2-search select2-search--dropdown"]').type(value).wait(500)
+        .get('[class="select2-results__options"]').click();
+    }
 }
 
 export const dropdownValue = new DropdownSelection()

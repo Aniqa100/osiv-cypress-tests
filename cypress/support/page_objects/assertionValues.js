@@ -71,10 +71,51 @@ export class AssertValues{
      cy.get('[akid="EntscheidDetailBasisFrameTabbar-Hilflosigkeit"]')
      .should('have.css', 'border-left-color', 'rgb(255, 165, 0)'); 
      }
+
+     HilflosigkeitNotColor(){
+      cy.get('[akid="EntscheidDetailBasisFrameTabbar-Hilflosigkeit"]')
+      .should('not.have.css', 'border-left-color', 'rgb(255, 165, 0)'); 
+      }
+
      BasicDataNotColor(){
       cy.get('[akid="EntscheidDetailBasisFrameTabbar-Basisdaten"]')
       .should('not.have.css', 'border-left-color', 'rgb(255, 165, 0)'); 
       }
+     EntscheidStatus(status){
+      cy.get('[akid="EntscheidDetailBasisDatenForm-fieldsetbasisinformationen"]').then(basicdataeditor => {
+
+        cy.wrap(basicdataeditor).get('[akid="EntscheidDetailBasisDatenForm-arbeitslistevalue"]')
+        .find('input').then( input => {
+            cy.wrap(input).invoke('prop', 'value').should('contain', status)
+ })
+
+})
+     }
+
+     AblaufWartefrist(date){
+
+      cy.get('[akid="EntscheidHilflosigkeitForm-re_ablauf_wf"]').find('input').then (input => {
+        cy.wrap(input).invoke('prop', 'value').should('contain', date)
+      })
+     }
+
+     Wartefrist(year){
+      cy.get('[akid="EntscheidWartefristForm"]').then(Wartefrist => {
+        cy.wrap(Wartefrist).get('[akid="EntscheidWartefristForm-augradds"]').find('input').then(input => {
+            cy.wrap(input).invoke('prop', 'value').should('contain', '20 %')
+        })
+        
+        cy.wrap(Wartefrist).get('[akid="EntscheidWartefristForm-re_au_grenzgrad"]').find('input').then(input => {
+            cy.wrap(input).invoke('prop', 'value').should('contain', '20 %')
+        })
+
+        / cy.wrap(Wartefrist).get('[akid="EntscheidWartefristForm-audauer"]').find('input').then(input => {
+            cy.wrap(input).invoke('prop', 'value').should('contain', year)
+        }) 
+    })
+     }
+
+
 
 }
   export const compareValuesOf = new AssertValues()
