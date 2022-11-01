@@ -7,21 +7,40 @@ import { pressButton } from "../support/page_objects/Buttons";
 import { fillForm } from "../support/page_objects/FillForm";
 import { compareValuesOf } from "../support/page_objects/assertionValues";
 import { selectDate } from "../support/page_objects/DatePicker";
+import { dropdownValue } from "../support/page_objects/dropdownSelection";
 
 
 
 //Call getBaseUrl() to get environment specific url value
 const url = new Utility().getBaseUrl();
 
+var samedaynextyear = new Date();
+var dd = String(samedaynextyear.getDate()).padStart(2, '0');
+var mm = String(samedaynextyear.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = samedaynextyear.getFullYear();
+var yearPlus = yyyy + 1;
+samedaynextyear = mm + '.' + dd + '.' + yearPlus;
+
+function days_of_a_year(year) 
+{
+   
+  return isLeapYear(year) ? 366 : 365;
+}
+
+function isLeapYear(year) {
+     return year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0);
+}
+
+console.log(days_of_a_year(yyyy));
+
 describe('Verify Environment Config ' + url, () => {
     it('Verify Environment', () => {
         cy.visit(url); //use url variable
-        cy.wait(20000);
         cy.typeLogin({ email: 'hulk1', password: 'hulk1{enter}' })
-        cy.wait(20000);
+        cy.waitUntil(()=> cy.get('[class="akUserInfo"]').should('be.visible'))
         navigateTo.folderVersicherte();
         cy.wait(5000);
-        inputTo.VersichertenName('eing kyra{enter}', {timeout: 10000});
+        inputTo.VersichertenName('eing kyra{enter}', {timeout: 10_000});
         cy.get('[akid="sStammQueryB-A60-ab901f85688e6da29a14381b249b0071"]').dblclick();
         cy.wait(20000);
         cy.get('[class="dhx_cell_toolbar_def"]').click();
@@ -30,7 +49,7 @@ describe('Verify Environment Config ' + url, () => {
         cy.wait(5000);
         pressButton.EntscheideNew();
         cy.wait(5000);
-        fillForm.NeuenEntscheidErstellenForm('hilflosen' , 'hilflosen');
+        fillForm.NeuenEntscheidErstellenForm('Hilflosenentschädigung' , 'hilflosen');
         compareValuesOf.EntscheidCreation();
         pressButton.modalOk();
         cy.wait(20000);
@@ -51,38 +70,26 @@ describe('Verify Environment Config ' + url, () => {
         cy.get('[akid="EntscheidDetailBasisFrameTabbar-Entscheid-Sendungen"]').should('be.visible')
         compareValuesOf.BasicDataNotColor()
         cy.contains('Es müssen noch folgende Felder ausgefüllt werden: Entscheid, Supertext, Entscheidtyp, Gebrechen, Funktionsausfall. (OSCIENT:523)').should('not.exist')
-
         pressButton.BearbeitungEinleiten()
         pressButton.modalOk()
         cy.get('[akid="EntscheidDetailBasisFrameTabbar-Freitexte"]').should('be.visible')
         cy.get('[akid="EntscheidDetailBasisFrameTabbar-Diskutieren"]').should('be.visible')
-        cy.get('[akid="EntscheidDetailBasisDatenForm-fieldsetbasisinformationen"]').then(basicdataeditor => {
-
-            cy.wrap(basicdataeditor).get('[akid="EntscheidDetailBasisDatenForm-arbeitslistevalue"]')
-            .find('input').then( input => {
-                cy.wrap(input).invoke('prop', 'value').should('contain', 'Bearbeiten')
-     })
-
-    })
-
-       cy.get('[akid="EntscheidDetailBasisFrameTabbar-Hilflosigkeit"]').click()
-
-       cy.get('[akid="EntscheidHilflosigkeitForm-verfahrenbez"]').click()
-       .get('[class="select2-search select2-search--dropdown"]').type('Langdauernde').wait(500)
-       .get('[class="select2-results__options"]').click();
-
-       cy.get('[akid="EntscheidHilflosigkeitForm-akbez"]').click()
-       .get('[class="select2-search select2-search--dropdown"]').type('Freiburg').wait(500)
-       .get('[class="select2-results__options"]').find('[akid="akbez-A0A:111:000004078894"]').click();
-
-       cy.get('[akid="EntscheidHilflosigkeitForm-aufenthaltbez"]').click()
-       .get('[class="select2-search select2-search--dropdown"]').type('Zu').wait(500)
-       .get('[class="select2-results__options"]').click();
-       selectDate.AnAuskleiden()
-       selectDate.AufstehenAbsitzen()
-       selectDate.Essen()
-
-
-       pressButton.SpeichernHilf()
+        compareValuesOf.EntscheidStatus('Bearbeiten')
+        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Hilflosigkeit"]').click()
+        dropdownValue.verfahrenbezVaue('Langdauernde')
+        dropdownValue.akbezValue('Freiburg')
+        dropdownValue.aufenthaltbezValue('Zu')
+        selectDate.AnAuskleiden()
+        selectDate.AufstehenAbsitzen()
+        selectDate.Essen()
+        pressButton.SpeichernHilf()
+        cy.waitUntil(() =>  cy.get('[class="swal-modal warningModal"]').should('be.visible'))
+        pressButton.confirm()
+        compareValuesOf.HilflosigkeitNotColor()
+        cy.waitUntil(()=> cy.get('[akid="EntscheidWartefristForm"]').should('be.visible'))
+        //Ablauf Wartefrist date need to be assert
+        compareValuesOf.Wartefrist(days_of_a_year(yyyy));
+        compareValuesOf.AblaufWartefrist(samedaynextyear);
+        
 })
 })
