@@ -1,5 +1,7 @@
 import 'cypress-file-upload';
 import 'Moment';
+import 'cypress-wait-until';
+require('cypress-wait-until')
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -13,7 +15,9 @@ import 'Moment';
 //
 
 Cypress.Commands.add('typeLogin', (user) => {
-  cy.get('[name="login_name"]').type(user.email)
+  //cy.visit(user.url); //use url variable
+  cy.waitUntil(() => cy.get('[name="login_name"]'))
+  cy.get('[name="login_name"]').should('be.visible').type(user.email)
   cy.get('[name="login_password"]').type(user.password)
   
 })

@@ -22,5 +22,6 @@ import 'cypress-wait-until';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
-require('cypress-wait-until');
+import 'cypress-wait-until';
+require('cypress-wait-until')
 require("cypress-plugin-tab");
