@@ -101,6 +101,10 @@ describe('Verify Environment Config ' + url, () => {
         compareValuesOf.Wartefrist(days_of_a_year(yyyy));
         compareValuesOf.AblaufWartefrist(samedaynextyear);
         compareValuesOf.WartefristVerlauf(today, end, days_of_a_year(yyyy), '20');
+        compareValuesOf.HEGrad(end)
+        compareValuesOf.HEGradVerlauf(end, end, 'Leicht');
+
+
         })
     
           /* cy.get('[akid="WartefristQueryGrid"]').find('[class="objbox"]').then (WartefristVerlauf =>{
