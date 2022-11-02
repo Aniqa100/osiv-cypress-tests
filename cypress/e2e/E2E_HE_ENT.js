@@ -1,6 +1,6 @@
 import { navigateTo } from "../support/page_objects/navigationPage";
 import { Utility } from "../support/Utility";
-import {userInfor} from "../support/page_objects/elements"
+import {userInfor} from "../support/page_objects/elements";
 import { inputTo } from "../support/page_objects/inputFields";
 import { tabTo } from "../support/page_objects/Tabs";
 import { pressButton } from "../support/page_objects/Buttons";
@@ -8,6 +8,8 @@ import { fillForm } from "../support/page_objects/FillForm";
 import { compareValuesOf } from "../support/page_objects/assertionValues";
 import { selectDate } from "../support/page_objects/DatePicker";
 import { dropdownValue } from "../support/page_objects/dropdownSelection";
+
+
 
 
 
@@ -19,7 +21,11 @@ var dd = String(samedaynextyear.getDate()).padStart(2, '0');
 var mm = String(samedaynextyear.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = samedaynextyear.getFullYear();
 var yearPlus = yyyy + 1;
-samedaynextyear = mm + '.' + dd + '.' + yearPlus;
+var dayOneless = String(samedaynextyear.getDate()-1).padStart(2, '0');
+var end = dayOneless + '.' + mm + '.' + yearPlus;
+samedaynextyear = dd + '.' + mm +  '.' + yearPlus;
+
+var today = dd + '.' + mm + '.' + yyyy;
 
 function days_of_a_year(year) 
 {
@@ -32,8 +38,12 @@ function isLeapYear(year) {
 }
 
 console.log(days_of_a_year(yyyy));
+console.log(today);
+console.log(end);
+
 
 describe('Verify Environment Config ' + url, () => {
+
     it('Verify Environment', () => {
         cy.visit(url); //use url variable
         cy.typeLogin({ email: 'hulk1', password: 'hulk1{enter}' })
@@ -90,6 +100,15 @@ describe('Verify Environment Config ' + url, () => {
         //Ablauf Wartefrist date need to be assert
         compareValuesOf.Wartefrist(days_of_a_year(yyyy));
         compareValuesOf.AblaufWartefrist(samedaynextyear);
-        
-})
+        compareValuesOf.WartefristVerlauf(today, end, days_of_a_year(yyyy), '20');
+        compareValuesOf.HEGrad(end)
+        compareValuesOf.HEGradVerlauf(end, end, 'Leicht');
+
+
+        })
+    
+          /* cy.get('[akid="WartefristQueryGrid"]').find('[class="objbox"]').then (WartefristVerlauf =>{
+            cy.wrap(WartefristVerlauf).find('table')
+        })  */ 
+        //cy.contains('Wartefrist Verlauf')
 })

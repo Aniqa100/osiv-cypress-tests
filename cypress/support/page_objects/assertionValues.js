@@ -114,8 +114,31 @@ export class AssertValues{
         }) 
     })
      }
-
-
-
+     WartefristVerlauf(Beginn, Ende, AnzahlTage, HEGradin){
+     cy.get('[akid="WartefristQueryGrid"]').find('[class="objbox"]').find('table').find('tbody').contains('tr', '20')
+        .then(row =>{
+            cy.wrap(row).find('td').eq(0).should('contain', Beginn)
+            cy.wrap(row).find('td').eq(1).should('contain', Ende)
+            cy.wrap(row).find('td').eq(2).should('contain', AnzahlTage)
+            cy.wrap(row).find('td').eq(3).should('contain', HEGradin)
+        })
+      }
+      HEGrad(Ende){
+        cy.get('[akid="EntscheidHEGradBerechnungForm"]').then(form =>{
+          cy.wrap(form).find('[akid="EntscheidHEGradBerechnungForm-beginnhebez"]').should('contain', 'Leicht')
+          cy.wrap(form).get('[akid="EntscheidHEGradBerechnungForm-beginn_dat"]').find('input').then(input => {
+            cy.wrap(input).invoke('prop', 'value').should('contain', Ende)  
+          })
+               
+      })           
+    }
+       HEGradVerlauf(Beginn, Ende, HEGrad){
+        cy.get('[akid="HeGradQueryGrid"]').find('[class="objbox"]').find('table').find('tbody').contains('tr', 'Leicht')
+           .then(row =>{
+               cy.wrap(row).find('td').eq(0).should('contain', Beginn)
+               cy.wrap(row).find('td').eq(1).should('contain', Ende)
+               cy.wrap(row).find('td').eq(2).should('contain', HEGrad)
+           })
+         }
 }
   export const compareValuesOf = new AssertValues()
