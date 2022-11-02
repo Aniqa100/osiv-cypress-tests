@@ -114,8 +114,20 @@ export class AssertValues{
         }) 
     })
      }
-
-
+     WartefristVerlauf(Beginn, Ende, AnzahlTage, HEGradin){
+     cy.get('[akid="WartefristQueryGrid"]').find('[class="objbox"]').find('table').find('tbody').contains('tr', '20')
+        .then(row =>{
+            cy.wrap(row).find('td').eq(0).should('contain', Beginn)
+            cy.wrap(row).find('td').eq(1).should('contain', Ende)
+            cy.wrap(row).find('td').eq(2).should('contain', AnzahlTage)
+            cy.wrap(row).find('td').eq(3).should('contain', HEGradin)
+        })
+      }
+      HEGrad(){
+        cy.get('[akid="EntscheidHEGradBerechnungForm"]').find('[]')
+      }
+      
+         
 
 }
   export const compareValuesOf = new AssertValues()
