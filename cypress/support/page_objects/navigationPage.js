@@ -1,12 +1,19 @@
+
 export class NavigationPage{
     folderVersicherte(){
-        cy.get('[akid="itFolder-Versicherte"]').click()
+        cy.waitUntil(() => cy.get('[akid="itFolder-Versicherte"]'))
+        cy.get('[akid="itFolder-Versicherte"]').should('be.visible').click()
     }
     
     folderAdressen(){
-        cy.get('[akid="itFolder-Adressen"]').click()
+        cy.waitUntil(() => cy.get('[akid="itFolder-Versicherte"]'))
+        cy.get('[akid="itFolder-Adressen"]').should('be.visible').click()
     }
 
+    folderEntscheide(){
+        cy.waitUntil(() => cy.get('[akid="itFolder-Versicherte"]'))
+        cy.get('[akid="itFolder-Entscheid"]').should('be.visible').click()
+    }
 }
 
 export const navigateTo = new NavigationPage()
