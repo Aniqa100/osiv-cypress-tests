@@ -6,6 +6,7 @@ export class Buttons{
     }
     
    modalOk(){
+        cy.waitUntil(()=> cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"]').should('be.visible'))
         cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]').click();
 
     }
@@ -16,7 +17,15 @@ export class Buttons{
     }
 
     confirm(){
-        cy.get('[class="swal-modal warningModal"]').find('[class="swal-button swal-button--replyok"]').contains('Ok').click()
+        cy.waitUntil(()=> cy.get('[class="swal-modal warningModal"]').should('be.visible'))
+        cy.get('[class="swal-modal warningModal"]').find('[class="swal-button swal-button--replyok"]')
+        .contains('Ok').click()
+    }
+
+    Warningconfirm(){
+        cy.waitUntil(()=> cy.get('[class="swal-modal warningModal"]').should('be.visible'))
+        cy.get('[class="swal-modal warningModal"]').find('[class="swal-button swal-button--okreply default"]')
+        .contains('Ok').click()
     }
     
     EntscheideNew(){
@@ -46,6 +55,26 @@ export class Buttons{
           .find('[class="dhxrb_3rows_button"][title="Speichern"]')
           .click();
 
+    }
+    Begründungspeichern(){
+        cy.contains('[class="dhxrb_block_label"]', 'Entscheid - Begründung')
+        .parents('[class="dhxrb_block_base ribbonBlock_EntscheidBegruendungBlock"]')
+        .find('[class="dhxrb_3rows_button"][title="Begründung speichern"]')
+        .click()
+    }
+    
+    Freitextgenerieren() {
+        cy.contains('[class="dhxrb_block_label"]', 'Entscheid - Verfügung / Beiblatt AK')
+        .parents('[class="dhxrb_block_base ribbonBlock_EntscheidVerfuegungBeiblattAKBlock"]')
+        .find('[class="dhxrb_3rows_button"][title="Freitext generieren"]')
+        .click()
+    }
+
+    Freitextspeichern() {
+        cy.contains('[class="dhxrb_block_label"]', 'Entscheid - Verfügung / Beiblatt AK')
+        .parents('[class="dhxrb_block_base ribbonBlock_EntscheidVerfuegungBeiblattAKBlock"]')
+        .find('[class="dhxrb_3rows_button"][title="Freitext speichern"]')
+        .click()
     }
     
 }

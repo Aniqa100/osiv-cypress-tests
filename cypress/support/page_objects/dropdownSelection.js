@@ -51,7 +51,7 @@ export class DropdownSelection{
       cy.get('[akid="EntscheidHilflosigkeitForm-akbez"]').click()
         .get('[class="select2-search select2-search--dropdown"]').type(value).wait(500)
         .get('[class="select2-results__options"]').click();
-        //find('[akid="akbez-A0A:111:000004078894"]').click();
+       
     }
 
     aufenthaltbezValue(value){
