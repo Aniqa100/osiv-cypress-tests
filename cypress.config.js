@@ -27,7 +27,7 @@ module.exports = defineConfig({
     specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
     excludeSpecPattern: ['**/1-getting-started/*', '**/2-advanced-examples/*','**/DemoProtocolwithoutsession.js', '**/testWithPageObjects.js'],
     requestTimeout : 30000,
-    //numTestsKeptInMemory: 0,
+    numTestsKeptInMemory: 0,
     responseTimeout : 50000,
     pageLoadTimeout: 30_000,
     defaultCommandTimeout: 20_000,

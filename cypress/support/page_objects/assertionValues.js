@@ -91,6 +91,11 @@ export class AssertValues{
 
 })
      }
+     FreitexteColor(){
+      cy.get('[akid="EntscheidDetailBasisFrameTabbar-Freitexte"]')
+      .should('have.css', 'border-left-color', 'rgb(255, 165, 0)'); 
+      }
+
 
      AblaufWartefrist(date){
 
