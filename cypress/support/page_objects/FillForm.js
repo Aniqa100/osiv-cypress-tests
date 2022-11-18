@@ -1,10 +1,11 @@
 export class fillFormValues{
     NeuenEntscheidErstellenForm(lgname, ltvalue){
+        cy.waitUntil(() => cy.get('[class="dhxwin_active"][modalwindow="true"]').should('be.visible'))
         cy.get('[class="dhxwin_active"][modalwindow="true"]')
           .find('[akid="CreateEntscheidForm-createentscheidfieldset"]')
           .then (basicdata =>{
               cy.wrap(basicdata).get('[akid="CreateEntscheidForm-leistungsgruppe"]')
-                .click().type(lgname).get('[class="select2-results__options"]').click();
+                .click().type(lgname).wait(500).get('[class="select2-results__options"]').click();
               cy.wrap(basicdata).get('[akid="CreateEntscheidForm-leistungtext"]')
                 .click().type(ltvalue).wait(500).get('[class="select2-results__options"]').click();                         
             })

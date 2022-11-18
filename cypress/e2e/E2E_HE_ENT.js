@@ -1,6 +1,6 @@
 import { navigateTo } from "../support/page_objects/navigationPage";
 import { Utility } from "../support/Utility";
-import {userInfor} from "../support/page_objects/elements";
+import {choosenElem} from "../support/page_objects/elements";
 import { inputTo } from "../support/page_objects/inputFields";
 import { tabTo } from "../support/page_objects/Tabs";
 import { pressButton } from "../support/page_objects/Buttons";
@@ -8,15 +8,13 @@ import { fillForm } from "../support/page_objects/FillForm";
 import { compareValuesOf } from "../support/page_objects/assertionValues";
 import { selectDate } from "../support/page_objects/DatePicker";
 import { dropdownValue } from "../support/page_objects/dropdownSelection";
-
-
-
+import { rowselected } from "../support/page_objects/Tables";
+//import { GetCountEntscheide } from "../support/page_objects/Tables";
+import { Datefunctions } from "../support/Datefunctions"
 
 
 //Call getBaseUrl() to get environment specific url value
 const url = new Utility().getBaseUrl();
-
-
 
 function getFirstDayOfMonth(month, year) {
   return new Date(1, month, year);
@@ -31,7 +29,7 @@ function days_of_a_year(year)
 function isLeapYear(year) {
      return year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0);
 }
-var today = new Date();
+ var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 
@@ -42,11 +40,7 @@ var dayOneless = String(today.getDate()-1).padStart(2, '0');
 var end = dayOneless + '.' + mm + '.' + yearPlus;
 var samedaynextyear = dd + '.' + mm +  '.' + yearPlus;
 var firstDay = '01' + '.' + mm + '.' + yearPlus;
-today = dd + '.' + mm + '.' + yyyy;
-
-
-
-
+today = dd + '.' + mm + '.' + yyyy; 
 
 console.log(days_of_a_year(yyyy));
 console.log(today);
@@ -57,51 +51,69 @@ console.log(firstDay);
 describe('Verify Environment Config ' + url, () => {
 
     it('Verify Environment', () => {
-        cy.visit(url); //use url variable
-        cy.typeLogin({ email: 'hulk1', password: 'hulk1{enter}' })
-        cy.waitUntil(()=> cy.get('[class="akUserInfo"]').should('be.visible'))
-        navigateTo.folderVersicherte();
-        cy.wait(5000);
-        inputTo.VersichertenName('eing kyra{enter}', {timeout: 10_000});
-        cy.get('[akid="sStammQueryB-A60-ab901f85688e6da29a14381b249b0071"]').dblclick();
-        cy.wait(20000);
-        cy.get('[class="dhx_cell_toolbar_def"]').click();
-        cy.wait(5000);
-        tabTo.Entscheide();
-        cy.wait(5000);
-        pressButton.EntscheideNew();
-        cy.wait(5000);
-        fillForm.NeuenEntscheidErstellenForm('Hilflosenentschädigung' , 'hilflosen');
-        compareValuesOf.EntscheidCreation();
-        pressButton.modalOk();
-        cy.wait(20000);
-        cy.get('[class="dhx_cell_toolbar_def"]').click();
-        cy.get('.active-taskbar-items > .active');
+
+  
+        //cy.UILogin(Cypress.env("username"), Cypress.env("password"))
+        cy.UILoginWithSession(Cypress.env("username"), Cypress.env("password"))
+        cy.visit(url)
+        choosenElem.UserName()
+        navigateTo.folderVersicherte()
+        cy.wait(5000)
+        inputTo.VersichertenName('eing kyra')
+        rowselected.firstSelectedRow()
+        pressButton.Homebtn()
+        tabTo.Entscheide()
+        
+        pressButton.EntscheideNew()
+        fillForm.NeuenEntscheidErstellenForm('Hilflosenentschädigung' , 'Hilflosenentschädigung')
+        compareValuesOf.EntscheidCreation()
+        pressButton.modalOk()
+        
+        cy.request('https://osiv-nrtest.ivnet.ch/web/Resource/Osiv.Entscheid.Entscheid.Query.EntscheidQueryBE?akQuery=%7B%22ui_context%22%3A%7B%22controlType%22%3A%22%22%2C%22container%22%3A%22%22%7D%2C%22filters%22%3A%7B%22logic%22%3A%22and%22%2C%22filters%22%3A%5B%7B%22logic%22%3A%22and%22%2C%22filters%22%3A%5B%7B%22field%22%3A%22stamm_id%22%2C%22operator%22%3A%22eq%22%2C%22value%22%3A7531%7D%5D%7D%2C%7B%22logic%22%3A%22or%22%2C%22filters%22%3A%5B%7B%22field%22%3A%22arbeitsliste%22%2C%22operator%22%3A%22eq%22%2C%22value%22%3A%22N%22%7D%2C%7B%22field%22%3A%22arbeitsliste%22%2C%22operator%22%3A%22eq%22%2C%22value%22%3A%22B%22%7D%2C%7B%22field%22%3A%22arbeitsliste%22%2C%22operator%22%3A%22eq%22%2C%22value%22%3A%22W%22%7D%5D%7D%5D%7D%2C%22fieldlist%22%3A%22*%22%7D&skip=0&top=50&clientRequestId=199&filter=%7B%22orderBy%22%3A%22VM_Versand_Dat%20desc%20by%20MB_Versand_Dat%20desc%20by%20VB_Versand_Dat%20desc%22%2C%22top%22%3A50%7D&_ts=166876986-2844292415-80')
+       .should((response) => {
+        expect(response.status).to.eq(200)
+        console.log(response.body)
+        const countOfEntscheid = response.body.dsEntscheid.eEntscheid.length;
+        var i; 
+        var existedEntscheids = 0;
+        for(i = 0; i < countOfEntscheid; i++){
+          if((response.body.dsEntscheid.eEntscheid[i].Arbeitsliste == "N")||(response.body.dsEntscheid.eEntscheid[i].Arbeitsliste == "B"))
+          existedEntscheids = existedEntscheids + 1;
+        } 
+        if(existedEntscheids>0){
+          pressButton.Warningconfirm()
+       } else {}
+       })
+        /* const modalWindow = cy.get('[class="swal-modal warningModal"]')
+        if(modalWindow) {
+          pressButton.Warningconfirm()
+        } else {} */
+        cy.wait(1000)
+        pressButton.Homebtn()
+        cy.get('.active-taskbar-items > .active')
         compareValuesOf.DetailsTabColor()
         compareValuesOf.BasicDataColor()
-        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Durchführungsstellen"]').should('be.visible')
+        compareValuesOf.Durchführungsstellen()
 
         if(url == 'https://osiv-frtest.ivnet.ch/') {
           compareValuesOf.HilflosigkeitColor()
         } else 
-        
-        cy.wait(500)
-        cy.contains('Bitte die Bearbeitung einleiten. (OSCIENT:522)')
-        cy.contains('Es müssen noch folgende Felder ausgefüllt werden: Entscheid, Supertext, Entscheidtyp, Gebrechen, Funktionsausfall. (OSCIENT:523)')
+        compareValuesOf.BitteWarningmsg()
+        compareValuesOf.Shouldbefilled()
         compareValuesOf.EntscheidEditor()
-        fillForm.EditEntscheidDatenForm('Zusprache', '3205', 'Mitteilung der')
+        fillForm.EditEntscheidDatenForm('Zusprache', '3205', 'Mitteilung der IV-Stelle (IV Allgemein)')
         fillForm.EditErweiterteInfoForm('101', '01')
         selectDate.forBegin()
         pressButton.SpeichernBearb()
-        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Entscheid-Sendungen"]').should('be.visible')
+        compareValuesOf.EntscheidSendungen()
         compareValuesOf.BasicDataNotColor()
-        cy.contains('Es müssen noch folgende Felder ausgefüllt werden: Entscheid, Supertext, Entscheidtyp, Gebrechen, Funktionsausfall. (OSCIENT:523)').should('not.exist')
+        compareValuesOf.ShouldbefilledNotExist()
         pressButton.BearbeitungEinleiten()
-        pressButton.modalOk()
-        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Freitexte"]').should('be.visible')
-        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Diskutieren"]').should('be.visible')
+        pressButton.modalOkWithWait()
+        compareValuesOf.Freitexte()
+        compareValuesOf.Diskutieren()
         compareValuesOf.EntscheidStatus('Bearbeiten')
-        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Hilflosigkeit"]').click()
+        tabTo.Hilflosigkeit()
         dropdownValue.verfahrenbezVaue('Langdauernde')
         dropdownValue.akbezValue('Freiburg')
         dropdownValue.aufenthaltbezValue('Zu')
@@ -109,7 +121,6 @@ describe('Verify Environment Config ' + url, () => {
         selectDate.AufstehenAbsitzen()
         selectDate.Essen()
         pressButton.SpeichernHilf()
-        cy.waitUntil(() =>  cy.get('[class="swal-modal warningModal"]').should('be.visible'))
         pressButton.confirm()
         compareValuesOf.HilflosigkeitNotColor()
         cy.waitUntil(()=> cy.get('[akid="EntscheidWartefristForm"]').should('be.visible'))
@@ -119,25 +130,51 @@ describe('Verify Environment Config ' + url, () => {
         compareValuesOf.WartefristVerlauf(today, end, days_of_a_year(yyyy), '20');
         compareValuesOf.HEGrad(firstDay)
         compareValuesOf.HEGradVerlauf(firstDay, firstDay, 'Leicht');
-        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Freitexte"]').click()
+        tabTo.Freitexte()
         compareValuesOf.FreitexteColor()
-        cy.get('[akid="BegruendungHTMLTextForm"]').find('.cke_wysiwyg_div').type('test');
+        inputTo.TextForm('test')
         pressButton.Begründungspeichern()
-        cy.get('[akid="BegruendungHTMLTextForm"]').find('.cke_wysiwyg_div').find('p').invoke('text').then(text =>{
-          expect(text).to.equal('test')
-        })
-        cy.get('[akid="EntscheidFreitextTabbar-Verfügung / Beiblatt AK"]').click()
-        //cy.wait(500)
-        //pressButton.Freitextspeichern()
+        compareValuesOf.TextFormfilling()
+        tabTo.VerfügungBeiblattAK()
         cy.wait(5000)
         pressButton.Freitextgenerieren()
         cy.wait(5000)
         pressButton.Warningconfirm()
         cy.wait(1000)
-        cy.get('[id="cke_3_contents"]').find('[class="WordSection1"]').eq(1).find('[class="OSIVDAbsatz"]')
-         .find('span').should('include.text', 'Sehr geehrte Frau Eing')
-         .and('have.css', 'background').should('include', 'rgb(255, 255, 0)') 
-        //cy.get('[id="cke_3_contents"]').find('[class="WordSection1"]').eq(4).find('tbody')
+        compareValuesOf.GeneratedTextWithColore(firstDay)
+        pressButton.Freitextspeichern()
+        compareValuesOf.GeneratedTextWithColore(firstDay)
+        tabTo.GesetzlicheGrundlagen()
+        pressButton.FreitextgenerierenGesetzliche()
+        pressButton.Warningconfirm()
+        compareValuesOf.FreitexteNotColor()
+        tabTo.EntscheidSendungen()
+        tabTo.Sendungen()
+        tabTo.Details()
+        pressButton.EntscheidSendungVerschicken()
+        compareValuesOf.VisierenColor()
+        compareValuesOf.EntscheidSendungenNotColor()
+        compareValuesOf.ExistRow()
+        tabTo.Visieren()
+        pressButton.VisumSpeichern()
+        pressButton.Warningconfirm()
+        compareValuesOf.EntscheidSendungenColor()
+        cy.wait(1000)
+        compareValuesOf.VisierenNotColor()
+        tabTo.EntscheidSendungen()
+        tabTo.Sendungen()
+        rowselected.linkOnTable()
+        pressButton.Homebtn()
+        tabTo.FormularVariablen()
+        inputTo.Betrifft('Formular Variablen')
+        pressButton.VariablenSpeichern()
+        pressButton.DruckVersand()
+        pressButton.DruckVorschauMW()
+        pressButton.DruckVersandMW()
+        dropdownValue.DruckerAuswählen('Testdrucker')
+        pressButton.modalOk()
+        pressButton.FrageJa()
+        compareValuesOf.Finished('Abgeschlossen')
 
-        })
+   })
 })
