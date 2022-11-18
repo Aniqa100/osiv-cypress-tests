@@ -60,7 +60,7 @@ describe('First test', () => {
       cy.get('[akid="sProtokollInPapierkorbForm-geloeschtgrund"]').click();
       //cy.get('[class="select2-results"]').contains('Falsche Information').click();
       //cy.get('[akid="sProtokollInPapierkorbForm"]').click('center');
-      cy.get('[class="select2-results"]').type('Falsche{enter}');
+      cy.get('[class="select2-results"]').type('Falsche Information{enter}');
       cy.wait(1000);
       cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]').click(); 
       cy.wait(4000);
