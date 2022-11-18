@@ -1,0 +1,17 @@
+import { Utility } from "../support/Utility"
+
+describe('Mocking postman ' + url, () => {
+    
+    const url = new Utility().getBaseUrl();
+
+    it('apitest', () => {
+        cy.intercept({
+            method: 'GET',
+            url:'https://62fca046-6232-460d-a5bd-a7b4f6d4a266.mock.pstmn.io',
+          }).as('getMock');
+          //cy.get('doSomething').click();
+          cy.wait('@getMock').its('request.headers').should('have.property',
+          'referer', 'https://osiv-frtest.ivnet.ch/');
+          cy.visit(url);
+    })
+})

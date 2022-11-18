@@ -59,6 +59,13 @@ export class DropdownSelection{
         .get('[class="select2-search select2-search--dropdown"]').type(value).wait(500)
         .get('[class="select2-results__options"]').click();
     }
+
+    DruckerAuswählen(value){
+      cy.get('[akid="DruckauftragDetailForm-drucker_benutzer"]').click()
+        .get('[class="select2-search select2-search--dropdown"]').type(value).wait(500)
+        .get('[class="select2-results__options"]').click();
+    }
+  
 }
 
 export const dropdownValue = new DropdownSelection()

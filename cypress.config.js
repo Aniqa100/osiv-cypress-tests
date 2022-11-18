@@ -6,7 +6,7 @@ module.exports = defineConfig({
   projectId: 'sdkvf4',
   viewportWidth: 2560,
   viewportHeight: 1240,
-  e2e: {
+   e2e: {
     setupNodeEvents(on, config) {
       module.exports = (on, config) => {
         on('before:browser:launch', (browser = {}, args) => {
@@ -29,10 +29,12 @@ module.exports = defineConfig({
     requestTimeout : 30000,
     numTestsKeptInMemory: 0,
     responseTimeout : 50000,
-    pageLoadTimeout: 30_000,
-    defaultCommandTimeout: 20_000,
+    pageLoadTimeout: 50_000,
+    defaultCommandTimeout: 30_000,
     hideXHR: true,
-    chromeWebSecurity: false
+    chromeWebSecurity: false,
+    experimentalSessionAndOrigin: true
+
   
   }
 });

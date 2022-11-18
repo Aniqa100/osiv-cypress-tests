@@ -8,8 +8,30 @@ export class inputField{
     cy.get('[class="dhxwin_active"][modalwindow="true"]').find('[akid="sAdresseDetailOverviewForm-ort"]').click().type(city);
 }
    VersichertenName(name){
-    cy.waitUntil(()=> cy.get('[akid="sStammQueryB-BRS_Versicherten_Name"]'))
-    cy.get('[akid="sStammQueryB-BRS_Versicherten_Name"]').should('be.visible').type(name);
+    cy.waitUntil(()=> cy.get('[akid="sStammQueryB-BRS_Versicherten_Name"]').should('be.visible'))
+    cy.get('[akid="sStammQueryB-BRS_Versicherten_Name"] input').type(name, {delay:20}).clear().type(name).type('{enter}')
    }
+
+   EntscheidDesktop(fieldName, fieldValue){
+    switch(fieldName){
+      case 'entscheid_id':
+        cy.waitUntil(() => cy.get(fieldMapping.EntscheidDesktopEntscheid_ID));
+        cy.get(fieldMapping.EntscheidDesktopEntscheid_ID).type(fieldValue + '{enter}');
+        cy.wait(2000);
+      break;
+      
+    }
+    
+   }
+   TextForm(text){
+        cy.get('[akid="BegruendungHTMLTextForm"]').find('.cke_wysiwyg_div').type(text);
+}
+
+    Betrifft(text){
+        cy.waitUntil(() => cy.get('[akid="FreidefvariableForm-Betrifft"]').should('be.visible'))
+        cy.get('[akid="FreidefvariableForm-Betrifft"]').type(text)
+    }
+
+    
 }
 export const inputTo = new inputField()

@@ -11,7 +11,7 @@ export class NavigationPage{
     }
 
     folderEntscheide(){
-        cy.waitUntil(() => cy.get('[akid="itFolder-Versicherte"]'))
+        cy.waitUntil(() => cy.get('[akid="itFolder-Entscheid"]'))
         cy.get('[akid="itFolder-Entscheid"]').should('be.visible').click()
     }
 }
