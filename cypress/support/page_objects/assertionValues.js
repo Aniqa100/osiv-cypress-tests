@@ -229,7 +229,7 @@ export class AssertValues{
          }
 
          GeneratedTextWithoutColore(date){
-          cy.get('[id="cke_3_contents"]').find('[class="WordSection1"]').eq(1).find('[class="OSIVDAbsatz"]')
+        cy.get('[id="cke_3_contents"]').find('[class="WordSection1"]').eq(1).find('[class="OSIVDAbsatz"]')
          .should('include.text', 'Sehr geehrte Frau Eing')
           
 

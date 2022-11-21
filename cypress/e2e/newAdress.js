@@ -28,6 +28,8 @@ describe('Test with Page Objects ' + url,() => {
     pressButton.modalOk();
     cy.wait(2000);
     pressButton.confirm();
-    pressButton.Homebtn();    
+    pressButton.Homebtn(); 
+    
+    
 })
 })
