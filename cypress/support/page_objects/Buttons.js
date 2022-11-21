@@ -109,25 +109,35 @@ export class Buttons{
     }
 
     Freitextspeichern() {
-        cy.contains('[class="dhxrb_block_label"]', 'Entscheid - Verfügung / Beiblatt AK')
+        cy.waitUntil(() => cy.contains('Entscheid - Verfügung / Beiblatt AK').should('be.visible'))
+        cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidVerfuegungBeiblattAKBlock"]')
+        .find('[title="Freitext speichern"]').click()
+       /*  cy.contains('[class="dhxrb_block_label"]', 'Entscheid - Verfügung / Beiblatt AK')
         .parents('[class="dhxrb_block_base ribbonBlock_EntscheidVerfuegungBeiblattAKBlock"]')
         .find('[class="dhxrb_3rows_button"][title="Freitext speichern"]')
-        .click()
+        .click() */
     }
 
     FreitextgenerierenGesetzliche () {
-        cy.contains('[class="dhxrb_block_label"]', 'Entscheid - Gesetzliche Grundlagen')
+        cy.waitUntil(() => cy.contains('Entscheid - Gesetzliche Grundlagen').should('be.visible'))
+        cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidGesetzlicheGrundlagenBlock"]')
+        .find('[title="Freitext generieren"]').click()
+        /* cy.contains('[class="dhxrb_block_label"]', 'Entscheid - Gesetzliche Grundlagen')
         .parents('[class="dhxrb_block_base ribbonBlock_EntscheidGesetzlicheGrundlagenBlock"]')
         .find('[class="dhxrb_3rows_button"][title="Freitext generieren"]')
-        .click()
+        .click() */
 
       }
 
     EntscheidSendungVerschicken () {
-        cy.contains('[class="dhxrb_block_label"]', 'Entscheid - Entscheid-Sendungen')
+
+        cy.waitUntil(() => cy.contains('Entscheid - Entscheid-Sendungen').should('be.visible'))
+        cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidEntscheidSendungenBlock"]')
+        .find('[title="Entscheid-Sendungen generieren"]').click()
+        /* cy.contains('[class="dhxrb_block_label"]', 'Entscheid - Entscheid-Sendungen')
         .parents('[class="dhxrb_block_base ribbonBlock_EntscheidEntscheidSendungenBlock"]')
         .find('[class="dhxrb_3rows_button"][title="Entscheid-Sendungen generieren"]')
-        .click()
+        .click() */
       }
     FrageJa() {
         cy.waitUntil(()=> cy.get('[class="swal-modal confirmModal"]').should('be.visible'))

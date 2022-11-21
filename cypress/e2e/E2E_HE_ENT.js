@@ -15,6 +15,7 @@ import { Datefunctions } from "../support/Datefunctions"
 
 //Call getBaseUrl() to get environment specific url value
 const url = new Utility().getBaseUrl();
+const req = new Utility().RequestEeEntscheid();
 
 function getFirstDayOfMonth(month, year) {
   return new Date(1, month, year);
@@ -69,7 +70,7 @@ describe('Verify Environment Config ' + url, () => {
         compareValuesOf.EntscheidCreation()
         pressButton.modalOk()
         
-        cy.request('https://osiv-nrtest.ivnet.ch/web/Resource/Osiv.Entscheid.Entscheid.Query.EntscheidQueryBE?akQuery=%7B%22ui_context%22%3A%7B%22controlType%22%3A%22%22%2C%22container%22%3A%22%22%7D%2C%22filters%22%3A%7B%22logic%22%3A%22and%22%2C%22filters%22%3A%5B%7B%22logic%22%3A%22and%22%2C%22filters%22%3A%5B%7B%22field%22%3A%22stamm_id%22%2C%22operator%22%3A%22eq%22%2C%22value%22%3A7531%7D%5D%7D%2C%7B%22logic%22%3A%22or%22%2C%22filters%22%3A%5B%7B%22field%22%3A%22arbeitsliste%22%2C%22operator%22%3A%22eq%22%2C%22value%22%3A%22N%22%7D%2C%7B%22field%22%3A%22arbeitsliste%22%2C%22operator%22%3A%22eq%22%2C%22value%22%3A%22B%22%7D%2C%7B%22field%22%3A%22arbeitsliste%22%2C%22operator%22%3A%22eq%22%2C%22value%22%3A%22W%22%7D%5D%7D%5D%7D%2C%22fieldlist%22%3A%22*%22%7D&skip=0&top=50&clientRequestId=199&filter=%7B%22orderBy%22%3A%22VM_Versand_Dat%20desc%20by%20MB_Versand_Dat%20desc%20by%20VB_Versand_Dat%20desc%22%2C%22top%22%3A50%7D&_ts=166876986-2844292415-80')
+        cy.request(url + req)
        .should((response) => {
         expect(response.status).to.eq(200)
         console.log(response.body)
@@ -105,6 +106,22 @@ describe('Verify Environment Config ' + url, () => {
         fillForm.EditErweiterteInfoForm('101', '01')
         selectDate.forBegin()
         pressButton.SpeichernBearb()
+        cy.request(url + req)
+        .should((response) => {
+         expect(response.status).to.eq(200)
+         console.log(response.body)
+         const countOfEntscheid = response.body.dsEntscheid.eEntscheid.length;
+         var i; 
+         var existedEntscheids = 0;
+         for(i = 0; i < countOfEntscheid; i++){
+           if((response.body.dsEntscheid.eEntscheid[i].Leistung_Leistungscode == "HE"))
+           existedEntscheids = existedEntscheids + 1;
+         } 
+         if(existedEntscheids>0){
+           pressButton.Warningconfirm()
+        } else {}
+        }) 
+
         compareValuesOf.EntscheidSendungen()
         compareValuesOf.BasicDataNotColor()
         compareValuesOf.ShouldbefilledNotExist()
@@ -136,15 +153,17 @@ describe('Verify Environment Config ' + url, () => {
         pressButton.Begründungspeichern()
         compareValuesOf.TextFormfilling()
         tabTo.VerfügungBeiblattAK()
-        cy.wait(5000)
+        cy.wait(10000)
         pressButton.Freitextgenerieren()
-        cy.wait(5000)
+        cy.wait(500)
         pressButton.Warningconfirm()
         cy.wait(1000)
         compareValuesOf.GeneratedTextWithColore(firstDay)
         pressButton.Freitextspeichern()
-        compareValuesOf.GeneratedTextWithColore(firstDay)
+        cy.wait(10000)
+        compareValuesOf.GeneratedTextWithoutColore(firstDay)
         tabTo.GesetzlicheGrundlagen()
+        cy.wait(1000)
         pressButton.FreitextgenerierenGesetzliche()
         pressButton.Warningconfirm()
         compareValuesOf.FreitexteNotColor()
