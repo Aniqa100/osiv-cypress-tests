@@ -33,8 +33,8 @@ export class DropdownSelection{
     postalcodeValue(){
 
     cy.get('[class="dhxwin_active"][modalwindow="true"]').find('[akid="sAdresseDetailOverviewForm-postleitzahl"]').click()
-      .get('[class="select2-search select2-search--dropdown"]').type('Lausanna 25')
-      .get('[class="select2-results__options"]').click();
+      .get('[class="select2-search select2-search--dropdown"]').type('1000')
+      .get('[class="select2-results__options"]').find('[akid="postleitzahl-A52:ce043a166bb566939c1497ce242b3e34"]').click();
 
     }
     //Entscheid dropdowns
