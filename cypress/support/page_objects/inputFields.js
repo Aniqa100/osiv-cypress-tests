@@ -5,11 +5,12 @@ export class inputField{
     .find('input').type(name).tab().type(surename);
   }
    City(city){
-    cy.get('[class="dhxwin_active"][modalwindow="true"]').find('[akid="sAdresseDetailOverviewForm-ort"]').click().type(city);
+    cy.get('[class="dhxwin_active"][modalwindow="true"]').find('[akid="sAdresseDetailOverviewForm-ort"]')
+    .click().type(city);
 }
    VersichertenName(name){
     cy.waitUntil(()=> cy.get('[akid="sStammQueryB-BRS_Versicherten_Name"]').should('be.visible'))
-    cy.get('[akid="sStammQueryB-BRS_Versicherten_Name"] input').type(name, {delay:20}).clear().type(name).type('{enter}')
+    cy.get('[akid="sStammQueryB-BRS_Versicherten_Name"]').type(name, {delay:20}).clear().type(name).type('{enter}')
    }
 
    EntscheidDesktop(fieldName, fieldValue){
@@ -26,6 +27,9 @@ export class inputField{
    TextForm(text){
         cy.get('[akid="BegruendungHTMLTextForm"]').find('.cke_wysiwyg_div').type(text);
 }
+   NewProtocolFormtext(text){
+       cy.get('[akid="sProtokollDetailOverviewForm"]').find('.cke_wysiwyg_div').type(text)
+   }
 
     Betrifft(text){
         cy.waitUntil(() => cy.get('[akid="FreidefvariableForm-Betrifft"]').should('be.visible'))

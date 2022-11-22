@@ -59,12 +59,10 @@ describe('Verify Environment Config ' + url, () => {
         cy.visit(url)
         choosenElem.UserName()
         navigateTo.folderVersicherte()
-        cy.wait(1000)
         inputTo.VersichertenName('eing kyra')
         rowselected.firstSelectedRow()
         pressButton.Homebtn()
         tabTo.Entscheide()
-        
         pressButton.EntscheideNew()
         fillForm.NeuenEntscheidErstellenForm('Hilflosenentschädigung' , 'Hilflosenentschädigung')
         compareValuesOf.EntscheidCreation()
@@ -89,7 +87,6 @@ describe('Verify Environment Config ' + url, () => {
         if(modalWindow) {
           pressButton.Warningconfirm()
         } else {} */
-        cy.wait(1000)
         pressButton.Homebtn()
         cy.get('.active-taskbar-items > .active')
         compareValuesOf.DetailsTabColor()

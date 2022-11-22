@@ -63,6 +63,20 @@ export class DropdownSelection{
         .get('[class="select2-search select2-search--dropdown"]').type(value).wait(500)
         .get('[class="select2-results__options"]').click();
     }
+
+    // Protocol dropdowns
+    NewProtocoltype(type){
+      cy.waitUntil(() => cy.get('[class="dhxwin_active"][modalwindow="true"]').should('be.visible'))
+      cy.get('[akid="sProtokollDetailOverviewForm"]').find('[akid="sProtokollDetailOverviewForm-protokolltypbez"]').click()
+        .type(type).wait(500).get('[class="select2-results__options"]').click()   
+         
+    }
+    InPapierkorbForm(value){
+      cy.get('[akid="sProtokollInPapierkorbForm-geloeschtgrund"]').click()
+      .get('[class="select2-search select2-search--dropdown"]').type(value).wait(500)
+      .get('[class="select2-results__options"]').click();
+    }
+    
   
 }
 
