@@ -1,6 +1,8 @@
 # Logs
 logs
 *.log
+*.cameron
+
 
 # Runtime data
 pids
