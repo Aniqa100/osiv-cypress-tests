@@ -37,9 +37,9 @@ export class Buttons{
     }
         //working for FR after ribbon Block class was renamed
      EntscheideNew(){
-           cy.waitUntil(() => cy.contains('Versicherter - Entscheide').should('be.visible'))
-           cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidBlock"]')
-           .find('[title="Neu"]').click()
+        cy.waitUntil(() => cy.contains('Versicherter - Entscheide').should('be.visible'))
+        cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidBlock"]')
+        .find('[title="Neu"]').click()
            //.should('not.have.class', 'dhxrb_item_hide')
 
         // working for NR
@@ -52,8 +52,8 @@ export class Buttons{
 
     BearbeitungEinleiten(){
         cy.waitUntil(() => cy.contains('Entscheid spezifische Funktionen').should('be.visible'))
-           cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidSpezifischeBlock"]')
-           .find('[title="Bearbeitung einleiten"]').click()
+        cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidSpezifischeBlock"]')
+        .find('[title="Bearbeitung einleiten"]').click()
 
         // working for NR
         /* cy.contains('[class="dhxrb_block_label"]', 'Entscheid spezifische Funktionen')
@@ -76,8 +76,8 @@ export class Buttons{
     }
     SpeichernBearb(){
         cy.waitUntil(() => cy.contains('Entscheid bearbeiten').should('be.visible'))
-           cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidBearbeitenBlock"]')
-           .find('[title="Speichern"]').click()
+        cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidBearbeitenBlock"]')
+        .find('[title="Speichern"]').click()
 
            
         /* cy.contains('[class="dhxrb_block_label"]', 'Entscheid bearbeiten')
