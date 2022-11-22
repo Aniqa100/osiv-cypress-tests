@@ -59,7 +59,7 @@ describe('Verify Environment Config ' + url, () => {
         cy.visit(url)
         choosenElem.UserName()
         navigateTo.folderVersicherte()
-        cy.wait(5000)
+        cy.wait(1000)
         inputTo.VersichertenName('eing kyra')
         rowselected.firstSelectedRow()
         pressButton.Homebtn()

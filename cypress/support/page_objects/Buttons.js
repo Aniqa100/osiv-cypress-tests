@@ -148,7 +148,7 @@ export class Buttons{
     Homebtn(){
         cy.wait(3000)
         cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_pres"]').click()
-        cy.wait(5000)
+        cy.wait(1000)
     }
     VisumSpeichern(){
         cy.waitUntil(() =>cy.get('[class="dhxrb_3rows_button"][title="Visum speichern"]').should('be.visible'))

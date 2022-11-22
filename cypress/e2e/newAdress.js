@@ -14,9 +14,9 @@ describe('Test with Page Objects ' + url,() => {
     cy.visit(url)
     choosenElem.UserName()
     navigateTo.folderAdressen();
-    cy.wait(5000);
+    cy.wait(1000);
     pressButton.newAdress();
-    cy.wait(5000);
+    cy.wait(1000);
     dropdownValue.adressTypeValue();
     dropdownValue.languageTypeValue();
     dropdownValue.salutationValue();
@@ -26,7 +26,7 @@ describe('Test with Page Objects ' + url,() => {
     dropdownValue.postalcodeValue();
     pressButton.Generate(); 
     pressButton.modalOk();
-    cy.wait(2000);
+    cy.wait(1000);
     pressButton.confirm();
     pressButton.Homebtn(); 
     

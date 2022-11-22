@@ -238,15 +238,15 @@ export class AssertValues{
          
        
         cy.get('[id="cke_3_contents"]').find('[class="WordSection1"]').eq(4).find('tbody')
-         .find('span').should('include.text', 'Anspruchsbeginn ab:')
+         .find('[class="X-BausteinGliederung"]').should('include.text', 'Anspruchsbeginn ab:')
          
 
         cy.get('[id="cke_3_contents"]').find('[class="WordSection1"]').eq(4).find('tbody')
-         .find('span').should('include.text', 'leichten Grades')
+         .find('[class="X-BausteinGliederung"]').should('include.text', 'leichten Grades')
          
 
         cy.get('[id="cke_3_contents"]').find('[class="WordSection1"]').eq(4).find('tbody')
-         .find('span').should('include.text', date)
+         .find('[class="X-BausteinGliederung"]').should('include.text', date)
            }
 
 
