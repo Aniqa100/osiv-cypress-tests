@@ -8,6 +8,7 @@ export class Buttons{
     modalOk(){
         cy.waitUntil(()=> cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"]').should('be.visible'))
         cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]').click();
+        cy.wait(1000)
         
 
     }
@@ -36,7 +37,7 @@ export class Buttons{
         .contains('Ok').click()
     }
         //working for FR after ribbon Block class was renamed
-     EntscheideNew(){
+    EntscheideNew(){
         cy.waitUntil(() => cy.contains('Versicherter - Entscheide').should('be.visible'))
         cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidBlock"]')
         .find('[title="Neu"]').click()
@@ -146,9 +147,9 @@ export class Buttons{
 
 
     Homebtn(){
-        cy.wait(3000)
+        cy.wait(2000)
         cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_pres"]').click()
-        cy.wait(1000)
+        cy.wait(2000)
     }
     VisumSpeichern(){
         cy.waitUntil(() =>cy.get('[class="dhxrb_3rows_button"][title="Visum speichern"]').should('be.visible'))
@@ -171,16 +172,31 @@ export class Buttons{
 
     DruckVersandMW(){
         cy.waitUntil(() => cy.get('[akid="SimpleSwatTabbar-Druck/Versand"]').should('be.visible'))
-       cy.get('[akid="SimpleSwatTabbar-Druck/Versand"]').click()
+        cy.get('[akid="SimpleSwatTabbar-Druck/Versand"]').click()
     }
 
-    ProtokollBearbLöschen(){
+     //Protocol buttons
 
-        cy.waitUntil(() => cy.contains('Protokolleintrag bearbeiten').should('be.visible'))
+
+    ProtokollBearbLöschen(){
+        
+         cy.waitUntil(() => cy.contains('Protokolleintrag bearbeiten').should('be.visible'))
         cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_ProtokollBearbeitenBlock"]')
-        .find('[title="Löschen"]').click()
+        .find('[class="dhxrb_3rows_button"][title="Löschen"]').click() 
 
 }
+    ProtokollNew()
+    {
+        cy.waitUntil(() => cy.contains('Versicherter - Protokolleintrag').should('be.visible'))
+        cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_Protokoll Ribbon Block"]')
+        .find('[title="Neu"]').click()
+    }
+    InDenPapierkorb(){
+        cy.get('[class="dhxrb_3rows_button"][title="In den Papierkorb"]').click();
+    }
+    Wiederherstellen(){
+        cy.get('[class="dhxrb_3rows_button"][title="Wiederherstellen"]').click()
+    }
 }
 
 export const pressButton = new Buttons()

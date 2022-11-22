@@ -13,7 +13,7 @@ export class fillFormValues{
   }                
 
      EditEntscheidDatenForm(entscheid, supertext, entscheidtyp){
-        cy.get('[akid="EntscheidDetailBasisDatenForm-fieldsetbasisinformationen"]').then(basicdataeditor => {
+            cy.get('[akid="EntscheidDetailBasisDatenForm-fieldsetbasisinformationen"]').then(basicdataeditor => {
             cy.wrap(basicdataeditor).get('[akid="EntscheidDetailBasisDatenForm-entscheidvalue"]')
             .click().type(entscheid).wait(500).get('[class="select2-results__options"]').click()
 
@@ -35,6 +35,10 @@ export class fillFormValues{
      })
     
     }
+
+      //Protoloc forms
+      
+      
 
      
 }
