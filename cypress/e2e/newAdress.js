@@ -7,28 +7,27 @@ const {postcodeValue} = require("../support/page_objects/dropdownSelection");
 const {choosenElem} = require("../support/page_objects/elements")
 const url = new Utility().getBaseUrl();
 
-describe('Test with Page Objects ' + url,() => {
-    it('adress', () => {
+describe('Test to add a new adress with Frau solutation ' + url,() => {
+    it('Creating adress and remove it', () => {
 
     cy.UILoginWithSession(Cypress.env("username"), Cypress.env("password"))
     cy.visit(url)
-    choosenElem.UserName()
-    navigateTo.folderAdressen();
-    cy.wait(1000);
-    pressButton.newAdress();
-    cy.wait(1000);
-    dropdownValue.adressTypeValue();
-    dropdownValue.languageTypeValue();
-    dropdownValue.salutationValue();
-    dropdownValue.titleValue();
-    inputTo.NameAndSurename('Anna', 'Striha');
+    navigateTo.folderAdressen()
+    cy.wait(1000)
+    pressButton.newAdress()
+    cy.wait(1000)
+    dropdownValue.adressTypeValue()
+    dropdownValue.languageTypeValue()
+    dropdownValue.salutationValue()
+    dropdownValue.titleValue()
+    inputTo.NameAndSurename('Anna', 'Striha')
     inputTo.City('Amsterdam');
-    dropdownValue.postalcodeValue();
-    pressButton.Generate(); 
-    pressButton.modalOk();
-    cy.wait(1000);
-    pressButton.confirm();
-    pressButton.Homebtn(); 
+    dropdownValue.postalcodeValue()
+    pressButton.Generate()
+    pressButton.modalOk()
+    cy.wait(1000)
+    pressButton.confirm()
+    pressButton.Homebtn()
     
     
 })

@@ -15,11 +15,11 @@ import { Datefunctions } from "../support/Datefunctions"
 
 //Call getBaseUrl() to get environment specific url value
 const url = new Utility().getBaseUrl();
-const req = new Utility().RequestEeEntscheid();
+//const req = new Utility().RequestEeEntscheid();
 
-function getFirstDayOfMonth(month, year) {
+/* function getFirstDayOfMonth(month, year) {
   return new Date(1, month, year);
-}
+} */
 
 function days_of_a_year(year) 
 {
@@ -30,17 +30,17 @@ function days_of_a_year(year)
 function isLeapYear(year) {
      return year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0);
 }
- var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+let today = new Date();
+let dd = String(today.getDate()).padStart(2, '0');
+let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 
-var yyyy = today.getFullYear();
+let yyyy = today.getFullYear();
 
-var yearPlus = yyyy + 1;
-var dayOneless = String(today.getDate()-1).padStart(2, '0');
-var end = dayOneless + '.' + mm + '.' + yearPlus;
-var samedaynextyear = dd + '.' + mm +  '.' + yearPlus;
-var firstDay = '01' + '.' + mm + '.' + yearPlus;
+let yearPlus = yyyy + 1;
+let dayOneless = String(today.getDate()-1).padStart(2, '0');
+let end = dayOneless + '.' + mm + '.' + yearPlus;
+let samedaynextyear = dd + '.' + mm +  '.' + yearPlus;
+let firstDay = '01' + '.' + mm + '.' + yearPlus;
 today = dd + '.' + mm + '.' + yyyy; 
 
 console.log(days_of_a_year(yyyy));
@@ -49,7 +49,7 @@ console.log(end);
 console.log(firstDay);
 
 
-describe('Verify Environment Config ' + url, () => {
+describe('E2E test of createting and sending Entscheide for HE code ' + url, () => {
 
     it('Verify Environment', () => {
 
@@ -57,36 +57,19 @@ describe('Verify Environment Config ' + url, () => {
         //cy.UILogin(Cypress.env("username"), Cypress.env("password"))
         cy.UILoginWithSession(Cypress.env("username"), Cypress.env("password"))
         cy.visit(url)
-        choosenElem.UserName()
+        //choosenElem.UserName()
         navigateTo.folderVersicherte()
-        inputTo.VersichertenName('eing kyra')
+        inputTo.VersichertenName('Wait Will')
         rowselected.firstSelectedRow()
         pressButton.Homebtn()
+        //cy.wait I used here cause the element Entscheide tab exists on page but it is not clickable
+        cy.wait(2000)
         tabTo.Entscheide()
         pressButton.EntscheideNew()
         fillForm.NeuenEntscheidErstellenForm('Hilflosenentschädigung' , 'Hilflosenentschädigung')
         compareValuesOf.EntscheidCreation()
         pressButton.modalOk()
-        
-        cy.request(url + req)
-       .should((response) => {
-        expect(response.status).to.eq(200)
-        console.log(response.body)
-        const countOfEntscheid = response.body.dsEntscheid.eEntscheid.length;
-        var i; 
-        var existedEntscheids = 0;
-        for(i = 0; i < countOfEntscheid; i++){
-          if((response.body.dsEntscheid.eEntscheid[i].Arbeitsliste == "N")||(response.body.dsEntscheid.eEntscheid[i].Arbeitsliste == "B"))
-          existedEntscheids = existedEntscheids + 1;
-        } 
-        if(existedEntscheids>0){
-          pressButton.Warningconfirm()
-       } else {}
-       })
-        /* const modalWindow = cy.get('[class="swal-modal warningModal"]')
-        if(modalWindow) {
-          pressButton.Warningconfirm()
-        } else {} */
+        pressButton.Warningconfirm()
         pressButton.Homebtn()
         cy.get('.active-taskbar-items > .active')
         compareValuesOf.DetailsTabColor()
@@ -103,22 +86,7 @@ describe('Verify Environment Config ' + url, () => {
         fillForm.EditErweiterteInfoForm('101', '01')
         selectDate.forBegin()
         pressButton.SpeichernBearb()
-        cy.request(url + req)
-        .should((response) => {
-         expect(response.status).to.eq(200)
-         console.log(response.body)
-         const countOfEntscheid = response.body.dsEntscheid.eEntscheid.length;
-         var i; 
-         var existedEntscheids = 0;
-         for(i = 0; i < countOfEntscheid; i++){
-           if((response.body.dsEntscheid.eEntscheid[i].Leistung_Leistungscode == "HE"))
-           existedEntscheids = existedEntscheids + 1;
-         } 
-         if(existedEntscheids>0){
-           pressButton.Warningconfirm()
-        } else {}
-        }) 
-
+        pressButton.Warningconfirm()
         compareValuesOf.EntscheidSendungen()
         compareValuesOf.BasicDataNotColor()
         compareValuesOf.ShouldbefilledNotExist()
@@ -138,7 +106,6 @@ describe('Verify Environment Config ' + url, () => {
         pressButton.confirm()
         compareValuesOf.HilflosigkeitNotColor()
         cy.waitUntil(()=> cy.get('[akid="EntscheidWartefristForm"]').should('be.visible'))
-        //Ablauf Wartefrist date need to be assert
         compareValuesOf.Wartefrist(days_of_a_year(yyyy));
         compareValuesOf.AblaufWartefrist(samedaynextyear);
         compareValuesOf.WartefristVerlauf(today, end, days_of_a_year(yyyy), '20');
@@ -155,10 +122,10 @@ describe('Verify Environment Config ' + url, () => {
         cy.wait(500)
         pressButton.Warningconfirm()
         cy.wait(1000)
-        compareValuesOf.GeneratedTextWithColore(firstDay)
+        //compareValuesOf.GeneratedTextWithColore(firstDay)
         pressButton.Freitextspeichern()
         cy.wait(10000)
-        compareValuesOf.GeneratedTextWithoutColore(firstDay)
+        //compareValuesOf.GeneratedTextWithoutColore(firstDay)
         tabTo.GesetzlicheGrundlagen()
         cy.wait(1000)
         pressButton.FreitextgenerierenGesetzliche()

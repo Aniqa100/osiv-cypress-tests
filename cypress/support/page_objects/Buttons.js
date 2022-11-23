@@ -147,9 +147,9 @@ export class Buttons{
 
 
     Homebtn(){
-        cy.wait(2000)
+        cy.wait(3000)
         cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_pres"]').click()
-        cy.wait(2000)
+        cy.wait(3000)
     }
     VisumSpeichern(){
         cy.waitUntil(() =>cy.get('[class="dhxrb_3rows_button"][title="Visum speichern"]').should('be.visible'))
@@ -181,7 +181,7 @@ export class Buttons{
     ProtokollBearbLöschen(){
         
          cy.waitUntil(() => cy.contains('Protokolleintrag bearbeiten').should('be.visible'))
-        cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_ProtokollBearbeitenBlock"]')
+         cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_ProtokollBearbeitenBlock"]')
         .find('[class="dhxrb_3rows_button"][title="Löschen"]').click() 
 
 }
