@@ -41,13 +41,9 @@ export class Buttons{
         cy.waitUntil(() => cy.contains('Versicherter - Entscheide').should('be.visible'))
         cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidBlock"]')
         .find('[title="Neu"]').click()
-           //.should('not.have.class', 'dhxrb_item_hide')
+           
 
-        // working for NR
-        /* cy.contains('[class="dhxrb_block_label"]', 'Versicherter - Entscheide')
-          .parents('[class="dhxrb_block_base ribbonBlock_EntscheidBlock"]')
-          .find('[class="dhxrb_3rows_button"][title="Neu"]')
-          .click(); */
+        
     } 
    
 
@@ -56,11 +52,7 @@ export class Buttons{
         cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidSpezifischeBlock"]')
         .find('[title="Bearbeitung einleiten"]').click()
 
-        // working for NR
-        /* cy.contains('[class="dhxrb_block_label"]', 'Entscheid spezifische Funktionen')
-          .parents('[class="dhxrb_block_base ribbonBlock_EntscheidSpezifischeBlock"]')
-          .find('[class="dhxrb_3rows_button"][title="Bearbeitung einleiten"]')
-          .click(); */
+        
     }
 
     SpeichernHilf(){
@@ -69,11 +61,7 @@ export class Buttons{
         cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidHilflosigkeitBlock"]')
         .find('[title="Speichern"]').click()
 
-        /* cy.contains('[class="dhxrb_block_label"]', 'Entscheid - Hilflosigkeit')
-          .parents('[class="dhxrb_block_base ribbonBlock_EntscheidHilflosigkeitBlock"]')
-          .find('[class="dhxrb_3rows_button"][title="Speichern"]')
-          .click(); */
-
+        
     }
     SpeichernBearb(){
         cy.waitUntil(() => cy.contains('Entscheid bearbeiten').should('be.visible'))
@@ -81,10 +69,7 @@ export class Buttons{
         .find('[title="Speichern"]').click()
 
            
-        /* cy.contains('[class="dhxrb_block_label"]', 'Entscheid bearbeiten')
-          .parents('[class="dhxrb_block_base ribbonBlock_EntscheidBearbeitenBlock"]')
-          .find('[class="dhxrb_3rows_button"][title="Speichern"]')
-          .click(); */
+       
 
     }
     Begründungspeichern(){
@@ -92,10 +77,7 @@ export class Buttons{
         cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidBegruendungBlock"]')
         .find('[title="Begründung speichern"]').click()
 
-        /* cy.contains('[class="dhxrb_block_label"]', 'Entscheid - Begründung')
-        .parents('[class="dhxrb_block_base ribbonBlock_EntscheidBegruendungBlock"]')
-        .find('[class="dhxrb_3rows_button"][title="Begründung speichern"]')
-        .click() */
+        
     }
     
     Freitextgenerieren() {
@@ -103,30 +85,21 @@ export class Buttons{
         cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidVerfuegungBeiblattAKBlock"]')
         .find('[title="Freitext generieren"]').click()
 
-        /* cy.contains('[class="dhxrb_block_label"]', 'Entscheid - Verfügung / Beiblatt AK')
-        .parents('[class="dhxrb_block_base ribbonBlock_EntscheidVerfuegungBeiblattAKBlock"]')
-        .find('[class="dhxrb_3rows_button"][title="Freitext generieren"]')
-        .click() */
+        
     }
 
     Freitextspeichern() {
         cy.waitUntil(() => cy.contains('Entscheid - Verfügung / Beiblatt AK').should('be.visible'))
         cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidVerfuegungBeiblattAKBlock"]')
         .find('[title="Freitext speichern"]').click()
-       /*  cy.contains('[class="dhxrb_block_label"]', 'Entscheid - Verfügung / Beiblatt AK')
-        .parents('[class="dhxrb_block_base ribbonBlock_EntscheidVerfuegungBeiblattAKBlock"]')
-        .find('[class="dhxrb_3rows_button"][title="Freitext speichern"]')
-        .click() */
+       
     }
 
     FreitextgenerierenGesetzliche () {
         cy.waitUntil(() => cy.contains('Entscheid - Gesetzliche Grundlagen').should('be.visible'))
         cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidGesetzlicheGrundlagenBlock"]')
         .find('[title="Freitext generieren"]').click()
-        /* cy.contains('[class="dhxrb_block_label"]', 'Entscheid - Gesetzliche Grundlagen')
-        .parents('[class="dhxrb_block_base ribbonBlock_EntscheidGesetzlicheGrundlagenBlock"]')
-        .find('[class="dhxrb_3rows_button"][title="Freitext generieren"]')
-        .click() */
+        
 
       }
 
@@ -135,11 +108,8 @@ export class Buttons{
         cy.waitUntil(() => cy.contains('Entscheid - Entscheid-Sendungen').should('be.visible'))
         cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidEntscheidSendungenBlock"]')
         .find('[title="Entscheid-Sendungen generieren"]').click()
-        /* cy.contains('[class="dhxrb_block_label"]', 'Entscheid - Entscheid-Sendungen')
-        .parents('[class="dhxrb_block_base ribbonBlock_EntscheidEntscheidSendungenBlock"]')
-        .find('[class="dhxrb_3rows_button"][title="Entscheid-Sendungen generieren"]')
-        .click() */
-      }
+    }
+    
     FrageJa() {
         cy.waitUntil(()=> cy.get('[class="swal-modal confirmModal"]').should('be.visible'))
         cy.get('[class="swal-modal confirmModal"]').find('[class="swal-footer"]').find('[class="swal-button swal-button--yesreply default"]').click();

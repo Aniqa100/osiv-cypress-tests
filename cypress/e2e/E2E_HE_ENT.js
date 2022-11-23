@@ -15,7 +15,7 @@ import { Datefunctions } from "../support/Datefunctions"
 
 //Call getBaseUrl() to get environment specific url value
 const url = new Utility().getBaseUrl();
-//const req = new Utility().RequestEeEntscheid();
+const req = new Utility().RequestEeEntscheid();
 
 /* function getFirstDayOfMonth(month, year) {
   return new Date(1, month, year);
@@ -28,7 +28,7 @@ function days_of_a_year(year)
 }
 
 function isLeapYear(year) {
-     return year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0);
+  return year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0);
 }
 let today = new Date();
 let dd = String(today.getDate()).padStart(2, '0');
@@ -57,7 +57,7 @@ describe('E2E test of createting and sending Entscheide for HE code ' + url, () 
         //cy.UILogin(Cypress.env("username"), Cypress.env("password"))
         cy.UILoginWithSession(Cypress.env("username"), Cypress.env("password"))
         cy.visit(url)
-        //choosenElem.UserName()
+        choosenElem.UserName()
         navigateTo.folderVersicherte()
         inputTo.VersichertenName('Wait Will')
         rowselected.firstSelectedRow()
@@ -75,7 +75,6 @@ describe('E2E test of createting and sending Entscheide for HE code ' + url, () 
         compareValuesOf.DetailsTabColor()
         compareValuesOf.BasicDataColor()
         compareValuesOf.Durchführungsstellen()
-
         if(url == 'https://osiv-frtest.ivnet.ch/') {
           compareValuesOf.HilflosigkeitColor()
         } else 
