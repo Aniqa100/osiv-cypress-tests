@@ -7,7 +7,7 @@ import { dropdownValue } from "../support/page_objects/dropdownSelection";
 const {choosenElem} = require("../support/page_objects/elements")
 const {inputTo} = require("../support/page_objects/inputFields");
 const url = new Utility().getBaseUrl();
-describe('First test', () => {
+describe('Test to create protocol, softly remove it, undo it and hsrd remove it', () => {
 
 
     it('create protocol and remove it', () => {
@@ -18,6 +18,7 @@ describe('First test', () => {
       inputTo.VersichertenName('OConnor Gregory');
       rowselected.firstSelectedRow()
       pressButton.Homebtn()
+      //cy.wait I used here cause the element Protocol tab exists on page but it is not clickable
       cy.wait(2000)
       tabTo.Protocol();
        //Creating a new protocol 
@@ -33,7 +34,6 @@ describe('First test', () => {
       pressButton.InDenPapierkorb()
       dropdownValue.InPapierkorbForm('Falsche Information')
       pressButton.modalOk()
-      // pressButton.Homebtn()
       pressButton.Wiederherstellen()
       pressButton.Warningconfirm()
       pressButton.InDenPapierkorb()

@@ -7,11 +7,11 @@ export class AssertValues{
 
         cy.wrap(basicdata).get('[akid="CreateEntscheidForm-gesuchtext"]')
           .find('[class="select2-selection__rendered"]').invoke('text').then( text => {
-            expect(text).to.equal('Gesuch vom 01.02.2021');
+            expect(text).to.equal('Gesuch vom 01.02.2022');
          })
          cy.wrap(basicdata).get('[akid="CreateEntscheidForm-ereignistext"]')
            .find('[class="select2-selection__rendered"]').invoke('text').then( text => {
-            expect(text).to.equal('Ereignis Basis vom 20.07.2022');
+            expect(text).to.equal('Ereignis Basis vom 22.11.2022');
          }) 
          cy.wrap(basicdata).get('[akid="CreateEntscheidForm-bereich"]')
            .find('[class="select2-selection__rendered"]').invoke('text').then( text => {
@@ -36,11 +36,11 @@ export class AssertValues{
          })
                 cy.wrap(basicdataeditor).get('[akid="EntscheidDetailBasisDatenForm-gesuchtext"]')
                 .find('[class="select2-selection__rendered"]').invoke('text').then( text => {
-                    expect(text).to.equal('Gesuch vom 01.02.2021');
+                    expect(text).to.equal('Gesuch vom 01.02.2022');
          }) 
                 cy.wrap(basicdataeditor).get('[akid="EntscheidDetailBasisDatenForm-ereignistext"]')
                 .find('[class="select2-selection__rendered"]').invoke('text').then( text => {
-                    expect(text).to.equal('Ereignis Basis vom 20.07.2022');
+                    expect(text).to.equal('Ereignis Basis vom 22.11.2022');
          }) 
                 cy.wrap(basicdataeditor).get('[akid="EntscheidDetailBasisDatenForm-bereich"]')
                 .find('[class="select2-selection__rendered"]').invoke('text').then( text => {
