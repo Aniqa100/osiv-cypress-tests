@@ -3,7 +3,7 @@
   "scripts": {
     "test": "test",
     "cypress:open": "cypress open",
-    "cypress:runDefault": "cypress run --record --key 76d7db74-4a96-437c-b64c-7f8462e45c4b",
+    "cypress:runDefault": "npx cypress run --env ${ENVIROMENT} --browser ${BROWSER} --spec ${SPEC} --record --key 76d7db74-4a96-437c-b64c-7f8462e45c4b",
     "cypress:runChrome": "cypress run --browser chrome --spec cypress/e2e/newAdress.js",
     "cypress:runChromeHeadless": "cypress run --headless --browser chrome --spec cypress/e2e/newAdress.js",
     "cy:run:fr": "cypress run --env FR",
