@@ -7,7 +7,7 @@ import { dropdownValue } from "../support/page_objects/dropdownSelection";
 const {choosenElem} = require("../support/page_objects/elements")
 const {inputTo} = require("../support/page_objects/inputFields");
 const url = new Utility().getBaseUrl();
-describe('Test to create protocol, softly remove it, undo it and hsrd remove it', () => {
+describe('Test to create protocol, softly remove it, undo it and again remove it', () => {
 
 
     it('create protocol and remove it', () => {

@@ -73,7 +73,7 @@ export class DropdownSelection{
     }
     InPapierkorbForm(value){
       cy.get('[akid="sProtokollInPapierkorbForm-geloeschtgrund"]').click()
-      .get('[class="select2-search select2-search--dropdown"]').type(value).wait(500)
+      .get('[class="select2-search select2-search--dropdown"]').type(value, {timeout: 1000})
       .get('[class="select2-results__options"]').click();
     }
     
