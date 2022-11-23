@@ -21,9 +21,6 @@ module.exports = defineConfig({
       }
       // implement node event listeners here
     },
-    //baseUrl: 'https://demo.osiv.ch',
-    //baseUrl: 'https://osiv-nrtest.ivnet.ch',
-    //baseUrl: 'https://osiv-frtest.ivnet.ch',
     specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
     excludeSpecPattern: ['**/1-getting-started/*', '**/2-advanced-examples/*','**/DemoProtocolwithoutsession.js', '**/testWithPageObjects.js', '**/InvGradEK_Test.js'],
     requestTimeout : 50000,
@@ -33,7 +30,8 @@ module.exports = defineConfig({
     defaultCommandTimeout: 50_000,
     hideXHR: true,
     chromeWebSecurity: false,
-    experimentalSessionAndOrigin: true
+    experimentalSessionAndOrigin: true, 
+    video: true
 
   
   }
