@@ -21,7 +21,7 @@ pipeline {
         stage('Testing'){
             steps{
                 bat "npm install cypress --save-dev"
-                bat "npm cypress:runDefault"
+                bat "npm run cypress:runDefault"
                 
             }
         }
