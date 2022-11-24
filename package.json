@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@cypress/commit-info": "^2.2.0",
+    "cypress-ag-grid": "^2.0.1",
     "moment": "^2.29.4"
   },
   "browser": {

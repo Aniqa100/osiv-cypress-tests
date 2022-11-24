@@ -34,7 +34,7 @@ describe('Test to create protocol, softly remove it, undo it and again remove it
       pressButton.InDenPapierkorb()
       dropdownValue.InPapierkorbForm('Falsche Information')
       pressButton.modalOk()
-      pressButton.Wiederherstellen()
+      pressButton.Wiederherstellen() 
       pressButton.Warningconfirm()
       pressButton.InDenPapierkorb()
       dropdownValue.InPapierkorbForm('Falsche Information')

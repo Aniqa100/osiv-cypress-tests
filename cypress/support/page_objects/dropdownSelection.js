@@ -76,7 +76,12 @@ export class DropdownSelection{
       cy.get('[class="select2-results__options"]').contains(value).click()
     }
     
-  
+    // Entscheid Grid search panel
+    LeistungsgruppeSearchField(value){
+    cy.waitUntil(() => cy.get('[akid="EntscheidQueryStammGrid-Leistungsgruppe"]').should('be.visible'))
+        cy.get('[akid="EntscheidQueryStammGrid-Leistungsgruppe"]').click()
+        cy.get('[class="select2-results__options"]').contains(value).click()
+    }
 }
 
 export const dropdownValue = new DropdownSelection()

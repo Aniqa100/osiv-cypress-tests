@@ -1,7 +1,7 @@
 export class Tables{
     firstSelectedRow(){
         cy.waitUntil(() => cy.get('[class=" ev_material rowselected"]').should('be.visible'))
-        cy.get('[class=" ev_material rowselected"]').dblclick();
+        cy.get('[class=" ev_material rowselected"]').trigger('dblclick');
         
      
   }  

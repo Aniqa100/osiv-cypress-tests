@@ -15,7 +15,6 @@ import { Datefunctions } from "../support/Datefunctions"
 
 //Call getBaseUrl() to get environment specific url value
 const url = new Utility().getBaseUrl();
-const req = new Utility().RequestEeEntscheid();
 
 /* function getFirstDayOfMonth(month, year) {
   return new Date(1, month, year);
