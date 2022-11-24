@@ -6,3 +6,4 @@ npm install -D cypress-plugin-tab
 npm install --save @cypress/commit-info
 npm install -D cypress-wait-until
 npm install -D cypress-if
+npm install cypress-ag-grid

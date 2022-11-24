@@ -15,7 +15,7 @@ export class Buttons{
     modalOkWithWait(){
         //the value for 
         cy.waitUntil(() => cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"]').should('be.visible'))
-        cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]', {timeout: 1000}).click();
+        cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]', {delay: 100}).click();
 
     }
 
@@ -165,6 +165,12 @@ export class Buttons{
     }
     Wiederherstellen(){
         cy.get('[class="dhxrb_3rows_button"][title="Wiederherstellen"]').click()
+    }
+
+
+    //Refresh grid button
+    RefreshGrid(){
+        cy.get('#active-panel').find('[title="Refresh"]').click()
     }
 }
 
