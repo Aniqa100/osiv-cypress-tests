@@ -15,7 +15,7 @@ export class Buttons{
     modalOkWithWait(){
         //the value for 
         cy.waitUntil(() => cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"]').should('be.visible'))
-        cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]', {delay: 500}).click();
+        cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]', {delay: 1000}).click();
 
     }
 
