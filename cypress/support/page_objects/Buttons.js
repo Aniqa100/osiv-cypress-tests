@@ -1,8 +1,8 @@
 export class Buttons{
 
     Generate(){
-        cy.get('[class="dhxwin_active"][modalwindow="true"]')
-        .find('[akid="sAdresseDetailOverviewForm-but_kurzadresse_anpassen"]').click();
+        cy.waitUntil(() => cy.get('[akid="sAdresseDetailOverviewForm-anschrift"]').should('be.visible'))
+        cy.get('[class="dhxwin_active"][modalwindow="true"]').find('[akid="sAdresseDetailOverviewForm-but_kurzadresse_anpassen"]').click();
     }
     
     modalOk(){
@@ -15,7 +15,7 @@ export class Buttons{
     modalOkWithWait(){
         //the value for 
         cy.waitUntil(() => cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"]').should('be.visible'))
-        cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]', {delay: 100}).click();
+        cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]', {delay: 500}).click();
 
     }
 
