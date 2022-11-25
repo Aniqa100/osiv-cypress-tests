@@ -12,11 +12,18 @@ export class Buttons{
         
 
     }
-    modalOkWithWait(){
+    modalOkWithWait(user){
         //the value for 
-        cy.waitUntil(() => cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"]').should('be.visible'))
-        cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]', {delay: 1000}).click();
 
+        cy.get('[class="dhxwin_active"][modalwindow="true"]').find('[akid="EntscheidBearbeitungEinleitenForm"]')
+        .then (basicdata =>{ 
+       // There was a problem, that assertion runs faster then the values show up on page that why I put cy.waitUntil here. Dunno if it's right, but works
+        cy.waitUntil(() =>cy.wrap(basicdata).get('[akid="EntscheidBearbeitungEinleitenForm-bearbeiter"]')
+        .find('[value="bearbeiter"]').invoke('text').then( text => {
+          expect(text).to.equal(user);
+  }))
+        })
+        cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]', {delay: 1000}).click(); 
     }
 
     newAdress(){
@@ -148,14 +155,12 @@ export class Buttons{
 
 
     ProtokollBearbLöschen(){
-        
-         cy.waitUntil(() => cy.contains('Protokolleintrag bearbeiten').should('be.visible'))
-         cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_ProtokollBearbeitenBlock"]')
+        cy.waitUntil(() => cy.contains('Protokolleintrag bearbeiten').should('be.visible'))
+        cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_ProtokollBearbeitenBlock"]')
         .find('[class="dhxrb_3rows_button"][title="Löschen"]').click() 
 
 }
-    ProtokollNew()
-    {
+    ProtokollNew(){
         cy.waitUntil(() => cy.contains('Versicherter - Protokolleintrag').should('be.visible'))
         cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_Protokoll Ribbon Block"]')
         .find('[title="Neu"]').click()
@@ -171,6 +176,12 @@ export class Buttons{
     //Refresh grid button
     RefreshGrid(){
         cy.get('#active-panel').find('[title="Refresh"]').click()
+    }
+
+    EntscheidBearbKopieren(){
+        cy.waitUntil(() => cy.contains('Entscheid bearbeiten').should('be.visible'))
+        cy.contains('Entscheid bearbeiten').parents('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidBearbeitenBlock"]')
+        .find('[title="Kopieren"]').click()
     }
 }
 

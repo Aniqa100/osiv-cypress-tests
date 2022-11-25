@@ -8,5 +8,11 @@ export class Tables{
       linkOnTable(){
   cy.contains('VRD').parents('[class=" ev_material rowselected"]').find('[class="akcelllink"]').click({force: true})
       }
+
+      rowWithCertainText(text){
+        cy.get('#active-panel .objbox').find('tbody').then(body =>{
+            cy.wrap(body).contains('td', text).trigger('dblclick')
+        })
+      }
 }
   export const rowselected = new Tables()

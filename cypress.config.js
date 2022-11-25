@@ -24,14 +24,19 @@ module.exports = defineConfig({
     specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
     excludeSpecPattern: ['**/1-getting-started/*', '**/2-advanced-examples/*','**/DemoProtocolwithoutsession.js', '**/testWithPageObjects.js', '**/InvGradEK_Test.js'],
     requestTimeout : 50000,
-    numTestsKeptInMemory: 0,
+    //numTestsKeptInMemory: 0,
     responseTimeout : 50000,
     pageLoadTimeout: 50_000,
     defaultCommandTimeout: 50_000,
     hideXHR: true,
     chromeWebSecurity: false,
     experimentalSessionAndOrigin: true, 
-    video: true
+    video: true,
+    retries: {
+      runMode: 2,
+      openMode: 0
+
+    },
 
   
   }

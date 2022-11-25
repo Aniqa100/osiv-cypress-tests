@@ -1,33 +1,52 @@
 export class AssertValues{
-    EntscheidCreation(){
+    EntscheidCreation(gesuch, ereignis, baraich, user, status, group, code, msg){
 
         cy.get('[class="dhxwin_active"][modalwindow="true"]')
           .find('[akid="CreateEntscheidForm-createentscheidfieldset"]')
           .then (basicdata =>{ 
+// There was a problem, that assertion runs faster then the values show up on page that why I put cy.waitUntil here. Dunno if it's right, but works
+        cy.waitUntil(() =>cy.wrap(basicdata).get('[akid="CreateEntscheidForm-bearbeiter"]')
+          .find('[value="5015"]').invoke('text').then( text => {
+            expect(text).to.equal(user);
+    }))
 
         cy.wrap(basicdata).get('[akid="CreateEntscheidForm-gesuchtext"]')
           .find('[class="select2-selection__rendered"]').invoke('text').then( text => {
-            expect(text).to.equal('Gesuch vom 01.02.2022');
+            expect(text).to.equal(gesuch);
          })
-         cy.wrap(basicdata).get('[akid="CreateEntscheidForm-ereignistext"]')
-           .find('[class="select2-selection__rendered"]').invoke('text').then( text => {
-            expect(text).to.equal('Ereignis Basis vom 22.11.2022');
+        cy.wrap(basicdata).get('[akid="CreateEntscheidForm-ereignistext"]')
+          .find('[class="select2-selection__rendered"]').invoke('text').then( text => {
+            expect(text).to.equal(ereignis);
          }) 
-         cy.wrap(basicdata).get('[akid="CreateEntscheidForm-bereich"]')
-           .find('[class="select2-selection__rendered"]').invoke('text').then( text => {
-            expect(text).to.equal('IV Erwachsene');
+        cy.wrap(basicdata).get('[akid="CreateEntscheidForm-bereich"]')
+          .find('[class="select2-selection__rendered"]').invoke('text').then( text => {
+            expect(text).to.equal(baraich);
          }) 
-         cy.wrap(basicdata).get('[akid="CreateEntscheidForm-bearbeiter"]')
-           .find('[value="5015"]').invoke('text').then( text => {
-            expect(text).to.equal('Hulk1 - Hulk Eins');
-         }) 
-         cy.wrap(basicdata).get('[akid="CreateEntscheidForm-arbeitslistevalue"]')
-           .find('input').then( input => {
-         cy.wrap(input).invoke('prop', 'value').should('contain', 'Neu')
+        cy.wrap(basicdata).get('[akid="CreateEntscheidForm-arbeitslistevalue"]')
+          .find('input').then( input => {
+        cy.wrap(input).invoke('prop', 'value').should('contain', status)
          })
+
+        cy.wrap(basicdata).get('[akid="CreateEntscheidForm-leistungsgruppe"]')
+          .find('[class="select2-selection__rendered"]').invoke('text').then( text => {
+            expect(text).to.equal(group);
+         }) 
+
+        cy.wrap(basicdata).get('[akid="CreateEntscheidForm-leistungtext"]')
+          .find('[class="select2-selection__rendered"]').invoke('text').then( text => {
+            expect(text).to.equal(code);
+         }) 
+    })
+        cy.get('[class="dhxwin_active"][modalwindow="true"]')
+          .find('[akid="CreateEntscheidForm-createentscheidfieldset"]')
+          .then(data => {
+        cy.wrap(data).get('[akid="CreateEntscheidForm-bem"]').find('textarea')
+          .then (notes =>{ 
+        cy.wrap(notes).invoke('prop', 'value').should('contain', msg)
+           })
     })
   }
-  EntscheidEditor(){
+      EntscheidEditor(){
              cy.get('[akid="EntscheidDetailBasisDatenForm-fieldsetbasisinformationen"]').then(basicdataeditor => {
 
                 cy.wrap(basicdataeditor).get('[akid="EntscheidDetailBasisDatenForm-arbeitslistevalue"]')
