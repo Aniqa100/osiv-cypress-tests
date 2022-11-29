@@ -33,6 +33,7 @@ Cypress.Commands.add('UILogin', (username, password) => {
     cy.get('[name="login_password"]').type(password)
   })
 
+  
   Cypress.Commands.add('UILoginWithSession', (username, password) => {
     cy.session([username, password], ()=> {
       cy.visit(url)

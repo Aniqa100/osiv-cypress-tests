@@ -183,6 +183,11 @@ export class Buttons{
         cy.contains('Entscheid bearbeiten').parents('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidBearbeitenBlock"]')
         .find('[title="Kopieren"]').click()
     }
+    EntscheideKopieren(){
+        cy.waitUntil(() => cy.contains('Versicherter - Entscheide').should('be.visible'))
+        cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidBlock"]')
+        .find('[title="Kopieren"]').click()
+    }
 }
 
 export const pressButton = new Buttons()

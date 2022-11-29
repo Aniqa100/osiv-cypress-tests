@@ -79,7 +79,7 @@ describe('E2E test of createting and sending Entscheide for HE code ' + url, () 
         } else 
         compareValuesOf.BitteWarningmsg()
         compareValuesOf.Shouldbefilled()
-        compareValuesOf.EntscheidEditor()
+        compareValuesOf.EntscheidEditor('Neu', 'Gesuch vom 01.02.2022', 'Ereignis Basis vom 22.11.2022', 'IV', 'Hulk1 - Hulk Eins', 'HE','HE - Hilflosenentschädigung', '')
         fillForm.EditEntscheidDatenForm('Zusprache', '3205', 'Mitteilung der IV-Stelle (IV Allgemein)')
         fillForm.EditErweiterteInfoForm('101', '01')
         selectDate.forBegin()

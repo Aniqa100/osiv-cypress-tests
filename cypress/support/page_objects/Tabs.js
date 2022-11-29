@@ -33,5 +33,11 @@ export class Tabs{
     FormularVariablen(){
     cy.get('[akid="SimpleSwatTabbar-Formular Variablen"]').click()
     }
+    Durchführungsstellen(){
+    cy.get('[akid="EntscheidDetailBasisFrameTabbar-Durchführungsstellen"]').click()
+    }
+    Versicherungen(){
+    cy.get('[akid="EntscheidDetailBasisFrameTabbar-Versicherungen"]').click() 
+    }
 }
   export const tabTo = new Tabs()

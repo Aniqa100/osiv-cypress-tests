@@ -11,7 +11,8 @@ export class Tables{
 
       rowWithCertainText(text){
         cy.get('#active-panel .objbox').find('tbody').then(body =>{
-            cy.wrap(body).contains('td', text).trigger('dblclick')
+            cy.wrap(body).contains('td', text).click()
+            //trigger('click')
         })
       }
 }

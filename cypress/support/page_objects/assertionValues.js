@@ -46,30 +46,45 @@ export class AssertValues{
            })
     })
   }
-      EntscheidEditor(){
+      EntscheidEditor(status, gesuch, ereignis, baraich, user, group, code, msg){
              cy.get('[akid="EntscheidDetailBasisDatenForm-fieldsetbasisinformationen"]').then(basicdataeditor => {
 
                 cy.wrap(basicdataeditor).get('[akid="EntscheidDetailBasisDatenForm-arbeitslistevalue"]')
                 .find('input').then( input => {
-                    cy.wrap(input).invoke('prop', 'value').should('contain', 'Neu')
+                cy.wrap(input).invoke('prop', 'value').should('contain', status)
          })
                 cy.wrap(basicdataeditor).get('[akid="EntscheidDetailBasisDatenForm-gesuchtext"]')
                 .find('[class="select2-selection__rendered"]').invoke('text').then( text => {
-                    expect(text).to.equal('Gesuch vom 01.02.2022');
+                    expect(text).to.equal(gesuch);
          }) 
                 cy.wrap(basicdataeditor).get('[akid="EntscheidDetailBasisDatenForm-ereignistext"]')
                 .find('[class="select2-selection__rendered"]').invoke('text').then( text => {
-                    expect(text).to.equal('Ereignis Basis vom 22.11.2022');
+                    expect(text).to.equal(ereignis );
          }) 
                 cy.wrap(basicdataeditor).get('[akid="EntscheidDetailBasisDatenForm-bereich"]')
                 .find('[class="select2-selection__rendered"]').invoke('text').then( text => {
-                     expect(text).to.equal('IV');
+                     expect(text).to.equal(baraich);
          }) 
-               cy.wrap(basicdataeditor).get('[akid="EntscheidDetailBasisDatenForm-bearbeiter"]')
+                cy.wrap(basicdataeditor).get('[akid="EntscheidDetailBasisDatenForm-bearbeiter"]')
                 .find('input').then( input => {
-                    cy.wrap(input).invoke('prop', 'value').should('contain', 'Hulk1 - Hulk Eins')
+                cy.wrap(input).invoke('prop', 'value').should('contain', user)
             
          }) 
+                cy.wrap(basicdataeditor).get('[akid="EntscheidDetailBasisDatenForm-leistungsgruppe"]')
+                .find('[class="select2-selection__rendered"]').invoke('text').then( text => {
+                    expect(text).to.equal(group);
+        }) 
+                cy.wrap(basicdataeditor).get('[akid="EntscheidDetailBasisDatenForm-leistungtext"]')
+                .find('[class="select2-selection__rendered"]').invoke('text').then( text => {
+                    expect(text).to.equal(code);
+       })       
+                cy.get('[akid="EntscheidDetailBasisDatenForm-fieldsetnotizen"]').then(data => {
+                cy.wrap(data).get('[akid="EntscheidDetailBasisDatenForm-bem"]').find('textarea')
+                  .then (notes =>{
+                cy.wrap(notes).invoke('prop', 'value').should('contain', msg)
+        })
+ })
+                 
              })
 
 
@@ -279,6 +294,26 @@ export class AssertValues{
           cy.get('[akid="SendungHauptdatenForm-arbeitsliste_bez"]').find('input').then(input => {
           cy.wrap(input).invoke('prop', 'value').should('contain', status)
         })
-  }}
+        }
+
+
+        // Durchführungsstellen table rows
+        DurchführungsstellenTableRows(){
+          cy.get('#active-panel .objbox').find('tr').then((row) => {
+            cy.wrap(row).eq(1).invoke('text').should('contain', 'Schaeppi Grundstücke per Adresse: Stamm Immobilien AG, Holbeinstrasse 75, 4002 Basel')
+            cy.wrap(row).eq(2).invoke('text').should('contain', 'Basler Orthopädie René Ruepp AG, Austrasse 109, 4051 Basel')
+            cy.wrap(row).eq(3).invoke('text').should('contain', 'Ergotherapie Rheinfelden, Petra Leisinger-Burns, Thermenstrasse 11, 4310 Rheinfelden')
+        })
+        }
+
+        VersicherungenTableRows(){
+            cy.contains('MV').parents('[class=" ev_material rowselected"]').find('[class="akcelllink"]').invoke('text').then(text =>{
+            expect(text).to.equal('Personalfürsorgestiftung Grosspeter AG, St. Jakob-Strasse 72, 4132 Muttenz')
+        })
+            cy.contains('UVG').parents('[class=" odd_material"]').find('[class="akcelllink"]').invoke('text').then(text =>{
+            expect(text).to.equal('Herr Dr. Peter Bont, Rechtsanwalt und Notar, Dornacherstrasse 26, Postfach, 4603 Olten')
+        })
+        }
+}
 
   export const compareValuesOf = new AssertValues()
