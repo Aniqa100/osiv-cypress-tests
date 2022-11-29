@@ -2,32 +2,33 @@
 export class DropdownSelection{
 
   //Adress dropdowns
-    adressTypeValue(){
-
+    adressTypeValue(value){
+    cy.waitUntil(() => cy.contains('Neue Adresse erstellen'))
     cy.get('[class="dhxwin_active"][modalwindow="true"]')
-      .find('[akid="sAdresseDetailOverviewForm-adresstyp"]').click().type('024').wait(500)
-      .get('[class="select2-results__options"]').click();
+      .find('[akid="sAdresseDetailOverviewForm-adresstyp"]').click()
+    cy.get('[class="select2-results__options"]').contains(value).click()
+
     }
 
-    languageTypeValue(){
+    languageTypeValue(value){
 
     cy.get('[class="dhxwin_active"][modalwindow="true"]')
-      .find('[akid="sAdresseDetailOverviewForm-sprache_bez"]').click().type('Deutsch').wait(500)
-      .get('[class="select2-results__options"]').click();
+      .find('[akid="sAdresseDetailOverviewForm-sprache_bez"]').click()
+    cy.get('[class="select2-results__options"]').contains(value).click();
     }
 
-    salutationValue(){
+    salutationValue(value){
      
-    cy.get('[class="dhxwin_active"][modalwindow="true"]').find('[akid="sAdresseDetailOverviewForm-anredeartbez"]')
-      .click('top').get('[class="select2-search select2-search--dropdown"]').type('Frau')
-      .get('[class="select2-results"]').click();
+    cy.get('[class="dhxwin_active"][modalwindow="true"]')
+      .find('[akid="sAdresseDetailOverviewForm-anredeartbez"]').click('top')
+    cy.get('[class="select2-results__options"]').contains(value).click()
     
- }
+    }
 
-    titleValue(){
-    cy.get('[class="dhxwin_active"][modalwindow="true"]').find('[akid="sAdresseDetailOverviewForm-titel_adresstitel"]')
-      .click('top').get('[class="select2-search select2-search--dropdown"]').type('Dr')
-      .get('[class="select2-results__options"]').click();
+    titleValue(value){
+    cy.get('[class="dhxwin_active"][modalwindow="true"]')
+      .find('[akid="sAdresseDetailOverviewForm-titel_adresstitel"]').click('top')
+    cy.get('[class="select2-results__options"]').contains(value).click()
     }
 
     postalcodeValue(){

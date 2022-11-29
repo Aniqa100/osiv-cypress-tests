@@ -1,4 +1,5 @@
 
+
 export class inputField{
   NameAndSurename(name, surename){
     cy.get('[class="dhxwin_active"][modalwindow="true"]').find('[akid="sAdresseDetailOverviewForm-nachname"]')
@@ -25,15 +26,20 @@ export class inputField{
     
    }
    TextForm(text){
-        cy.get('[akid="BegruendungHTMLTextForm"]').find('.cke_wysiwyg_div').type(text);
+    cy.get('[akid="BegruendungHTMLTextForm"]').find('.cke_wysiwyg_div').type(text);
 }
    NewProtocolFormtext(text){
-       cy.get('[akid="sProtokollDetailOverviewForm"]').find('.cke_wysiwyg_div').type(text)
+    cy.get('[akid="sProtokollDetailOverviewForm"]').find('.cke_wysiwyg_div').type(text)
    }
 
     Betrifft(text){
-        cy.waitUntil(() => cy.get('[akid="FreidefvariableForm-Betrifft"]').should('be.visible'))
-        cy.get('[akid="FreidefvariableForm-Betrifft"]').type(text)
+    cy.waitUntil(() => cy.get('[akid="FreidefvariableForm-Betrifft"]').should('be.visible'))
+    cy.get('[akid="FreidefvariableForm-Betrifft"]').type(text)
+    }
+
+    EntscheidCreationNotes(text){
+    cy.get('[class="dhxwin_active"][modalwindow="true"]').find('[akid="CreateEntscheidForm-createentscheidfieldset"]')
+    cy.get('[akid="CreateEntscheidForm-bem"]').find('textarea').clear().type(text)
     }
 
     
