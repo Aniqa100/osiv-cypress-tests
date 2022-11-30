@@ -4,7 +4,10 @@ import 'cypress-wait-until';
 require('cypress-wait-until')
 import 'cypress-if';
 import { Utility } from "../support/Utility";
-import {choosenElem} from "../support/page_objects/elements";
+//import {choosenElem} from "../support/page_objects/elements";
+//import {deshboard} from "../support/page_objects/DesktopButtons";
+import {dashboard} from "../support/page_objects/Dashboard";
+import {loginPage} from "../support/page_objects/LoginPage";
 
 // ***********************************************
 // This example commands.js shows you how to
@@ -22,25 +25,25 @@ import {choosenElem} from "../support/page_objects/elements";
 const url = new Utility().getBaseUrl();
 
 Cypress.Commands.add('UILogin', (username, password) => {
-
-   cy.visit(url)
+  loginPage.open(url)
 
   // cy.get('[name="login_name"]').should('be.visible').type(user.email) - if I use this chain of command,
   // cypress might miss the several first characters because of typing too fast, or there is another reason 
-
-    cy.waitUntil(() => cy.get('[name="login_name"]').should('be.visible'))
-    cy.get('[name="login_name"]').wait(0).focus().clear().type(username)
-    cy.get('[name="login_password"]').type(password)
+  cy.waitUntil(() => loginPage.userName().should('be.visible'))
+  loginPage.userName().wait(0).focus().clear().type(username)
+  loginPage.password().type(password + '{enter}')
   })
 
-  
+
   Cypress.Commands.add('UILoginWithSession', (username, password) => {
     cy.session([username, password], ()=> {
-      cy.visit(url)
-      cy.waitUntil(() => cy.get('[name="login_name"]').should('be.visible'))
-      cy.get('[name="login_name"]').wait(0).focus().clear().type(username)
-      cy.get('[name="login_password"]').type(password + '{enter}')
-      choosenElem.UserName()
+      loginPage.open(url)
+      cy.waitUntil(() => loginPage.userName().should('be.visible'))
+      loginPage.userName().wait(0).focus().clear().type(username)
+      loginPage.password().type(password + '{enter}')
+      dashboard.UserInfo().invoke('text').then( text => {
+        expect(text).to.equal(Cypress.env("username"))
+      })
     },
          ) 
      
