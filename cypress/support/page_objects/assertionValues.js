@@ -2,7 +2,7 @@ export class AssertValues{
     EntscheidCreation(gesuch, ereignis, baraich, user, status, group, code, msg){
 
         cy.get('[class="dhxwin_active"][modalwindow="true"]')
-          .find('[akid="CreateEntscheidForm-createentscheidfieldset"]')
+          .find('[akid="CreateEntscheidForm"]')
           .then (basicdata =>{ 
 // There was a problem, that assertion runs faster then the values show up on page that why I put cy.waitUntil here. Dunno if it's right, but works
         cy.waitUntil(() =>cy.wrap(basicdata).get('[akid="CreateEntscheidForm-bearbeiter"]')

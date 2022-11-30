@@ -1,6 +1,5 @@
 import { navigateTo } from "../support/page_objects/navigationPage";
 import { Utility } from "../support/Utility";
-import {choosenElem} from "../support/page_objects/elements";
 import { inputTo } from "../support/page_objects/inputFields";
 import { tabTo } from "../support/page_objects/Tabs";
 import { pressButton } from "../support/page_objects/Buttons";
@@ -8,9 +7,10 @@ import { fillForm } from "../support/page_objects/FillForm";
 import { compareValuesOf } from "../support/page_objects/assertionValues";
 import { selectDate } from "../support/page_objects/DatePicker";
 import { dropdownValue } from "../support/page_objects/dropdownSelection";
-import { rowselected } from "../support/page_objects/Tables";
-//import { GetCountEntscheide } from "../support/page_objects/Tables";
-import { Datefunctions } from "../support/Datefunctions"
+import { rowselected } from "../support/page_objects/Tables"
+import { loginPage } from "../support/page_objects/LoginPage";
+import { desktop } from "../support/page_objects/Desktop";
+import { vpGrid } from "../support/page_objects/VPGrid";
 
 
 //Call getBaseUrl() to get environment specific url value
@@ -55,10 +55,10 @@ describe('E2E test of createting and sending Entscheide for HE code ' + url, () 
   
         //cy.UILogin(Cypress.env("username"), Cypress.env("password"))
         cy.UILoginWithSession(Cypress.env("username"), Cypress.env("password"))
-        cy.visit(url)
-        choosenElem.UserName()
-        navigateTo.folderVersicherte()
-        inputTo.VersichertenName('Wait Will')
+        loginPage.open(url)
+        desktop.Versicherte().click()
+        vpGrid.vpName().type('Wait Will', {delay:20}).clear().type('Wait Will').type('{enter}')
+        //inputTo.VersichertenName('Wait Will')
         rowselected.firstSelectedRow()
         pressButton.Homebtn()
         //cy.wait I used here cause the element Entscheide tab exists on page but it is not clickable

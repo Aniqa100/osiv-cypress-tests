@@ -45,7 +45,7 @@ module.exports = defineConfig({
     experimentalSessionAndOrigin: true, 
     video: true,
     retries: {
-      runMode: 2,
+      runMode: 1,
       openMode: 0
 
     },

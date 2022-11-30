@@ -9,10 +9,10 @@ export class inputField{
     cy.get('[class="dhxwin_active"][modalwindow="true"]').find('[akid="sAdresseDetailOverviewForm-ort"]')
     .click().type(city);
 }
-   VersichertenName(name){
+   /* VersichertenName(name){
     cy.waitUntil(()=> cy.get('[akid="sStammQueryB-BRS_Versicherten_Name"]').should('be.visible'))
     cy.get('[akid="sStammQueryB-BRS_Versicherten_Name"]').type(name, {delay:20}).clear().type(name).type('{enter}')
-   }
+   } */
 
    EntscheidDesktop(fieldName, fieldValue){
     switch(fieldName){
