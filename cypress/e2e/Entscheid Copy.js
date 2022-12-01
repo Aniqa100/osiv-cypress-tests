@@ -15,6 +15,7 @@ import { entscheidEditor } from  "../support/page_objects/EntscheidEditor"
 import { entscheidDetails } from "../support/page_objects/EntscheidDetails";
 import { entscheidMetaInfo } from "../support/page_objects/EntscheidMetaInfo";
 const url = new Utility().getBaseUrl()
+const file = new Utility().Entscheidrequest()
 
 describe('Test to copy Entscheid with all data ' + url,() => {
 
@@ -27,7 +28,7 @@ describe('Test to copy Entscheid with all data ' + url,() => {
         vpGrid.vpName().type('Wait Will', {delay:20}).clear().type('Wait Will').type('{enter}')
         vpGrid.vpSelectedRow().trigger('dblclick')
         //Here until I don't know how to handle new opened tab I put chain cy.wait -> homeBtn -> cy.wait
-        cy.wait(1000)
+        cy.wait(3000)
         dashboard.HomeBtn().click()
         cy.wait(3000)
         vpDetails.Entscheide().click()
@@ -75,7 +76,7 @@ describe('Test to copy Entscheid with all data ' + url,() => {
             const resbody = body.dsEntscheid.eEntscheid[0];
 
       // Getting the body that was saved in fixture('CopiedinOsiv5') and compare values of both bodies key by key s I don't need to compare the whole bodies
-            cy.fixture('CopiedinOsiv5').then(filebody => {
+            cy.fixture(file).then(filebody => {
                 const fixbody = filebody.dsEntscheid.eEntscheid[0];
                 expect(fixbody.Ereignis_ID).to.deep.eq(resbody.Ereignis_ID)
                 expect(fixbody.Eingliederung_ID).to.deep.eq(resbody.Eingliederung_ID)

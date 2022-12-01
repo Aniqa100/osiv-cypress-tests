@@ -3,7 +3,6 @@ export class Tabs{
         cy.get('[akid="SimpleSwatTabbar-Protokoll"]').click(); 
     }
     Entscheide(){
-        cy.waitUntil(() => cy.get('[akid="SimpleSwatTabbar-Entscheide"]').should('be.visible'))
         cy.get('[akid="SimpleSwatTabbar-Entscheide"]').click();
     }
     Hilflosigkeit(){

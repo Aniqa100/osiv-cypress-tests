@@ -7,6 +7,5 @@ export class VPGrid{
         return cy.get('[class=" ev_material rowselected"]')
     }
 
-
 }
 export const vpGrid = new VPGrid()
