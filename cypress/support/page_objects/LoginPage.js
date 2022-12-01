@@ -1,6 +1,6 @@
 export class LoginPage{
    open(url){
-     return cy.visit(url)
+     cy.visit(url)
    }
 
    userName(){

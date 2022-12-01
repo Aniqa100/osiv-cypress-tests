@@ -11,48 +11,24 @@ import { rowselected } from "../support/page_objects/Tables"
 import { loginPage } from "../support/page_objects/LoginPage";
 import { desktop } from "../support/page_objects/Desktop";
 import { vpGrid } from "../support/page_objects/VPGrid";
-
+import { DateHelper } from "../support/DateHelper";
 
 //Call getBaseUrl() to get environment specific url value
 const url = new Utility().getBaseUrl();
-
-/* function getFirstDayOfMonth(month, year) {
-  return new Date(1, month, year);
-} */
-
-function days_of_a_year(year) 
-{
-   
-  return isLeapYear(year) ? 366 : 365;
-}
-
-function isLeapYear(year) {
-  return year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0);
-}
-let today = new Date();
-let dd = String(today.getDate()).padStart(2, '0');
-let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-
-let yyyy = today.getFullYear();
-
-let yearPlus = yyyy + 1;
-let dayOneless = String(today.getDate()-1).padStart(2, '0');
-let end = dayOneless + '.' + mm + '.' + yearPlus;
-let samedaynextyear = dd + '.' + mm +  '.' + yearPlus;
-let firstDay = '01' + '.' + mm + '.' + yearPlus;
-today = dd + '.' + mm + '.' + yyyy; 
-
-console.log(days_of_a_year(yyyy));
-console.log(today);
-console.log(end);
-console.log(firstDay);
-
+const today = new DateHelper().getCurrentDate();
+const countOfdaysInYear = new DateHelper().getCountOfdaysInYear();
+const nextyear = new DateHelper().getSameDayNextYear();
+const firstday = new DateHelper().getTheFirstDayOfMonth()
+const end = new DateHelper().getOneDayLess()
+console.log('today ' + today)
+console.log('count '+ countOfdaysInYear)
+console.log('nextyear ' + nextyear)
+console.log('firstday ' + firstday)
+console.log('dayless ' + end)
 
 describe('E2E test of createting and sending Entscheide for HE code ' + url, () => {
 
     it('Verify Environment', () => {
-
-  
         //cy.UILogin(Cypress.env("username"), Cypress.env("password"))
         cy.UILoginWithSession(Cypress.env("username"), Cypress.env("password"))
         loginPage.open(url)
@@ -104,11 +80,11 @@ describe('E2E test of createting and sending Entscheide for HE code ' + url, () 
         pressButton.confirm()
         compareValuesOf.HilflosigkeitNotColor()
         cy.waitUntil(()=> cy.get('[akid="EntscheidWartefristForm"]').should('be.visible'))
-        compareValuesOf.Wartefrist(days_of_a_year(yyyy));
-        compareValuesOf.AblaufWartefrist(samedaynextyear);
-        compareValuesOf.WartefristVerlauf(today, end, days_of_a_year(yyyy), '20');
-        compareValuesOf.HEGrad(firstDay)
-        compareValuesOf.HEGradVerlauf(firstDay, firstDay, 'Leicht');
+        compareValuesOf.Wartefrist(countOfdaysInYear);
+        compareValuesOf.AblaufWartefrist(nextyear);
+        compareValuesOf.WartefristVerlauf(today, end, countOfdaysInYear, '20');
+        compareValuesOf.HEGrad(nextyear)
+        compareValuesOf.HEGradVerlauf(nextyear, nextyear, 'Leicht');
         tabTo.Freitexte()
         compareValuesOf.FreitexteColor()
         inputTo.TextForm('test')
