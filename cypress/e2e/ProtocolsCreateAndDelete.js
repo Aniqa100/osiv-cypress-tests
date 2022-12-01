@@ -4,22 +4,30 @@ import { Utility } from "../support/Utility"
 import { pressButton } from "../support/page_objects/Buttons";
 import { rowselected } from "../support/page_objects/Tables";
 import { dropdownValue } from "../support/page_objects/dropdownSelection";
-const {choosenElem} = require("../support/page_objects/elements")
 const {inputTo} = require("../support/page_objects/inputFields");
+import { loginPage } from "../support/page_objects/LoginPage";
+import { dashboard } from "../support/page_objects/Dashboard";
+import { dashboard } from "../support/page_objects/Dashboard";
+import { vpGrid } from "../support/page_objects/VPGrid";
 const url = new Utility().getBaseUrl();
 describe('Test to create protocol, softly remove it, undo it and again remove it', () => {
-
+  beforeEach('Login', () => {
+    cy.UILoginWithSession(Cypress.env("username"), Cypress.env("password"))
+    loginPage.open(url)
+})
 
     it('create protocol and remove it', () => {
-      cy.UILoginWithSession(Cypress.env("username"), Cypress.env("password"))
-      cy.visit(url)
-      choosenElem.UserName()
-      navigateTo.folderVersicherte();
-      inputTo.VersichertenName('OConnor Gregory');
-      rowselected.firstSelectedRow()
-      pressButton.Homebtn()
+      dasktop.Versicherte().click()
+      vpGrid.vpName().type('OConnor Gregory', {delay:20}).clear().type('OConnor Gregory').type('{enter}')
+      vpGrid.vpSelectedRow().trigger('dblclick')
+      //inputTo.VersichertenName('OConnor Gregory');
+      //rowselected.firstSelectedRow()
+      cy.wait(1000)
+      dashboard.HomeBtn().click()
+      cy.wait(3000)
+      //pressButton.Homebtn()
       //cy.wait I used here cause the element Protocol tab exists on page but it is not clickable
-      cy.wait(2000)
+      
       tabTo.Protocol();
        //Creating a new protocol 
       pressButton.ProtokollNew()
