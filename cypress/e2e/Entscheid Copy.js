@@ -13,8 +13,8 @@ import { vpEntscheidGrid } from "../support/page_objects/VPEntscheidGrid";
 import { entscheidNew } from "../support/page_objects/EntscheidNew";
 import { entscheidEditor } from  "../support/page_objects/EntscheidEditor"
 import { entscheidDetails } from "../support/page_objects/EntscheidDetails";
-const url = new Utility().getBaseUrl();
-//const req = new Utility().Entscheidrequest();
+import { entscheidMetaInfo } from "../support/page_objects/EntscheidMetaInfo";
+const url = new Utility().getBaseUrl()
 
 describe('Test to copy Entscheid with all data ' + url,() => {
 
@@ -26,6 +26,7 @@ describe('Test to copy Entscheid with all data ' + url,() => {
         desktop.Versicherte().click()
         vpGrid.vpName().type('Wait Will', {delay:20}).clear().type('Wait Will').type('{enter}')
         vpGrid.vpSelectedRow().trigger('dblclick')
+        //Here until I don't know how to handle new opened tab I put chain cy.wait -> homeBtn -> cy.wait
         cy.wait(1000)
         dashboard.HomeBtn().click()
         cy.wait(3000)
@@ -57,28 +58,23 @@ describe('Test to copy Entscheid with all data ' + url,() => {
         entscheidDetails.DurchführungsstellenList().eq(2).invoke('text').should('contain', 'Basler Orthopädie René Ruepp AG, Austrasse 109, 4051 Basel')
         entscheidDetails.DurchführungsstellenList().eq(3).invoke('text').should('contain', 'Ergotherapie Rheinfelden, Petra Leisinger-Burns, Thermenstrasse 11, 4310 Rheinfelden')
         entscheidDetails.VersicherungenTab().click()
-        entscheidDetails.VersicherungenList().eq(1).invoke('text').should('contain', 'Personalfürsorgestiftung Grosspeter AG, St. Jakob-Strasse 72, 4132 Muttenz')
-        entscheidDetails.VersicherungenList().eq(2).invoke('text').should('contain', 'Herr Dr. Peter Bont, Rechtsanwalt und Notar, Dornacherstrasse 26, Postfach, 4603 Olten')       
-        // Over here I need to find Entscheid and save it in global variable to use it in futher in API call
-        cy.get('[akid="EntscheidDetailWindowTabbar-Meta-Info"]').click({force: true})
-        cy.get('[akid="EntscheidMetaInfoForm-entscheid_id"] input').invoke('prop', 'value').then(EntscheidIdNM =>{
-            cy.log('до0' + EntscheidIdNM)
+        entscheidDetails.VersicherungenList('MV').eq(1).invoke('text').should('contain', 'Personalfürsorgestiftung Grosspeter AG, St. Jakob-Strasse 72, 4132 Muttenz')
+        entscheidDetails.VersicherungenList('UVG').eq(2).invoke('text').should('contain', 'Herr Dr. Peter Bont, Rechtsanwalt und Notar, Dornacherstrasse 26, Postfach, 4603 Olten')       
+        // Over here I need to find EntscheidNM and save outside the test, I use settering gettering, to use it in futher in API call
+        entscheidMetaInfo.MetaInfoTab().click()
+        entscheidMetaInfo.EntscheidIdNM().invoke('prop', 'value').then(EntscheidIdNM =>{
             cy.task('setEntscheidIdNM', EntscheidIdNM)
-            cy.log('до1'+ EntscheidIdNM)
         })
-        cy.task('getEntscheidIdNM').then(EntscheidIdNM =>{
-            cy.log('до2 '+ EntscheidIdNM)
-        }) 
-         
     })
     
     it('Compare responses of copied Entscheid', () => {
-        //cy.log('после1 '+ EntscheidNr)
+      // Getting saved number form outside and putting it in url, send an API call and get the responce body
         cy.task('getEntscheidIdNM').then(EntscheidIdNM => {
-            cy.log('EntscheidIdNM' + EntscheidIdNM)
             cy.request(url +'/web/Resource/Osiv.Entscheid.Entscheid.EntscheidBE?akQuery=%7B%22ui_context%22%3A%7B%22controlType%22%3A%22%22%2C%22container%22%3A%22%22%7D%2C%22filters%22%3A%7B%22logic%22%3A%22and%22%2C%22filters%22%3A%5B%7B%22field%22%3A%22entscheid_id%22%2C%22operator%22%3A%22eq%22%2C%22value%22%3A'+ EntscheidIdNM +'%7D%5D%7D%2C%22fieldlist%22%3A%22*%22%7D&clientRequestId=164&filter=%7B%22orderBy%22%3A%22Entscheid_ID%20descending%22%7D&_ts=166972068-6678884243-66')
         .its('body').then(body =>{
             const resbody = body.dsEntscheid.eEntscheid[0];
+
+      // Getting the body that was saved in fixture('CopiedinOsiv5') and compare values of both bodies key by key s I don't need to compare the whole bodies
             cy.fixture('CopiedinOsiv5').then(filebody => {
                 const fixbody = filebody.dsEntscheid.eEntscheid[0];
                 expect(fixbody.Ereignis_ID).to.deep.eq(resbody.Ereignis_ID)
@@ -322,7 +318,7 @@ describe('Test to copy Entscheid with all data ' + url,() => {
                 expect(fixbody.TGEntscheid).to.deep.eq(resbody.TGEntscheid)
                 expect(fixbody.TGEntscheidSelfHdl).to.deep.eq(resbody.TGEntscheidSelfHdl)
                 expect(fixbody.TGRenteBez).to.deep.eq(resbody.TGRenteBez)
-                expect(fixbody.AKBez).to.deep.eq(resbody.AKBez)
+                //expect(fixbody.AKBez).to.deep.eq(resbody.AKBez) is not unique ??
                 //expect(fixbody.Stamm_AK_ID).to.deep.eq(resbody.Stamm_AK_ID) is not unique ??
                 expect(fixbody.WEIV_DFOrt).to.deep.eq(resbody.WEIV_DFOrt)
                 //expect(fixbody.Ausgleichskasse_SelfHdl).to.deep.eq(resbody.Ausgleichskasse_SelfHdl) is not unique ??

@@ -36,16 +36,11 @@ export class EntscheidDetails{
     
 
 
-    VersicherungenList(){
+    VersicherungenList(text){
+        cy.contains(text).parents()
+        
         return cy.get('#active-panel .objbox').find('tr')
 
-        //I'll leave you it here for now
-         cy.contains('MV').parents('[class=" ev_material rowselected"]').find('[class="akcelllink"]').invoke('text').then(text =>{
-        expect(text).to.equal('Personalfürsorgestiftung Grosspeter AG, St. Jakob-Strasse 72, 4132 Muttenz')
-    }) 
-         cy.contains('UVG').parents('[class=" odd_material"]').find('[class="akcelllink"]').invoke('text').then(text =>{
-        expect(text).to.equal('Herr Dr. Peter Bont, Rechtsanwalt und Notar, Dornacherstrasse 26, Postfach, 4603 Olten')
-    }) 
     }
 }
 export const entscheidDetails = new EntscheidDetails()

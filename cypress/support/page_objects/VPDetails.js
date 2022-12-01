@@ -1,8 +1,7 @@
 export class VPDetails{
     Entscheide(){
-        return cy.get('[akid="SimpleSwatTabbar-Entscheide"]')
-        /* cy.waitUntil(() => cy.get('[akid="SimpleSwatTabbar-Entscheide"]').should('be.visible'))
-        cy.get('[akid="SimpleSwatTabbar-Entscheide"]').click(); */
+        return cy.waitUntil(() => cy.get('[akid="SimpleSwatTabbar-Entscheide"]').should('be.visible'))
+
     }
 }
 export const vpDetails = new VPDetails()
