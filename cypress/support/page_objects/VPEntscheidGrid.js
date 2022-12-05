@@ -1,5 +1,5 @@
 export class VPEntscheidGrid{
-    TableRowbyText(text){
+    findTableRowbyText(text){
         return cy.get('#active-panel .objbox').find('tbody').contains('td', text)
 
       }

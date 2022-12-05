@@ -4,7 +4,14 @@ export class EntscheidMetaInfo{
     }
 
     EntscheidIdNM(){
-        return cy.get('[akid="EntscheidMetaInfoForm-entscheid_id"] input')
+        cy.get('[akid="EntscheidMetaInfoForm-entscheid_id"] input')
+    }
+
+    SaveEntscheidIdNMtoGlobalValue(){
+        cy.get('[akid="EntscheidMetaInfoForm-entscheid_id"] input')
+        .invoke('prop', 'value').then(EntscheidIdNM =>{
+            cy.task('setEntscheidIdNM', EntscheidIdNM)
+        })
     }
 }
 export const entscheidMetaInfo = new EntscheidMetaInfo()
