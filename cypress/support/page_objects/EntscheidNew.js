@@ -40,10 +40,57 @@ export class EntscheidNew{
     ConfirmBtn(){
         return cy.get('[class="swal-modal warningModal"]')
         .find('[class="swal-button swal-button--replyok"]').contains('Ok')
-            
-        
     }
 
+    ValidateLeistungsgruppeValue(value){
+        cy.get('[class="dhxwin_active"][modalwindow="true"]')
+        .find('[akid="CreateEntscheidForm-leistungsgruppe"]')
+        .contains(value)
+    }
+
+    ValidateLeistungscodeValue(value){
+        cy.get('[class="dhxwin_active"][modalwindow="true"]')
+        .find('[akid="CreateEntscheidForm-leistungtext"]')
+        .contains(value)
+    }
+ 
+    ValidateGesuchValue(value){
+        cy.get('[class="dhxwin_active"][modalwindow="true"]')
+        .find('[akid="CreateEntscheidForm-gesuchtext"]')
+        .contains(value)
+    }
+
+    ValidateEreignisValue(value){
+        cy.get('[class="dhxwin_active"][modalwindow="true"]')
+        .find('[akid="CreateEntscheidForm-ereignistext"]')
+        .contains(value)
+    }
+
+    ValidateBereichValue(value){
+        cy.get('[class="dhxwin_active"][modalwindow="true"]')
+        .find('[akid="CreateEntscheidForm-bereich"]')
+        .contains(value)
+    }
+    ValidateBearbeiterValue(value){
+        cy.get('[class="dhxwin_active"][modalwindow="true"]')
+        .find('[akid="CreateEntscheidForm-bearbeiter"]')
+        .contains(value)
+    }
+
+    ValidateArbeitslisteValue(value){
+        cy.get('[class="dhxwin_active"][modalwindow="true"]')
+        .find('[akid="CreateEntscheidForm-arbeitslistevalue"]').find('input')
+        .invoke('prop', 'value').should('contain', value)
+    }
+     
+    ValidateNotizenValue(value){
+        cy.get('[class="dhxwin_active"][modalwindow="true"]')
+        .find('[akid="CreateEntscheidForm-bem"]').find('textarea')
+        .invoke('prop', 'value').should('contain', value)
+    }
+
+
+     
 }
 
 
