@@ -58,7 +58,7 @@ export class DateHelper {
             return [
               padTo2Digits('01'),
               padTo2Digits(date.getMonth() + 1),
-              (date.getFullYear())
+              (date.getFullYear() + 1)
             ].join('.');
           }
           let firstDayofMonth = getFirstDayOfMonth(date);
@@ -76,7 +76,7 @@ export class DateHelper {
             return date;
         }
         let end = (subtractDays(1, date))
-        function getFirstDayOfMonth(end) {
+        function getFirstDayOfMonth(date) {
             return [
               padTo2Digits(date.getDate()),
               padTo2Digits(date.getMonth() + 1),

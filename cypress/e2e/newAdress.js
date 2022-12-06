@@ -10,7 +10,7 @@ describe('Test to add a new adress with Frau solutation ' + url,() => {
 
     cy.UILoginWithSession(Cypress.env("username"), Cypress.env("password"))
     loginPage.open(url)
-    desktop.Adressen().click()
+    desktop.Adressen()
     adressGrid.AddAdressBtn().click()
     adressNew.SelectAdressTypeValue('024')
     adressNew.SelectLanguageTypeValue('Deutsch')
