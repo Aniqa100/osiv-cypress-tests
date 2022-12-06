@@ -1,4 +1,3 @@
-import { navigateTo } from "../support/page_objects/navigationPage";
 import { Utility } from "../support/Utility";
 import { inputTo } from "../support/page_objects/inputFields";
 import { tabTo } from "../support/page_objects/Tabs";
@@ -32,7 +31,7 @@ describe('E2E test of createting and sending Entscheide for HE code ' + url, () 
         //cy.UILogin(Cypress.env("username"), Cypress.env("password"))
         cy.UILoginWithSession(Cypress.env("username"), Cypress.env("password"))
         loginPage.open(url)
-        desktop.Versicherte().click()
+        desktop.Versicherte()
         vpGrid.vpName().type('Wait Will', {delay:20}).clear().type('Wait Will').type('{enter}')
         //inputTo.VersichertenName('Wait Will')
         rowselected.firstSelectedRow()
@@ -83,8 +82,8 @@ describe('E2E test of createting and sending Entscheide for HE code ' + url, () 
         compareValuesOf.Wartefrist(countOfdaysInYear);
         compareValuesOf.AblaufWartefrist(nextyear);
         compareValuesOf.WartefristVerlauf(today, end, countOfdaysInYear, '20');
-        compareValuesOf.HEGrad(nextyear)
-        compareValuesOf.HEGradVerlauf(nextyear, nextyear, 'Leicht');
+        compareValuesOf.HEGrad(firstday)
+        compareValuesOf.HEGradVerlauf(firstday, firstday, 'Leicht');
         tabTo.Freitexte()
         compareValuesOf.FreitexteColor()
         inputTo.TextForm('test')
@@ -106,9 +105,9 @@ describe('E2E test of createting and sending Entscheide for HE code ' + url, () 
         pressButton.Warningconfirm()
         compareValuesOf.FreitexteNotColor()
         tabTo.EntscheidSendungen()
-        tabTo.Sendungen()
-        tabTo.Details()
-        pressButton.EntscheidSendungVerschicken()
+        //tabTo.Sendungen()
+        //tabTo.Details()
+        pressButton.EntscheidSendungVerschicken()// - need to press generieren
         compareValuesOf.VisierenColor()
         compareValuesOf.EntscheidSendungenNotColor()
         compareValuesOf.ExistRow()

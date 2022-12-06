@@ -15,7 +15,7 @@ describe('Test to create protocol, softly remove it, undo it and again remove it
 })
 
     it('create protocol and remove it', () => {
-      desktop.Versicherte().click()
+      desktop.Versicherte()
       vpGrid.vpName().type('OConnor Gregory', {delay:20}).clear().type('OConnor Gregory').type('{enter}')
       vpGrid.vpSelectedRow().trigger('dblclick')
       cy.wait(2000)
