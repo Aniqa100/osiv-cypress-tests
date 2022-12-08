@@ -10,7 +10,7 @@ import { dashboard } from "../support/page_objects/Dashboard";
 import { vpDetails } from "../support/page_objects/VPDetails";
 import { vpEntscheidGrid } from "../support/page_objects/VPEntscheidGrid";
 import { entscheidNew } from "../support/page_objects/EntscheidNew";
-import { entscheidFreitexteTab } from "../support/page_objects/EntscheidFreitexteTab";
+import { EntscheidFreitexteTab, entscheidFreitexteTab } from "../support/page_objects/EntscheidFreitexteTab";
 
 //Call getBaseUrl() to get environment specific url value
 const url = new Utility().getBaseUrl()
@@ -111,6 +111,7 @@ describe('E2E test of createting and sending Entscheide for HE code ' + url, () 
         entscheidFreitexteTab.BegründungSpeichernBtn().click()
         entscheidFreitexteTab.ValidateTextFormValue('test')
         entscheidFreitexteTab.VerfügungBeiblattAK().click()
+        entscheidFreitexteTab.FreitextgenerierenBtn().click()
         
         //pressButton.FreitextgenerierenGesetzliche()
         //cy.wait(1000)
