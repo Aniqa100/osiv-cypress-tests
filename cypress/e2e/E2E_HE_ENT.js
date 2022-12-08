@@ -1,22 +1,22 @@
 import { Utility } from "../support/Utility";
-import { inputTo } from "../support/page_objects/inputFields";
-import { tabTo } from "../support/page_objects/Tabs";
 import { pressButton } from "../support/page_objects/Buttons";
-import { fillForm } from "../support/page_objects/FillForm";
-import { compareValuesOf } from "../support/page_objects/assertionValues";
-import { selectDate } from "../support/page_objects/DatePicker";
-import { dropdownValue } from "../support/page_objects/dropdownSelection";
-import { rowselected } from "../support/page_objects/Tables"
 import { loginPage } from "../support/page_objects/LoginPage";
 import { desktop } from "../support/page_objects/Desktop";
 import { vpGrid } from "../support/page_objects/VPGrid";
 import { DateHelper } from "../support/DateHelper";
+import { entscheidDetails } from "../support/page_objects/EntscheidDetails";
+import { entHilflosigkeitTab } from "../support/page_objects/EntscheidHilflosigkeitTab";
+import { dashboard } from "../support/page_objects/Dashboard";
+import { vpDetails } from "../support/page_objects/VPDetails";
+import { vpEntscheidGrid } from "../support/page_objects/VPEntscheidGrid";
+import { entscheidNew } from "../support/page_objects/EntscheidNew";
+import { entscheidFreitexteTab } from "../support/page_objects/EntscheidFreitexteTab";
 
 //Call getBaseUrl() to get environment specific url value
-const url = new Utility().getBaseUrl();
-const today = new DateHelper().getCurrentDate();
-const countOfdaysInYear = new DateHelper().getCountOfdaysInYear();
-const nextyear = new DateHelper().getSameDayNextYear();
+const url = new Utility().getBaseUrl()
+const today = new DateHelper().getCurrentDate()
+const countOfdaysInYear = new DateHelper().getCountOfdaysInYear()
+const nextyear = new DateHelper().getSameDayNextYear()
 const firstday = new DateHelper().getTheFirstDayOfMonth()
 const end = new DateHelper().getOneDayLess()
 console.log('today ' + today)
@@ -26,73 +26,94 @@ console.log('firstday ' + firstday)
 console.log('dayless ' + end)
 
 describe('E2E test of createting and sending Entscheide for HE code ' + url, () => {
+    beforeEach('Login', () => {
+    cy.UILoginWithSession(Cypress.env("username"), Cypress.env("password"))
+    loginPage.open(url)
+})
 
     it('Verify Environment', () => {
-        //cy.UILogin(Cypress.env("username"), Cypress.env("password"))
-        cy.UILoginWithSession(Cypress.env("username"), Cypress.env("password"))
-        loginPage.open(url)
         desktop.Versicherte()
-        vpGrid.vpName().type('Wait Will', {delay:20}).clear().type('Wait Will').type('{enter}')
-        //inputTo.VersichertenName('Wait Will')
-        rowselected.firstSelectedRow()
-        pressButton.Homebtn()
+        vpGrid.typevpName('Wait Will').type('{enter}')
+        vpGrid.vpSelectedRow().dblclick()
+        cy.wait(4000)
+        dashboard.HomeBtn().click()
+        cy.wait(3000)
         //cy.wait I used here cause the element Entscheide tab exists on page but it is not clickable
-        cy.wait(2000)
-        tabTo.Entscheide()
+        vpDetails.Entscheide().click()
         pressButton.EntscheideNew()
-        fillForm.NeuenEntscheidErstellenForm('Hilflosenentschädigung' , 'Hilflosenentschädigung')
-        compareValuesOf.EntscheidCreation('Gesuch vom 01.02.2022', 'Ereignis Basis vom 22.11.2022', 'IV Erwachsene', 'Hulk1 - Hulk Eins', 'Neu', 'Hilflosenentschädigung', 'HE - Hilflosenentschädigung', '')
-        pressButton.modalOk()
-        pressButton.Warningconfirm()
-        pressButton.Homebtn()
-        cy.get('.active-taskbar-items > .active')
-        compareValuesOf.DetailsTabColor()
-        compareValuesOf.BasicDataColor()
-        compareValuesOf.Durchführungsstellen()
+        vpEntscheidGrid.NewBtn().click()
+        entscheidNew.SelectLeistungsgruppeValue('Hilflosenentschädigung').click()
+        entscheidNew.SelectLeistungscodeValue('Hilflosenentschädigung').click()
+        entscheidNew.ValidateGesuchValue('vom 01.02.2022')
+        entscheidNew.ValidateEreignisValue('Basis vom 22.11.2022')
+        entscheidNew.ValidateBereichValue('IV Erwachsene')
+        entscheidNew.ValidateBearbeiterValue('Hulk1 - Hulk Eins')
+        entscheidNew.ValidateArbeitslisteValue('Neu')
+        entscheidNew.ModatOkBtn().click()
+        entscheidNew.WarningConfirmBtn().click()
+        dashboard.HomeBtn().click()
+        entscheidDetails.ValidateOrangeBasicDataColore('rgb(255, 165, 0)')
+        entscheidDetails.ValidateOrangeDetailsTabColore('rgb(255, 165, 0)')
+        entscheidDetails.ValidateNotOrangeDurchführungsstellenTabColore('rgb(255, 165, 0)')
         if(url == 'https://osiv-frtest.ivnet.ch/') {
-          compareValuesOf.HilflosigkeitColor()
+          entscheidDetails.ValidateOrangeHilflosigkeitTabColor('rgb(255, 165, 0)')
         } else 
-        compareValuesOf.BitteWarningmsg()
-        compareValuesOf.Shouldbefilled()
-        compareValuesOf.EntscheidEditor('Neu', 'Gesuch vom 01.02.2022', 'Ereignis Basis vom 22.11.2022', 'IV', 'Hulk1 - Hulk Eins', 'HE','HE - Hilflosenentschädigung', '')
-        fillForm.EditEntscheidDatenForm('Zusprache', '3205', 'Mitteilung der IV-Stelle (IV Allgemein)')
-        fillForm.EditErweiterteInfoForm('101', '01')
-        selectDate.forBegin()
-        pressButton.SpeichernBearb()
-        pressButton.Warningconfirm()
-        compareValuesOf.EntscheidSendungen()
-        compareValuesOf.BasicDataNotColor()
-        compareValuesOf.ShouldbefilledNotExist()
-        pressButton.BearbeitungEinleiten()
-        pressButton.modalOkWithWait('Hulk1 - Hulk Eins')
-        compareValuesOf.Freitexte()
-        compareValuesOf.Diskutieren()
-        compareValuesOf.EntscheidStatus('Bearbeiten')
-        tabTo.Hilflosigkeit()
-        dropdownValue.verfahrenbezVaue('Langdauernde')
-        dropdownValue.akbezValue('Freiburg')
-        dropdownValue.aufenthaltbezValue('Zu')
-        selectDate.AnAuskleiden()
-        selectDate.AufstehenAbsitzen()
-        selectDate.Essen()
-        pressButton.SpeichernHilf()
-        pressButton.confirm()
-        compareValuesOf.HilflosigkeitNotColor()
-        cy.waitUntil(()=> cy.get('[akid="EntscheidWartefristForm"]').should('be.visible'))
-        compareValuesOf.Wartefrist(countOfdaysInYear);
-        compareValuesOf.AblaufWartefrist(nextyear);
-        compareValuesOf.WartefristVerlauf(today, end, countOfdaysInYear, '20');
-        compareValuesOf.HEGrad(firstday)
-        compareValuesOf.HEGradVerlauf(firstday, firstday, 'Leicht');
-        tabTo.Freitexte()
-        compareValuesOf.FreitexteColor()
-        inputTo.TextForm('test')
-        pressButton.Begründungspeichern()
-        compareValuesOf.TextFormfilling()
-        tabTo.VerfügungBeiblattAK()
-        cy.wait(10000)
-        pressButton.Freitextgenerieren()
-        cy.wait(500)
+        entscheidDetails.ValidateBitteWarningMsg('Bitte die Bearbeitung einleiten. (OSCIENT:522)')
+        entscheidDetails.ValidateShouldbefilledMsg('Es müssen noch folgende Felder ausgefüllt werden: Entscheid, Supertext, Entscheidtyp, Gebrechen, Funktionsausfall. (OSCIENT:523)')
+        entscheidDetails.ValidateArbeitslisteValue('Neu')
+        entscheidDetails.ValidateGesuchValue('vom 01.02.2022')
+        entscheidDetails.ValidateEreignisValue('Basis vom 22.11.2022')
+        entscheidDetails.ValidateBereichValue('IV')
+        entscheidDetails.ValidateBearbeiterValue('Hulk1 - Hulk Eins')
+        entscheidDetails.ValidateLeistungsgruppeValue('HE')
+        entscheidDetails.ValidateLeistungscodeValue('HE - Hilflosenentschädigung')
+        entscheidDetails.SelectEntscheidValue('Zusprache')
+        entscheidDetails.SelectSupertextValue('3205')
+        entscheidDetails.SelectEntscheidtypValue('Mitteilung der IV-Stelle (IV Allgemein)')
+        entscheidDetails.SelectGebrechenValue('101')
+        entscheidDetails.SelectFunktausfallValue('01')
+        entscheidDetails.SelectBeginnValue(today)
+        entscheidDetails.SpeicherBtn().click()
+        entscheidDetails.WarningConfirmBtn().click()
+        entscheidDetails.ValidateNotOrangeEntscheidSendungenColor('rgb(255, 165, 0)')
+        entscheidDetails.ValidateNotOrangeBasicDataColore('rgb(255, 165, 0)')
+        entscheidDetails.ValidateNoShouldbefilledMsg('Es müssen noch folgende Felder ausgefüllt werden: Entscheid, Supertext, Entscheidtyp, Gebrechen, Funktionsausfall. (OSCIENT:523)')
+        entscheidDetails.BearbeitungEinleitenBtn().click()
+        entscheidDetails.modalOkBtn('Hulk1 - Hulk Eins')
+        entscheidDetails.ValidateNotOrangeFreitexteColore('rgb(255, 165, 0)')
+        entscheidDetails.ValidateNotOrangeDiskutierenColor('rgb(255, 165, 0)')
+        entscheidDetails.ValidateArbeitslisteValue('Bearbeiten')
+        entscheidDetails.HilflosigkeitTab().click()
+        entHilflosigkeitTab.SelectArtderInvaliditätValue('Langdauernde Erwerbsunfähigkeit')
+        entHilflosigkeitTab.SelectAusgleichskasseValue('10 - Ausgleichskasse des Kantons Freiburg')
+        entHilflosigkeitTab.SelectAufenthaltbezValue('Zu Hause')
+        entHilflosigkeitTab.SelectAnAuskleidenDate(today)
+        entHilflosigkeitTab.SelectAufstehenAbsitzenDate(today)
+        entHilflosigkeitTab.SelectEssenDate(today)
+        entHilflosigkeitTab.SpeichernBtn().click()
+        entHilflosigkeitTab.ConfirmBtn().click()
+        entscheidDetails.ValidateOrangeHilflosigkeitTabColor('rgb(255, 165, 0)')
+        entHilflosigkeitTab.ValidateAblaufWartefristValue(nextyear)
+        entHilflosigkeitTab.ValidateWFGradValue('20 %')
+        entHilflosigkeitTab.ValidateTageValue(countOfdaysInYear)
+        entHilflosigkeitTab.ValidateGrenzgradValue('20 %')
+        entHilflosigkeitTab.ValidateBeginnDate(today)
+        entHilflosigkeitTab.ValidateEndeDate(end)
+        entHilflosigkeitTab.ValidateAnzahlTageValue(countOfdaysInYear)
+        entHilflosigkeitTab.ValidateHEGradinValue('20')
+        entHilflosigkeitTab.ValidateHEGradValue('Leicht')
+        entHilflosigkeitTab.ValidateHEGradBeginnDate(firstday)
+        entHilflosigkeitTab.ValidateHeGradabDate(firstday)
+        entHilflosigkeitTab.ValidateHEGradVerlaufValue('Leicht')
+        entscheidDetails.FreitexteTab().click()
+        entscheidDetails.ValidateOrangeFreitextColore('rgb(255, 165, 0)')
+        entscheidFreitexteTab.TextForm('test')
+        entscheidFreitexteTab.BegründungSpeichernBtn().click()
+        entscheidFreitexteTab.ValidateTextFormValue('test')
+        entscheidFreitexteTab.VerfügungBeiblattAK().click()
+        cy.wait(1000)
+        //entscheidFreitexteTab.BegründungSpeichernBtn().click()
+        /*cy.wait(500)
         pressButton.Warningconfirm()
         cy.wait(1000)
         //compareValuesOf.GeneratedTextWithColore(firstDay)
@@ -131,6 +152,6 @@ describe('E2E test of createting and sending Entscheide for HE code ' + url, () 
         pressButton.modalOk()
         pressButton.FrageJa()
         compareValuesOf.Finished('Abgeschlossen')
-
+ */
    })
 })

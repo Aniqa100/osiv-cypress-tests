@@ -7,5 +7,9 @@ export class VPEntscheidGrid{
         return cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidBlock"]')
         .find('[title="Kopieren"]')
     }
+    NewBtn(){
+        return cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidBlock"]')
+        .find('[title="Neu"]')
+    }
 }
 export const vpEntscheidGrid = new VPEntscheidGrid()

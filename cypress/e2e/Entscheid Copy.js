@@ -21,7 +21,7 @@ describe('Test to copy Entscheid with all data ' + url,() => {
     })
     it('Open Entscheid and copy', () => {
         desktop.Versicherte()
-        vpGrid.typevpName('Wait Will')
+        vpGrid.typevpName('Wait Will').type('{enter}')
         vpGrid.vpSelectedRow().trigger('dblclick')
         //Here until I don't know how to handle new opened tab I put chain cy.wait -> homeBtn -> cy.wait
         cy.wait(3000)
@@ -64,7 +64,7 @@ describe('Test to copy Entscheid with all data ' + url,() => {
     })
     
     it('Compare responses of copied Entscheid', () => {
-      // Getting saved number form outside and putting it in url, send an API call and get the responce body
+      // Getting saved number form outside and putting it in url, sends an API call and gets the responce body
         cy.task('getEntscheidIdNM').then(EntscheidIdNM => {
             cy.request(url +'/web/Resource/Osiv.Entscheid.Entscheid.EntscheidBE?akQuery=%7B%22ui_context%22%3A%7B%22controlType%22%3A%22%22%2C%22container%22%3A%22%22%7D%2C%22filters%22%3A%7B%22logic%22%3A%22and%22%2C%22filters%22%3A%5B%7B%22field%22%3A%22entscheid_id%22%2C%22operator%22%3A%22eq%22%2C%22value%22%3A'+ EntscheidIdNM +'%7D%5D%7D%2C%22fieldlist%22%3A%22*%22%7D&clientRequestId=164&filter=%7B%22orderBy%22%3A%22Entscheid_ID%20descending%22%7D&_ts=166972068-6678884243-66')
         .its('body').then(body =>{

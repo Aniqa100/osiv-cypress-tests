@@ -11,8 +11,12 @@ export class Desktop{
         
     }
     Adressen(){
-     cy.contains('Adressen').click()
-     cy.get('[id="vsm-link-a715bf8f-d13e-f8b8-3f14-f962a8e505bd"]').click()
+        cy.contains('Adressen').click()
+        cy.get('[id="vsm-link-a715bf8f-d13e-f8b8-3f14-f962a8e505bd"]').click()
+    }
+    Entscheid(){
+        return cy.contains('Entscheid')
+        
     }
 
 }   

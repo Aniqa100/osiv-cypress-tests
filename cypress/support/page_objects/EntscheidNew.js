@@ -33,13 +33,26 @@ export class EntscheidNew{
     }
       
     ModatOkBtn(){
-        //the value for 
         return cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]');
   
         }
     ConfirmBtn(){
         return cy.get('[class="swal-modal warningModal"]')
         .find('[class="swal-button swal-button--replyok"]').contains('Ok')
+    }
+    WarningConfirmBtn(){
+        return cy.get('[class="swal-modal warningModal"]').find('[class="swal-button swal-button--okreply default"]')
+        .contains('Ok')
+    }
+    SelectLeistungsgruppeValue(value){
+        return cy.get('[class="dhxwin_active"][modalwindow="true"]')
+        .find('[akid="CreateEntscheidForm-leistungsgruppe"]').click()
+        .get('[class="select2-results__options"]').contains(value)
+    }
+    SelectLeistungscodeValue(value){
+        return cy.get('[class="dhxwin_active"][modalwindow="true"]')
+        .find('[akid="CreateEntscheidForm-leistungtext"]').click()
+        .get('[class="select2-results__options"]').contains(value)
     }
 
     ValidateLeistungsgruppeValue(value){

@@ -137,7 +137,6 @@ export class AssertValues{
         cy.wrap(input).invoke('prop', 'value').should('contain', date)
       })
      }
-
      Wartefrist(year){
       cy.get('[akid="EntscheidWartefristForm"]').then(Wartefrist => {
         cy.wrap(Wartefrist).get('[akid="EntscheidWartefristForm-augradds"]').find('input').then(input => {
@@ -184,13 +183,10 @@ export class AssertValues{
           cy.get('[akid="EntscheidDetailBasisFrameTabbar-Freitexte"]')
           .should('not.have.css', 'border-left-color', 'rgb(255, 165, 0)'); 
           }   
-
-
          EntscheidSendungenColor(){
             cy.get('[akid="EntscheidDetailBasisFrameTabbar-Entscheid-Sendungen"]')
             .should('have.css', 'border-left-color', 'rgb(255, 165, 0)'); 
             }
-
          EntscheidSendungenNotColor(){
               cy.get('[akid="EntscheidDetailBasisFrameTabbar-Entscheid-Sendungen"]')
               .should('not.have.css', 'border-left-color', 'rgb(255, 165, 0)'); 
@@ -209,10 +205,10 @@ export class AssertValues{
           .should('be.visible')
          }
 
-         BitteWarningmsg(){
-          cy.contains('Bitte die Bearbeitung einleiten. (OSCIENT:522)')
+         ValidateBitteWarningMsg(msg){
+          cy.contains(msg)
          }
-         Shouldbefilled(){
+         ValidateShouldbefilledMsg(){
           cy.contains('Es müssen noch folgende Felder ausgefüllt werden: Entscheid, Supertext, Entscheidtyp, Gebrechen, Funktionsausfall. (OSCIENT:523)')
          }
 
