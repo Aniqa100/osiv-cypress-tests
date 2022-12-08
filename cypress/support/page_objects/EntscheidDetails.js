@@ -83,7 +83,7 @@ export class EntscheidDetails{
         return cy.get('[akid="EntscheidDetailBasisFrameTabbar-Hilflosigkeit"]')
      }
     SelectEntscheidValue(value){
-        cy.get('[akid="EntscheidDetailBasisDatenForm-entscheidtypbez"]').click()
+        cy.get('[akid="EntscheidDetailBasisDatenForm-entscheidvalue"]').click()
         cy.get('[class="select2-results__options"]').contains(value).click()
     }
     SelectSupertextValue(value){
