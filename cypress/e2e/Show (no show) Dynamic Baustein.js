@@ -15,7 +15,7 @@ describe('Test to verify if Freetext tab shows or not Baustein 1013+ (Reisekoste
     })
     it('Test verifies that Freetext tab shows Baustein 1013+', () => {
         desktop.Versicherte()
-        vpGrid.typevpName('Dynamic-Baustein Emilia')
+        vpGrid.typevpName('Dynamic-Baustein Emilia').type('{enter}')
         vpGrid.vpSelectedRow().trigger('dblclick')
         cy.wait(2000)
         dashboard.HomeBtn().click()
