@@ -8,7 +8,7 @@ export class VPGrid{
     }
 
     typevpName(value){
-        return cy.get('[akid="sStammQueryB-BRS_Versicherten_Name"]').type(value, {delay:20}).clear().type(value)
+        return cy.get('[akid="sStammQueryB-BRS_Versicherten_Name"]').type(value, {delay:1000}).clear()
     }
 
 }

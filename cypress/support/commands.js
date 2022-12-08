@@ -2,7 +2,6 @@ import 'cypress-file-upload';
 import 'Moment';
 import 'cypress-wait-until';
 require('cypress-wait-until')
-import 'cypress-if';
 import { Utility } from "../support/Utility";
 //import {choosenElem} from "../support/page_objects/elements";
 //import {deshboard} from "../support/page_objects/DesktopButtons";
