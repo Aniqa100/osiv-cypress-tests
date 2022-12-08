@@ -23,24 +23,94 @@ export class EntscheidDetails{
     Notizen(){
         return cy.get('[akid="EntscheidDetailBasisDatenForm-bem"]').find('textarea')
     }
+    Entscheid(){
+        return cy.get('[akid="EntscheidDetailBasisDatenForm-entscheidvalue"]')
+    }
+    Supertext(){
+        return cy.get('[akid="EntscheidDetailBasisDatenForm-supertextbez"]')
+    }
+    Entscheidtyp(){
+        return cy.get('[akid="EntscheidDetailBasisDatenForm-entscheidtypbez"]')
+    }
+    Gebrechen(){
+        return cy.get('[akid="EntscheidDetailBasisDatenForm-gebrechen"]')
+    }
+    Funktausfall(){
+        return cy.get('[akid="EntscheidDetailBasisDatenForm-funktausfall"]')
+    }
+    Beginn(){
+        return cy.get('[akid="EntscheidDetailBasisDatenForm-beginn_dat"]')
+    }
+    HEGrad(){
+        return cy.get('[akid="EntscheidDetailBasisDatenForm-hegrad"]')
+    }
+    HeGradab(){
+        return cy.get('[]')
+    }
+    SpeicherBtn(){
+        return cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidBearbeitenBlock"]')
+        .find('[title="Speichern"]')
+    }
+    BearbeitungEinleitenBtn(){
+        return cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidSpezifischeBlock"]')
+        .find('[title="Bearbeitung einleiten"]')
+    }
+    modalOkBtn(user){
+        cy.get('[class="dhxwin_active"][modalwindow="true"]').find('[akid="EntscheidBearbeitungEinleitenForm"]')
+        .then (basicdata =>{ 
+       // There was a problem, that assertion runs faster then the values show up on page that why I put cy.waitUntil here. Dunno if it's right, but works
+        cy.waitUntil(() =>cy.wrap(basicdata).get('[akid="EntscheidBearbeitungEinleitenForm-bearbeiter"]')
+        .find('[value="bearbeiter"]').invoke('text').then( text => {
+          expect(text).to.equal(user);
+  }))
+        })
+        cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]').click(); 
+    }
+    WarningConfirmBtn(){
+        return cy.waitUntil(()=> cy.get('[class="swal-modal warningModal"]').should('be.visible'))
+        .find('[class="swal-button swal-button--okreply default"]').contains('Ok')
+    }         
     DurchführungsstellenTab(){
         return cy.get('[akid="EntscheidDetailBasisFrameTabbar-Durchführungsstellen"]')
     }
-
     VersicherungenTab(){
         return cy.get('[akid="EntscheidDetailBasisFrameTabbar-Versicherungen"]')
     }
-    FreitexteTab(){ 
-        return cy.get('[akid="EntscheidDetailBasisFrameTabbar-Freitexte"]')
+    EntscheidSendungenTab(){
+        return cy.get('[akid="EntscheidDetailBasisFrameTabbar-Entscheid-Sendungen"]')
+    }
+    HilflosigkeitTab(){
+        return cy.get('[akid="EntscheidDetailBasisFrameTabbar-Hilflosigkeit"]')
      }
-    
+    SelectEntscheidValue(value){
+        cy.get('[akid="EntscheidDetailBasisDatenForm-entscheidtypbez"]').click()
+        cy.get('[class="select2-results__options"]').contains(value).click()
+    }
+    SelectSupertextValue(value){
+        cy.get('[akid="EntscheidDetailBasisDatenForm-supertextbez"]').click()
+        cy.get('[class="select2-results__options"]').contains(value).click()
+    }
+    SelectEntscheidtypValue(value){
+        cy.get('[akid="EntscheidDetailBasisDatenForm-entscheidtypbez"]').click()
+        cy.get('[class="select2-results__options"]').contains(value).click()
+    }
+    SelectGebrechenValue(value){
+        cy.get('[akid="EntscheidDetailBasisDatenForm-gebrechen"]').click()
+        cy.get('[class="select2-results__options"]').contains(value).click()
+    }
+    SelectFunktausfallValue(value){
+        cy.get('[akid="EntscheidDetailBasisDatenForm-funktausfall"]').click()
+        cy.get('[class="select2-results__options"]').contains(value).click()
+    }
+    SelectBeginnValue(today){
+        cy.get('[akid="EntscheidDetailBasisDatenForm-beginn_dat"] input').type(today).click();
+    }
     ValidateArbeitslisteValue(value){
-        cy.get('[akid="EntscheidDetailBasisDatenForm-arbeitslistevalue"]').find('input')
+        cy.get('[akid="EntscheidDetailBasisDatenForm-arbeitslistevalue"] input')
         .invoke('prop', 'value').should('contain', value)
     }
-
     ValidateBearbeiterValue(value){
-        cy.get('[akid="EntscheidDetailBasisDatenForm-bearbeiter"]').find('input')
+        cy.get('[akid="EntscheidDetailBasisDatenForm-bearbeiter"] input')
         .invoke('prop', 'value').should('contain', value)
     }
     ValidateLeistungsgruppeValue(value){
@@ -67,16 +137,19 @@ export class EntscheidDetails{
         cy.get('[akid="EntscheidDetailBasisDatenForm-bem"]').find('textarea')
         .invoke('prop', 'value').should('contain', value)
     }
-
     DurchführungsstellenList(){
         return cy.get('#active-panel .objbox').find('tr')
-        
     }
-
+    // Freitexte Tab
+    FreitexteTab(){ 
+        return cy.get('[akid="EntscheidDetailBasisFrameTabbar-Freitexte"]')
+     }
+    DiskutierenTab(){
+        return cy.get('[akid="EntscheidDetailBasisFrameTabbar-Diskutieren"]')
+       }
     VersicherungenList(text){
         cy.contains(text).parents()
         return cy.get('#active-panel .objbox').find('tr')
-
     }
     ValidateBausteinListHasValue(text){
         cy.get('[akid="BausteinlisteIndiVerfuegungBeiblattGrid"]').contains(text)
@@ -87,12 +160,56 @@ export class EntscheidDetails{
             cy.wrap($td).invoke('text').then(text =>{
                 expect(text).not.contain(value)
             })
-            });
-            
+            });      
     }
-
-
-
-
+    ValidateNotOrangeFreitexteColore(colore){
+        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Freitexte"]')
+        .should('not.have.css', 'border-left-color', colore);
+    }
+    ValidateOrangeFreitextColore(colore){
+        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Freitexte"]')
+        .should('have.css', 'border-left-color', colore);
+    }
+    ValidateOrangeBasicDataColore(colore){
+        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Basisdaten"]')
+        .should('have.css', 'border-left-color', colore);
+    }
+    ValidateNotOrangeBasicDataColore(colore){
+        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Basisdaten"]')
+        .should('not.have.css', 'border-left-color', colore);
+    }
+    ValidateOrangeDetailsTabColore(colore){
+            cy.get('[akid="EntscheidDetailWindowTabbar-Details"]')
+            .should('have.css', 'border-left-color', colore);
+    }
+    ValidateNotOrangeDurchführungsstellenTabColore(colore){
+        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Durchführungsstellen"]')
+            .should('not.have.css', 'border-left-color', colore);
+    }
+    ValidateOrangeHilflosigkeitTabColor(colore){
+        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Hilflosigkeit"]')
+        .should('have.css', 'border-left-color', colore); 
+    }
+    ValidateNotOrangeHilflosigkeitTabColore(colore){
+        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Hilflosigkeit"]')
+        .should('not.have.css', 'border-left-color', colore);
+    }
+    ValidateNotOrangeEntscheidSendungenColor(colore){
+        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Entscheid-Sendungen"]')
+            .should('not.have.css', 'border-left-color', colore);
+    }
+    ValidateNotOrangeDiskutierenColor(colore){
+        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Diskutieren"]')
+            .should('not.have.css', 'border-left-color', colore);
+    }
+    ValidateBitteWarningMsg(msg){
+        return cy.contains(msg)
+    }
+    ValidateShouldbefilledMsg(msg){
+        return cy.contains(msg)
+    }
+    ValidateNoShouldbefilledMsg(msg){
+        return cy.contains(msg).should('not.exist')
+    }
 }
 export const entscheidDetails = new EntscheidDetails()
