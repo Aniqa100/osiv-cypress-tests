@@ -238,7 +238,7 @@ export class AssertValues{
 
          GeneratedTextWithColore(date){
         cy.get('[id="cke_3_contents"]').find('[class="WordSection1"]').eq(1).find('[class="OSIVDAbsatz"]')
-         .find('span').should('include.text', 'Sehr geehrte Frau Eing')
+         .find('span').should('include.text', 'Sehr geehrte Frau Wait')
          .and('have.css', 'background').should('include', 'rgb(255, 255, 0)') 
        
         cy.get('[id="cke_3_contents"]').find('[class="WordSection1"]').eq(4).find('tbody')

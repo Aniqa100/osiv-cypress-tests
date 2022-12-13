@@ -20,7 +20,7 @@ describe('Test to copy Entscheid with all data ' + url,() => {
         loginPage.open(url)
     })
     it('Open Entscheid and copy', () => {
-        desktop.Versicherte()
+        desktop.Versicherte().click()
         vpGrid.typevpName('Wait Will').type('{enter}')
         vpGrid.vpSelectedRow().trigger('dblclick')
         //Here until I don't know how to handle new opened tab I put chain cy.wait -> homeBtn -> cy.wait
