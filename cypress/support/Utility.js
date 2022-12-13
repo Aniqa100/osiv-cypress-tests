@@ -7,7 +7,7 @@ export class Utility {
         else if (envi == 'NR')
             return "https://osiv-nrtest.ivnet.ch";
         else if (envi == 'FW')
-            return "https://fw-test2.ivnet.ch";
+            return "https://osiv-devcwe.ivnet.ch";
     }
     
       Entscheidrequest() {

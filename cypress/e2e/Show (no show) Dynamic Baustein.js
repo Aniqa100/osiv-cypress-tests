@@ -14,7 +14,7 @@ describe('Test to verify if Freetext tab shows or not Baustein 1013+ (Reisekoste
         loginPage.open(url)
     })
     it('Test verifies that Freetext tab shows Baustein 1013+', () => {
-        desktop.Versicherte()
+        desktop.Versicherte().click()
         vpGrid.typevpName('Dynamic-Baustein Emilia').type('{enter}')
         vpGrid.vpSelectedRow().trigger('dblclick')
         cy.wait(2000)
@@ -28,7 +28,7 @@ describe('Test to verify if Freetext tab shows or not Baustein 1013+ (Reisekoste
     
 })
      it('Test verifies that Freetext tab does NOT show Baustein 1013+ (Reisekosten Auflistung)', () => {
-        desktop.Versicherte()
+        desktop.Versicherte().click()
         vpGrid.typevpName('Dynamic-Baustein Emilia')
         vpGrid.vpSelectedRow().trigger('dblclick')
         cy.wait(2000)

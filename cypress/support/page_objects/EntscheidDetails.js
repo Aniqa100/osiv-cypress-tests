@@ -140,13 +140,15 @@ export class EntscheidDetails{
     DurchführungsstellenList(){
         return cy.get('#active-panel .objbox').find('tr')
     }
-    // Freitexte Tab
     FreitexteTab(){ 
         return cy.get('[akid="EntscheidDetailBasisFrameTabbar-Freitexte"]')
      }
+    VisierenTab(){
+       return cy.get('[akid="EntscheidDetailBasisFrameTabbar-Visieren"]')
+    }
     DiskutierenTab(){
         return cy.get('[akid="EntscheidDetailBasisFrameTabbar-Diskutieren"]')
-       }
+    }
     VersicherungenList(text){
         cy.contains(text).parents()
         return cy.get('#active-panel .objbox').find('tr')
@@ -162,45 +164,57 @@ export class EntscheidDetails{
             })
             });      
     }
-    ValidateNotOrangeFreitexteColore(colore){
+    ValidateNotOrangeFreitexteColor(color){
         cy.get('[akid="EntscheidDetailBasisFrameTabbar-Freitexte"]')
-        .should('not.have.css', 'border-left-color', colore);
+        .should('not.have.css', 'border-left-color', color);
     }
-    ValidateOrangeFreitextColore(colore){
+    ValidateOrangeFreitextColor(color){
         cy.get('[akid="EntscheidDetailBasisFrameTabbar-Freitexte"]')
-        .should('have.css', 'border-left-color', colore);
+        .should('have.css', 'border-left-color', color);
     }
-    ValidateOrangeBasicDataColore(colore){
+    ValidateOrangeBasicDataColor(color){
         cy.get('[akid="EntscheidDetailBasisFrameTabbar-Basisdaten"]')
-        .should('have.css', 'border-left-color', colore);
+        .should('have.css', 'border-left-color', color);
     }
-    ValidateNotOrangeBasicDataColore(colore){
+    ValidateNotOrangeBasicDataColor(color){
         cy.get('[akid="EntscheidDetailBasisFrameTabbar-Basisdaten"]')
-        .should('not.have.css', 'border-left-color', colore);
+        .should('not.have.css', 'border-left-color', color);
     }
-    ValidateOrangeDetailsTabColore(colore){
+    ValidateOrangeDetailsTabColor(color){
             cy.get('[akid="EntscheidDetailWindowTabbar-Details"]')
-            .should('have.css', 'border-left-color', colore);
+            .should('have.css', 'border-left-color', color);
     }
-    ValidateNotOrangeDurchführungsstellenTabColore(colore){
+    ValidateNotOrangeDurchführungsstellenTabColor(color){
         cy.get('[akid="EntscheidDetailBasisFrameTabbar-Durchführungsstellen"]')
-            .should('not.have.css', 'border-left-color', colore);
+            .should('not.have.css', 'border-left-color', color);
     }
-    ValidateOrangeHilflosigkeitTabColor(colore){
+    ValidateOrangeHilflosigkeitTabColor(color){
         cy.get('[akid="EntscheidDetailBasisFrameTabbar-Hilflosigkeit"]')
-        .should('have.css', 'border-left-color', colore); 
+        .should('have.css', 'border-left-color', color); 
     }
-    ValidateNotOrangeHilflosigkeitTabColore(colore){
+    ValidateNotOrangeHilflosigkeitTabColor(color){
         cy.get('[akid="EntscheidDetailBasisFrameTabbar-Hilflosigkeit"]')
-        .should('not.have.css', 'border-left-color', colore);
+        .should('not.have.css', 'border-left-color', color);
     }
-    ValidateNotOrangeEntscheidSendungenColor(colore){
+    ValidateOrangeEntscheidSendungenColor(color){
         cy.get('[akid="EntscheidDetailBasisFrameTabbar-Entscheid-Sendungen"]')
-            .should('not.have.css', 'border-left-color', colore);
+            .should('have.css', 'border-left-color', color);
     }
-    ValidateNotOrangeDiskutierenColor(colore){
+    ValidateNotOrangeEntscheidSendungenColor(color){
+        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Entscheid-Sendungen"]')
+            .should('not.have.css', 'border-left-color', color);
+    }
+    ValidateNotOrangeDiskutierenColor(color){
         cy.get('[akid="EntscheidDetailBasisFrameTabbar-Diskutieren"]')
-            .should('not.have.css', 'border-left-color', colore);
+            .should('not.have.css', 'border-left-color', color);
+    }
+    VerifyOrangeVisierenColor(){
+        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Visieren"]')
+        .should('have.css', 'border-left-color', 'rgb(255, 165, 0)'); 
+    }
+    VerifyNotOrangeVisierenColor(){
+        cy.get('[akid="EntscheidDetailBasisFrameTabbar-Visieren"]')
+        .should('not.have.css', 'border-left-color', 'rgb(255, 165, 0)'); 
     }
     ValidateBitteWarningMsg(msg){
         return cy.contains(msg)
@@ -210,6 +224,16 @@ export class EntscheidDetails{
     }
     ValidateNoShouldbefilledMsg(msg){
         return cy.contains(msg).should('not.exist')
+    }
+    VerifySupertextfieldisReadOnly(){
+        return cy.get('[akid="EntscheidDetailBasisDatenForm-supertextbez"]').parent().should('have.class', 'akReadOnlyDynselect')
+        /* .find('[id="select2-dynSelect_SupertextBez_e0bf9690-7100-4f8e-a314-9d0204e5e813_1670828151606-container"]')
+        .contains('aria-readonly', value) */
+    }
+    VerifySupertextfieldisNOTReadOnly(){
+        return cy.get('[akid="EntscheidDetailBasisDatenForm-supertextbez"]').parent().should('not.have.class', 'akReadOnlyDynselect')
+        /* .find('[id="select2-dynSelect_SupertextBez_e0bf9690-7100-4f8e-a314-9d0204e5e813_1670828151606-container"]')
+        .contains('aria-readonly', value) */
     }
 }
 export const entscheidDetails = new EntscheidDetails()

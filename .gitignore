@@ -5,6 +5,7 @@ logs
 *.makenzi
 *.vscode
 *.Entscheid_Copy_2
+*.node_modules
 
 
 # Runtime data
