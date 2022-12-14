@@ -18,9 +18,9 @@ describe('Test to create protocol, softly remove it, undo it and again remove it
       desktop.Versicherte().click()
       vpGrid.vpName().type('OConnor Gregory').type('{enter}')
       vpGrid.vpSelectedRow().trigger('dblclick')
-      cy.wait(2000)
-      dashboard.HomeBtn().click()
       cy.wait(3000)
+      dashboard.HomeBtn().click()
+      cy.wait(4000)
       //cy.wait I used here cause the element Protocol tab exists on page but it is not clickable
       tabTo.Protocol();
        //Creating a new protocol 
