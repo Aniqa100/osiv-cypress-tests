@@ -1,4 +1,4 @@
-const { navigateTo } = require( "../support/page_objects/navigationPage" );
+import navigateTo from "../support/page_objects/navigationPage";
 
 describe( "First test", () => {
 

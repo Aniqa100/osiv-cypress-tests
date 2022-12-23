@@ -1,3 +1,4 @@
+// @TODO check if deprecated
 function getFirstDayOfMonth( month, year ) {
   return new Date( 1, month, year );
 }

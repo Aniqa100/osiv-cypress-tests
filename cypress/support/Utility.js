@@ -7,8 +7,6 @@ export default {
     if ( envi === "FR" ) return "https://osiv-frtest.ivnet.ch";
     if ( envi === "NR" ) return "https://osiv-nrtest.ivnet.ch";
     if ( envi === "FW" ) return "https://osiv-devcwe.ivnet.ch";
-
-    return "https://osiv-frtest.ivnet.ch";
   },
 
   Entscheidrequest() {

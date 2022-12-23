@@ -1,3 +1,4 @@
+// @TODO check if deprecated
 export class elements {
   UserName() {
     cy.waitUntil( () => cy.get( '[class="akUserInfo"]' ).should( "be.visible" ) );

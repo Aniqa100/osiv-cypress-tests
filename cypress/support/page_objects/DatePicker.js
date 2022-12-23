@@ -1,3 +1,4 @@
+// @TODO check if deprecated
 export class DatePicker {
   forBegin() {
     cy.get( '[akid="EntscheidDetailBasisDatenForm-beginn_dat"]' ).find( "input" ).type( today ).click();

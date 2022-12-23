@@ -1,3 +1,4 @@
+// @TODO check if deprecated
 export class EntscheidEditor {
   Leistungsgruppe() {
     return cy.get( '[akid="EntscheidDetailBasisDatenForm-leistungsgruppe"]' );

@@ -1,3 +1,4 @@
+// @TODO check if deprecated
 export class Tables {
   firstSelectedRow() {
     cy.waitUntil( () => cy.get( '[class=" ev_material rowselected"]' ).should( "be.visible" ) );

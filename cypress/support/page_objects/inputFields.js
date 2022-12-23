@@ -1,5 +1,4 @@
-
-
+// @TODO check if deprecated
 export class inputField {
   NameAndSurename( name, surename ) {
     cy.get( '[class="dhxwin_active"][modalwindow="true"]' ).find( '[akid="sAdresseDetailOverviewForm-nachname"]' )

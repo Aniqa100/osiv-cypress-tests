@@ -1,4 +1,6 @@
+// @TODO check if deprecated
 export class AssertValues {
+
   EntscheidCreation( gesuch, ereignis, baraich, user, status, group, code, msg ) {
 
     cy.get( '[class="dhxwin_active"][modalwindow="true"]' )
@@ -37,6 +39,7 @@ export class AssertValues {
             expect( text ).to.equal( code );
           } );
       } );
+
     cy.get( '[class="dhxwin_active"][modalwindow="true"]' )
       .find( '[akid="CreateEntscheidForm-createentscheidfieldset"]' )
       .then( data => {
@@ -85,10 +88,7 @@ export class AssertValues {
             cy.wrap( notes ).invoke( "prop", "value" ).should( "contain", msg );
           } );
       } );
-
     } );
-
-
   }
 
   DetailsTabColor() {

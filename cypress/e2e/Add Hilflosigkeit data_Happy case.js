@@ -1,11 +1,11 @@
-import { getBaseUrl }          from "../support/utility";
-import loginPage               from "../support/page_objects/LoginPage";
-import desktop                 from "../support/page_objects/Desktop";
-import entGrid                 from "../support/page_objects/ENTGrid";
-import dashboard               from "../support/page_objects/Dashboard";
-import dateHelper              from "../support/DateHelper";
-import { entHilflosigkeitTab } from "../support/page_objects/EntscheidHilflosigkeitTab";
-import entscheidDetails        from "../support/page_objects/EntscheidDetails";
+import { getBaseUrl }      from "../support/utility";
+import loginPage           from "../support/page_objects/LoginPage";
+import desktop             from "../support/page_objects/Desktop";
+import entGrid             from "../support/page_objects/ENTGrid";
+import dashboard           from "../support/page_objects/Dashboard";
+import dateHelper          from "../support/DateHelper";
+import entHilflosigkeitTab from "../support/page_objects/EntscheidHilflosigkeitTab";
+import entscheidDetails    from "../support/page_objects/EntscheidDetails";
 
 const url               = getBaseUrl();
 const today             = dateHelper.getCurrentDate();

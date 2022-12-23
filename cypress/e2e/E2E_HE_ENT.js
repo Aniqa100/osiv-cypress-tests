@@ -1,20 +1,20 @@
-import { getBaseUrl } from "../support/utility";
-import pressButton from "../support/page_objects/Buttons";
-import loginPage from "../support/page_objects/LoginPage";
-import desktop from "../support/page_objects/Desktop";
-import vpGrid from "../support/page_objects/VPGrid";
-import dateHelper from "../support/DateHelper";
-import entscheidDetails from "../support/page_objects/EntscheidDetails";
-import { entHilflosigkeitTab } from "../support/page_objects/EntscheidHilflosigkeitTab";
-import dashboard from "../support/page_objects/Dashboard";
-import vpDetails from "../support/page_objects/VPDetails";
-import vpEntscheidGrid from "../support/page_objects/VPEntscheidGrid";
-import entscheidNew from "../support/page_objects/EntscheidNew";
-import { entscheidFreitexteTab } from "../support/page_objects/EntscheidFreitexteTab";
-import { entscheidEntscheidSendungenTab } from "../support/page_objects/EntscheidEntscheidSendungenTab";
-import { sendungenDetails } from "../support/page_objects/SendungenDetails";
-import { sendungenDruckundVersand } from "../support/page_objects/SendungenDruckundVersand";
-import { entscheidSendungenTab } from "../support/page_objects/EntscheidSendungenTab";
+import { getBaseUrl }                 from "../support/utility";
+import pressButton                    from "../support/page_objects/Buttons";
+import loginPage                      from "../support/page_objects/LoginPage";
+import desktop                        from "../support/page_objects/Desktop";
+import vpGrid                         from "../support/page_objects/VPGrid";
+import dateHelper                     from "../support/DateHelper";
+import entscheidDetails               from "../support/page_objects/EntscheidDetails";
+import entHilflosigkeitTab            from "../support/page_objects/EntscheidHilflosigkeitTab";
+import dashboard                      from "../support/page_objects/Dashboard";
+import vpDetails                      from "../support/page_objects/VPDetails";
+import vpEntscheidGrid                from "../support/page_objects/VPEntscheidGrid";
+import entscheidNew                   from "../support/page_objects/EntscheidNew";
+import entscheidFreitexteTab          from "../support/page_objects/EntscheidFreitexteTab";
+import entscheidEntscheidSendungenTab from "../support/page_objects/EntscheidEntscheidSendungenTab";
+import sendungenDetails               from "../support/page_objects/SendungenDetails";
+import sendungenDruckundVersand       from "../support/page_objects/SendungenDruckundVersand";
+import entscheidSendungenTab          from "../support/page_objects/EntscheidSendungenTab";
 
 //Call getBaseUrl() to get environment specific url value
 const url               = getBaseUrl();
