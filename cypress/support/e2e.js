@@ -14,14 +14,14 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands';
-import 'cypress-file-upload';
-import 'cypress-wait-until';
+import "./commands";
+import "cypress-file-upload";
+import "cypress-wait-until";
 
 //import 'Moment';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
-import 'cypress-wait-until';
-require('cypress-wait-until')
-require("cypress-plugin-tab");
+import "cypress-wait-until";
+require( "cypress-wait-until" );
+require( "cypress-plugin-tab" );

@@ -1,4 +1,5 @@
-export class SENGrid{
-    
+export class SENGrid {
+
 }
-export const senGrid = new SENGrid()
+
+export const senGrid = new SENGrid();
