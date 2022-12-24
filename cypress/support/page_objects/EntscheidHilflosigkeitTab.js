@@ -1,13 +1,9 @@
-export class EntscheidHilflosigkeitTab{
+import { CommonButtons } from "./CommonButtons.js";
+export class EntscheidHilflosigkeitTab extends CommonButtons{
 
     SpeichernBtn(){
         return cy.get('[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidHilflosigkeitBlock"]')
         .find('[title="Speichern"]')
-    }
-
-    ConfirmBtn(){
-        return cy.get('[class="swal-modal warningModal"]')
-        .find('[class="swal-button swal-button--replyok"]').contains('Ok')
     }
 
     SelectArtderInvaliditätValue(value){
@@ -18,7 +14,6 @@ export class EntscheidHilflosigkeitTab{
     SelectAusgleichskasseValue(value){
         cy.get('[akid="EntscheidHilflosigkeitForm-akbez"]').click()
         cy.get('[class="select2-results__options"]').contains(value).click()
-         
       } 
       
     SelectAufenthaltbezValue(value){

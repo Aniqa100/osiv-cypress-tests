@@ -10,7 +10,7 @@ export class Desktop{
         
     }
     Adressen(){
-        return cy.contains('Adressen').click().get('[id="vsm-link-a715bf8f-d13e-f8b8-3f14-f962a8e505bd"]')
+        return cy.contains('Adressen').get('[id="vsm-link-a715bf8f-d13e-f8b8-3f14-f962a8e505bd"]')
     }
     Entscheid(){
         return cy.contains('Entscheid')

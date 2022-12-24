@@ -1,4 +1,5 @@
-export class AdressNew{
+import { CommonButtons } from "./CommonButtons.js";
+export class AdressNew extends CommonButtons{
     AdressType(){
         return cy.get('[class="dhxwin_active"][modalwindow="true"]')
       .find('[akid="sAdresseDetailOverviewForm-adresstyp"]')
@@ -15,14 +16,14 @@ export class AdressNew{
         return cy.get('[class="dhxwin_active"][modalwindow="true"]')
         .find('[akid="sAdresseDetailOverviewForm-but_kurzadresse_anpassen"]')
     }
-    ModalOkBtn(){
+    /* ModalOkBtn(){
         return cy.get('[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]')
 
-    }
-    ConfirmBtn(){
+    } */
+    /* ConfirmBtn(){
         return cy.get('[class="swal-modal warningModal"]').find('[class="swal-button swal-button--replyok"]')
         .contains('Ok')
-    }
+    } */
 
 
     SelectAdressTypeValue(value){

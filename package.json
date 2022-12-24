@@ -2,12 +2,12 @@
   "name": "cypress-tests",
   "scripts": {
     "test": "test",
-    "cypress:open": "cypress open",
+    "cypress:open": "npx cypress open",
     "cypress:runDefault": "cypress run --record --key 76d7db74-4a96-437c-b64c-7f8462e45c4b",
     "cypress:runChrome": "cypress run --browser chrome --spec cypress/e2e/newAdress.js",
     "cypress:runChromeHeadless": "cypress run --browser chrome --spec cypress/e2e/newAdress.js",
-    "cy:run:fr": "cypress run --env FR",
-    "cy:run:nr": "cypress run --env NR"
+    "cy:run:fr": "npx cypress run --env FR",
+    "cy:run:nr": "npx cypress run --env NR"
   },
   "devDependencies": {
     "@babel/code-frame": "^7.18.6",
