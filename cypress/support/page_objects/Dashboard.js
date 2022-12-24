@@ -1,4 +1,3 @@
-//import {dashboard} from "../support/page_objects/Dashboard";
 export class Dashboard{
     UserInfo() {
         return cy.get('[class="akUserInfo"]')

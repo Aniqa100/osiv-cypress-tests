@@ -1,5 +1,4 @@
 import { Utility } from "../support/Utility"
-import 'cypress-wait-until';
 import { desktop } from "../support/page_objects/Desktop";
 import { loginPage } from "../support/page_objects/LoginPage";
 import { vpGrid } from "../support/page_objects/VPGrid";

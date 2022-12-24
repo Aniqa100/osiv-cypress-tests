@@ -6,6 +6,8 @@ logs
 *.vscode
 *.Entscheid_Copy_2
 *.node_modules
+*.videos
+
 
 
 # Runtime data
