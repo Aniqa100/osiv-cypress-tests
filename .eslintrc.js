@@ -2,15 +2,14 @@ module.exports = {
   parserOptions: {
     ecmaVersion       : 2020,
     requireConfigFile : false,
-    project           : "./ClientLogic/tsconfig.json",
     sourceType        : "module"
   },
   env: {
-    es6              : true,
-    node             : true,
-    browser          : true,
-    commonjs         : true,
-    "cypress/globals": true
+    es6               : true,
+    node              : true,
+    browser           : true,
+    commonjs          : true,
+    "cypress/globals" : true
   },
   plugins: [
     "cypress"
