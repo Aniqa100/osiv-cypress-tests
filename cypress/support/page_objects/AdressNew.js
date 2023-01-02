@@ -1,4 +1,4 @@
-import * as commonButtons from "./CommonButtons,js";
+import * as commonButtons from "./CommonButtons.js";
 
 export default {
 
