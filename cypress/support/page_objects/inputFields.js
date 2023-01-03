@@ -28,9 +28,7 @@ export class inputField {
     cy.get( '[akid="BegruendungHTMLTextForm"]' ).find( ".cke_wysiwyg_div" ).type( text );
   }
 
-  NewProtocolFormtext( text ) {
-    cy.get( '[akid="sProtokollDetailOverviewForm"]' ).find( ".cke_wysiwyg_div" ).type( text );
-  }
+  
 
   Betrifft( text ) {
     cy.waitUntil( () => cy.get( '[akid="FreidefvariableForm-Betrifft"]' ).should( "be.visible" ) );

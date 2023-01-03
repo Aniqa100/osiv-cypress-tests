@@ -1,10 +1,7 @@
 import "cypress-file-upload";
 import "Moment";
 import "cypress-wait-until";
-// require('cypress-wait-until')
 import { getBaseUrl } from "./utility";
-//import {choosenElem} from "../support/page_objects/elements";
-//import {deshboard} from "../support/page_objects/DesktopButtons";
 import dashboard from "../support/page_objects/Dashboard";
 import loginPage from "../support/page_objects/LoginPage";
 

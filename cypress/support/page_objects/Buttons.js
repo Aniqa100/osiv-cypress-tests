@@ -5,11 +5,7 @@ export default {
     cy.get( '[class="dhxwin_active"][modalwindow="true"]' ).find( '[akid="sAdresseDetailOverviewForm-but_kurzadresse_anpassen"]' ).click();
   },
 
-  modalOk() {
-    cy.waitUntil( () => cy.get( '[class="dhx_toolbar_btn dhxtoolbar_btn_def"]' ).should( "be.visible" ) );
-    cy.get( '[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]' ).click();
-    cy.wait( 1000 );
-  },
+
 
   modalOkWithWait( user ) {
     //the value for

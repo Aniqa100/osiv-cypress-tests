@@ -1,3 +1,4 @@
+//https://osiv.testrail.net/index.php?/cases/view/47707
 import { getBaseUrl }   from "../support/utility";
 import loginPage        from "../support/page_objects/LoginPage";
 import desktop          from "../support/page_objects/Desktop";
@@ -18,7 +19,7 @@ describe( `Test to verify if Freetext tab shows or not Baustein 1013+ (Reisekost
     desktop.Versicherte().click();
     vpGrid.typevpName( "Dynamic-Baustein Emilia" ).type( "{enter}" );
     vpGrid.vpSelectedRow().trigger( "dblclick" );
-    cy.wait( 2000 );
+    cy.wait( 3000 );
     dashboard.HomeBtn().click();
     cy.wait( 3000 );
     vpDetails.Entscheide().click();
