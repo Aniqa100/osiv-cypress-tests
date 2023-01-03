@@ -1,21 +1,18 @@
-export class Utility {
-    
-    getBaseUrl() {
-        let envi = Cypress.env('ENV'); //Get the value of evnironment variable i.e ENV
-        if (envi == 'FR') //Check the value
-            return "https://osiv-frtest.ivnet.ch"; //return desired url
-        else if (envi == 'NR')
-            return "https://osiv-nrtest.ivnet.ch";
-        else if (envi == 'FW')
-            return "https://osiv-devcwe.ivnet.ch";
-    }
-    
-      Entscheidrequest() {
-        let envi = Cypress.env('ENV');
-        if (envi == 'FR') //Check the value
-            return 'FRCopiedinOsiv5';
-        else if (envi == 'NR')
-            return 'NRCopiedinOsiv5';
+export default {
+  getBaseUrl() {
+    //Get the value of evnironment variable i.e FR, NR, FW
+    const envi = Cypress.env( "ENV" );
 
-     }  
-}
+    //Check the value and return desired url
+    if ( envi === "FR" ) return "https://osiv-frtest.ivnet.ch";
+    if ( envi === "NR" ) return "https://osiv-nrtest.ivnet.ch";
+    if ( envi === "FW" ) return "https://osiv-devcwe.ivnet.ch";
+  },
+
+  Entscheidrequest() {
+    const envi = Cypress.env( "ENV" );
+    //Check the value
+    if ( envi === "FR" ) return "FRCopiedinOsiv5";
+    if ( envi === "NR" ) return "NRCopiedinOsiv5";
+  }
+};

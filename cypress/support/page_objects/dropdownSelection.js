@@ -1,91 +1,89 @@
 
-export class DropdownSelection{
+export default {
 
+  // --------------------------------
   //Adress dropdowns
-    adressTypeValue(value){
-    cy.waitUntil(() => cy.contains('Neue Adresse erstellen'))
-    cy.get('[class="dhxwin_active"][modalwindow="true"]')
-      .find('[akid="sAdresseDetailOverviewForm-adresstyp"]').click()
-    cy.get('[class="select2-results__options"]').contains(value).click()
+  // --------------------------------
+  adressTypeValue( value ) {
+    cy.waitUntil( () => cy.contains( "Neue Adresse erstellen" ) );
+    cy.get( '[class="dhxwin_active"][modalwindow="true"]' )
+      .find( '[akid="sAdresseDetailOverviewForm-adresstyp"]' ).click();
+    cy.get( '[class="select2-results__options"]' ).contains( value ).click();
+  },
 
-    }
+  languageTypeValue( value ) {
+    cy.get( '[class="dhxwin_active"][modalwindow="true"]' )
+      .find( '[akid="sAdresseDetailOverviewForm-sprache_bez"]' ).click();
+    cy.get( '[class="select2-results__options"]' ).contains( value ).click();
+  },
 
-    languageTypeValue(value){
+  salutationValue( value ) {
+    cy.get( '[class="dhxwin_active"][modalwindow="true"]' )
+      .find( '[akid="sAdresseDetailOverviewForm-anredeartbez"]' ).click( "top" );
+    cy.get( '[class="select2-results__options"]' ).contains( value ).click();
+  },
 
-    cy.get('[class="dhxwin_active"][modalwindow="true"]')
-      .find('[akid="sAdresseDetailOverviewForm-sprache_bez"]').click()
-    cy.get('[class="select2-results__options"]').contains(value).click();
-    }
+  titleValue( value ) {
+    cy.get( '[class="dhxwin_active"][modalwindow="true"]' )
+      .find( '[akid="sAdresseDetailOverviewForm-titel_adresstitel"]' ).click( "top" );
+    cy.get( '[class="select2-results__options"]' ).contains( value ).click();
+  },
 
-    salutationValue(value){
-     
-    cy.get('[class="dhxwin_active"][modalwindow="true"]')
-      .find('[akid="sAdresseDetailOverviewForm-anredeartbez"]').click('top')
-    cy.get('[class="select2-results__options"]').contains(value).click()
-    
-    }
+  postalcodeValue() {
+    cy.get( '[class="dhxwin_active"][modalwindow="true"]' ).find( '[akid="sAdresseDetailOverviewForm-postleitzahl"]' ).click()
+      .get( '[class="select2-search select2-search--dropdown"]' ).type( "1000" )
+      .get( '[class="select2-results__options"]' ).find( '[akid="postleitzahl-A52:ce043a166bb566939c1497ce242b3e34"]' ).click();
+  },
 
-    titleValue(value){
-    cy.get('[class="dhxwin_active"][modalwindow="true"]')
-      .find('[akid="sAdresseDetailOverviewForm-titel_adresstitel"]').click('top')
-    cy.get('[class="select2-results__options"]').contains(value).click()
-    }
+  // --------------------------------
+  //Entscheid dropdowns
+  // --------------------------------
+  verfahrenbezVaue( value ) {
+    cy.get( '[akid="EntscheidHilflosigkeitForm-verfahrenbez"]' ).click()
+      .get( '[class="select2-search select2-search--dropdown"]' ).type( value ).wait( 500 )
+      .get( '[class="select2-results__options"]' ).click();
+  },
 
-    postalcodeValue(){
+  akbezValue( value ) {
+    cy.get( '[akid="EntscheidHilflosigkeitForm-akbez"]' ).click()
+      .get( '[class="select2-search select2-search--dropdown"]' ).type( value ).wait( 500 )
+      .get( '[class="select2-results__options"]' ).click();
 
-    cy.get('[class="dhxwin_active"][modalwindow="true"]').find('[akid="sAdresseDetailOverviewForm-postleitzahl"]').click()
-      .get('[class="select2-search select2-search--dropdown"]').type('1000')
-      .get('[class="select2-results__options"]').find('[akid="postleitzahl-A52:ce043a166bb566939c1497ce242b3e34"]').click();
+  },
 
-    }
-    //Entscheid dropdowns
+  aufenthaltbezValue( value ) {
+    cy.get( '[akid="EntscheidHilflosigkeitForm-aufenthaltbez"]' ).click()
+      .get( '[class="select2-search select2-search--dropdown"]' ).type( value ).wait( 500 )
+      .get( '[class="select2-results__options"]' ).click();
+  },
 
-    verfahrenbezVaue(value){
-      cy.get('[akid="EntscheidHilflosigkeitForm-verfahrenbez"]').click()
-       .get('[class="select2-search select2-search--dropdown"]').type(value).wait(500)
-       .get('[class="select2-results__options"]').click();
-    }
+  DruckerAuswählen( value ) {
+    cy.get( '[akid="DruckauftragDetailForm-drucker_benutzer"]' ).click()
+      .get( '[class="select2-search select2-search--dropdown"]' ).type( value ).wait( 500 )
+      .get( '[class="select2-results__options"]' ).click();
+  },
 
-    akbezValue(value){
-      cy.get('[akid="EntscheidHilflosigkeitForm-akbez"]').click()
-        .get('[class="select2-search select2-search--dropdown"]').type(value).wait(500)
-        .get('[class="select2-results__options"]').click();
-       
-    }
+  // --------------------------------
+  // Protocol dropdowns
+  // --------------------------------
+  NewProtocoltype( type ) {
+    cy.waitUntil( () => cy.get( '[class="dhxwin_active"][modalwindow="true"]' ).should( "be.visible" ) );
+    cy.get( '[akid="sProtokollDetailOverviewForm"]' ).find( '[akid="sProtokollDetailOverviewForm-protokolltypbez"]' ).click()
+      .type( type ).wait( 500 ).get( '[class="select2-results__options"]' ).click();
+  },
 
-    aufenthaltbezValue(value){
-      cy.get('[akid="EntscheidHilflosigkeitForm-aufenthaltbez"]').click()
-        .get('[class="select2-search select2-search--dropdown"]').type(value).wait(500)
-        .get('[class="select2-results__options"]').click();
-    }
+  InPapierkorbForm( value ) {
+    cy.get( '[akid="sProtokollInPapierkorbForm-geloeschtgrund"]' ).click();
+    cy.get( '[class="select2-results__options"]' ).contains( value ).click();
+  },
 
-    DruckerAuswählen(value){
-      cy.get('[akid="DruckauftragDetailForm-drucker_benutzer"]').click()
-        .get('[class="select2-search select2-search--dropdown"]').type(value).wait(500)
-        .get('[class="select2-results__options"]').click();
-    }
-
-    // Protocol dropdowns
-    NewProtocoltype(type){
-      cy.waitUntil(() => cy.get('[class="dhxwin_active"][modalwindow="true"]').should('be.visible'))
-      cy.get('[akid="sProtokollDetailOverviewForm"]').find('[akid="sProtokollDetailOverviewForm-protokolltypbez"]').click()
-        .type(type).wait(500).get('[class="select2-results__options"]').click()   
-         
-    }
-    InPapierkorbForm(value){
-      cy.get('[akid="sProtokollInPapierkorbForm-geloeschtgrund"]').click()
-      cy.get('[class="select2-results__options"]').contains(value).click()
-    }
-    
-    // Entscheid Grid search panel
-    LeistungsgruppeSearchField(value){
-    cy.waitUntil(() => cy.get('[akid="EntscheidQueryStammGrid-Leistungsgruppe"]').should('be.visible'))
-        cy.get('[akid="EntscheidQueryStammGrid-Leistungsgruppe"]').click()
-        cy.get('[class="select2-results__options"]').contains(value).click()
-    }
-}
-
-export const dropdownValue = new DropdownSelection()
-
-
+  // --------------------------------
+  // Entscheid Grid search panel
+  // --------------------------------
+  LeistungsgruppeSearchField( value ) {
+    cy.waitUntil( () => cy.get( '[akid="EntscheidQueryStammGrid-Leistungsgruppe"]' ).should( "be.visible" ) );
+    cy.get( '[akid="EntscheidQueryStammGrid-Leistungsgruppe"]' ).click();
+    cy.get( '[class="select2-results__options"]' ).contains( value ).click();
+  }
+};
 

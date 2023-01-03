@@ -4,10 +4,10 @@
     "test": "test",
     "cypress:open": "npx cypress open",
     "cypress:runDefault": "cypress run --record --key 76d7db74-4a96-437c-b64c-7f8462e45c4b",
-    "cypress:runChrome": "cypress run --browser chrome --spec cypress/e2e/newAdress.js",
+    "cypress:runChrome": "cypress run --browser chrome --spec cypress/e2e/newAdress.js --headed",
     "cypress:runChromeHeadless": "cypress run --browser chrome --spec cypress/e2e/newAdress.js",
-    "cy:run:fr": "npx cypress run --env FR",
-    "cy:run:nr": "npx cypress run --env NR"
+    "cy:run:fr": "npx cypress run --env ENV=FR",
+    "cy:run:nr": "npx cypress run --env ENV=NR"
   },
   "devDependencies": {
     "@babel/code-frame": "^7.18.6",
@@ -17,6 +17,8 @@
     "cypress-file-upload": "^5.0.8",
     "cypress-plugin-tab": "^1.0.5",
     "cypress-wait-until": "^1.7.2",
+    "eslint": "^8.30.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "typescript": "^4.8.4"
   },
   "dependencies": {

@@ -1,12 +1,12 @@
-import 'cypress-file-upload';
-import 'Moment';
-import 'cypress-wait-until';
-require('cypress-wait-until')
-import { Utility } from "../support/Utility";
+import "cypress-file-upload";
+import "Moment";
+import "cypress-wait-until";
+// require('cypress-wait-until')
+import { getBaseUrl } from "./utility";
 //import {choosenElem} from "../support/page_objects/elements";
 //import {deshboard} from "../support/page_objects/DesktopButtons";
-import {dashboard} from "../support/page_objects/Dashboard";
-import {loginPage} from "../support/page_objects/LoginPage";
+import dashboard from "../support/page_objects/Dashboard";
+import loginPage from "../support/page_objects/LoginPage";
 
 // ***********************************************
 // This example commands.js shows you how to
@@ -21,34 +21,32 @@ import {loginPage} from "../support/page_objects/LoginPage";
 //
 
 //Call getBaseUrl() to get environment specific url value
-const url = new Utility().getBaseUrl();
+const url = getBaseUrl();
 
-Cypress.Commands.add('UILogin', (username, password) => {
-  loginPage.open(url)
+Cypress.Commands.add( "UILogin", ( username, password ) => {
+  loginPage.open( url );
 
   // cy.get('[name="login_name"]').should('be.visible').type(user.email) - if I use this chain of command,
-  // cypress might miss the several first characters because of typing too fast, or there is another reason 
-  cy.waitUntil(() => loginPage.userName().should('be.visible'))
-  loginPage.userName().wait(0).focus().clear().type(username)
-  loginPage.password().type(password + '{enter}')
-  })
+  // cypress might miss the several first characters because of typing too fast, or there is another reason
+  cy.waitUntil( () => loginPage.userName().should( "be.visible" ) );
+  loginPage.userName().wait( 0 ).focus().clear().type( username );
+  loginPage.password().type( `${password  }{enter}` );
+} );
 
 
-  Cypress.Commands.add('UILoginWithSession', (username, password) => {
-    cy.session([username, password], ()=> {
-      loginPage.open(url)
-      cy.waitUntil(() => loginPage.userName().should('be.visible'))
-      loginPage.userName().wait(0).focus().clear().type(username)
-      loginPage.password().type(password + '{enter}')
-      dashboard.UserInfo().invoke('text').then( text => {
-        expect(text).to.equal(Cypress.env("username"))
-      })
-    },
-         ) 
-     
-   })
+Cypress.Commands.add( "UILoginWithSession", ( username, password ) => {
+  cy.session( [username, password], () => {
+    loginPage.open( url );
+    cy.waitUntil( () => loginPage.userName().should( "be.visible" ) );
+    loginPage.userName().wait( 0 ).focus().clear().type( username );
+    loginPage.password().type( `${password  }{enter}` );
+    dashboard.UserInfo().invoke( "text" ).then( text => {
+      expect( text ).to.equal( Cypress.env( "username" ) );
+    } );
+  } );
+} );
 
-  /* Cypress.Commands.add("loginViaAPI", (uname, pwd) => {
+/* Cypress.Commands.add("loginViaAPI", (uname, pwd) => {
          cy.request({
           method: "POST",
           url: Cypress.env("POSTMAN_MOCK_SERVER_URL") + "static/auth/j_spring_security_check?_ts=166849602-3054964117-1",
@@ -59,8 +57,6 @@ Cypress.Commands.add('UILogin', (username, password) => {
          })
   })
    */
-
-  
 
 
 /* Cypress.Commands.add('text', {prevSubject: true}, (subject, text) => {
@@ -86,25 +82,25 @@ Cypress.Commands.add('UILogin', (username, password) => {
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-Cypress.on('uncaught:exception', (err, runnable) => {
-    // returning false here prevents Cypress from
-    // failing the test
-    return false
-  })
+Cypress.on( "uncaught:exception", ( err, runnable ) => {
+  // returning false here prevents Cypress from
+  // failing the test
+  return false;
+} );
 
 
-  // Hide all fetch/XHR requests in Cy console, toggle via cypress.json
+// Hide all fetch/XHR requests in Cy console, toggle via cypress.json
 
- if (Cypress.config('hideXHR')) {
+if ( Cypress.config( "hideXHR" ) ) {
   const app = window.top;
 
-  if (!app.document.head.querySelector('[data-hide-command-log-request]')) {
-    const style = app.document.createElement('style');
+  if ( !app.document.head.querySelector( "[data-hide-command-log-request]" ) ) {
+    const style = app.document.createElement( "style" );
     style.innerHTML =
-      '.command-name-request, .command-name-xhr { display: none }';
-    style.setAttribute('data-hide-command-log-request', '');
+      ".command-name-request, .command-name-xhr { display: none }";
+    style.setAttribute( "data-hide-command-log-request", "" );
 
-    app.document.head.appendChild(style);
+    app.document.head.appendChild( style );
   }
-}  
+}
 

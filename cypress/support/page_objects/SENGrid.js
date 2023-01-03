@@ -1,4 +1,6 @@
-export class SENGrid{
-    
+// @TODO check if deprecated
+export class SENGrid {
+
 }
-export const senGrid = new SENGrid()
+
+export const senGrid = new SENGrid();
