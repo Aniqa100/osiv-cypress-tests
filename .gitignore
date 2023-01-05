@@ -7,6 +7,7 @@ logs
 *.Entscheid_Copy_2
 *.node_modules
 *.videos
+*.results
 
 
 

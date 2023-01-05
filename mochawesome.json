@@ -1,0 +1,621 @@
+{
+  "stats": {
+    "suites": 8,
+    "tests": 12,
+    "passes": 4,
+    "pending": 0,
+    "failures": 8,
+    "start": "2023-01-05T08:34:28.347Z",
+    "end": "2023-01-05T08:51:10.221Z",
+    "duration": 969949,
+    "testsRegistered": 12,
+    "passPercent": 33.333333333333336,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6242d13b-6df7-4acd-a796-8f8b8e6475d6",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Correct Supertext and Entscheidtyp.js",
+      "file": "cypress\\e2e\\Correct Supertext and Entscheidtyp.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1f93a510-1885-4fbe-8d62-90999a9e3bb0",
+          "title": "Test that it should be possible to edit \"Supertext\" and \"Entscheidtyp\" with the function \"Supertext, Entscheidtyp ändern\"https://osiv-frtest.ivnet.ch",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Test that \"Supertext, Entscheidtyp ändern\" option  is not available in dynselect",
+              "fullTitle": "Test that it should be possible to edit \"Supertext\" and \"Entscheidtyp\" with the function \"Supertext, Entscheidtyp ändern\"https://osiv-frtest.ivnet.ch Test that \"Supertext, Entscheidtyp ändern\" option  is not available in dynselect",
+              "timedOut": null,
+              "duration": 50266,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_Desktop.default.Entscheid().click();\n_ENTGrid.default.EntscheidID(\"22738\").click();\n_ENTGrid.default.entSelectedRow(\"22738\").dblclick();\ncy.wait(4000);\n_Dashboard.default.HomeBtn().click();\ncy.wait(3000);\n_EntscheidDetails.default.VerifySupertextfieldisReadOnly();\n//entscheidDetails.VerifySupertextfieldisNOTReadOnly()",
+              "err": {},
+              "uuid": "afacbfb5-a609-4376-a9e0-13cf274e8706",
+              "parentUUID": "1f93a510-1885-4fbe-8d62-90999a9e3bb0",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "afacbfb5-a609-4376-a9e0-13cf274e8706"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 50266,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "2dc4d7f6-9ede-4456-96b5-b7afa03029d8",
+      "title": "",
+      "fullFile": "cypress\\e2e\\E2E_HE_ENT.js",
+      "file": "cypress\\e2e\\E2E_HE_ENT.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "01351d0b-3847-461c-9505-ebf8657c8012",
+          "title": "E2E test of createting and sending Entscheide for HE code https://osiv-frtest.ivnet.ch",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify Environment",
+              "fullTitle": "E2E test of createting and sending Entscheide for HE code https://osiv-frtest.ivnet.ch Verify Environment",
+              "timedOut": null,
+              "duration": 208527,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_Desktop.default.Versicherte().click();\n_VPGrid.default.typevpName(\"Wait Will\").type(\"{enter}\");\n_VPGrid.default.vpSelectedRow().dblclick();\ncy.wait(3000);\n_Dashboard.default.HomeBtn().click();\ncy.wait(4000);\n//cy.wait I used here cause the element Entscheide tab exists on page but it is not clickable\n_VPDetails.default.Entscheide().click();\n_Buttons.default.EntscheideNew();\n_VPEntscheidGrid.default.NewBtn().click();\n_EntscheidNew.default.SelectLeistungsgruppeValue(\"Hilflosenentschädigung\").click();\n_EntscheidNew.default.SelectLeistungscodeValue(\"Hilflosenentschädigung\").click();\n_EntscheidNew.default.ValidateGesuchValue(\"vom 01.02.2022\");\n_EntscheidNew.default.ValidateEreignisValue(\"Basis vom 22.11.2022\");\n_EntscheidNew.default.ValidateBereichValue(\"IV Erwachsene\");\n_EntscheidNew.default.ValidateBearbeiterValue(\"Hulk1 - Hulk Eins\");\n_EntscheidNew.default.ValidateArbeitslisteValue(\"Neu\");\n_EntscheidNew.default.ModatOkBtn().click();\n_EntscheidNew.default.WarningConfirmBtn().click();\n_Dashboard.default.HomeBtn().click();\n_EntscheidDetails.default.ValidateOrangeBasicDataColor(\"rgb(255, 165, 0)\");\n_EntscheidDetails.default.ValidateOrangeDetailsTabColor(\"rgb(255, 165, 0)\");\n_EntscheidDetails.default.ValidateNotOrangeDurchführungsstellenTabColor(\"rgb(255, 165, 0)\");\nif (url == \"https://osiv-frtest.ivnet.ch/\") {\n  _EntscheidDetails.default.ValidateOrangeHilflosigkeitTabColor(\"rgb(255, 165, 0)\");\n} else {\n  _EntscheidDetails.default.ValidateBitteWarningMsg(\"Bitte die Bearbeitung einleiten. (OSCIENT:522)\");\n}\n_EntscheidDetails.default.ValidateShouldbefilledMsg(\"Es müssen noch folgende Felder ausgefüllt werden: Entscheid, Supertext, Entscheidtyp, Gebrechen, Funktionsausfall. (OSCIENT:523)\");\n_EntscheidDetails.default.ValidateArbeitslisteValue(\"Neu\");\n_EntscheidDetails.default.ValidateGesuchValue(\"vom 01.02.2022\");\n_EntscheidDetails.default.ValidateEreignisValue(\"Basis vom 22.11.2022\");\n_EntscheidDetails.default.ValidateBereichValue(\"IV\");\n_EntscheidDetails.default.ValidateBearbeiterValue(\"Hulk1 - Hulk Eins\");\n_EntscheidDetails.default.ValidateLeistungsgruppeValue(\"HE\");\n_EntscheidDetails.default.ValidateLeistungscodeValue(\"HE - Hilflosenentschädigung\");\n_EntscheidDetails.default.SelectEntscheidValue(\"Zusprache\");\n_EntscheidDetails.default.SelectSupertextValue(\"3205\");\n_EntscheidDetails.default.SelectEntscheidtypValue(\"Mitteilung der IV-Stelle (IV Allgemein)\");\n_EntscheidDetails.default.SelectGebrechenValue(\"101\");\n_EntscheidDetails.default.SelectFunktausfallValue(\"01\");\n_EntscheidDetails.default.SelectBeginnValue(today);\n_EntscheidDetails.default.SpeicherBtn().click();\n_EntscheidDetails.default.WarningConfirmBtn().click();\n_EntscheidDetails.default.ValidateNotOrangeEntscheidSendungenColor(\"rgb(255, 165, 0)\");\n_EntscheidDetails.default.ValidateNotOrangeBasicDataColor(\"rgb(255, 165, 0)\");\n_EntscheidDetails.default.ValidateNoShouldbefilledMsg(\"Es müssen noch folgende Felder ausgefüllt werden: Entscheid, Supertext, Entscheidtyp, Gebrechen, Funktionsausfall. (OSCIENT:523)\");\n_EntscheidDetails.default.BearbeitungEinleitenBtn().click();\n_EntscheidDetails.default.modalOkBtn(\"Hulk1 - Hulk Eins\");\n_EntscheidDetails.default.ValidateNotOrangeFreitexteColor(\"rgb(255, 165, 0)\");\n_EntscheidDetails.default.ValidateNotOrangeDiskutierenColor(\"rgb(255, 165, 0)\");\n_EntscheidDetails.default.ValidateArbeitslisteValue(\"Bearbeiten\");\n_EntscheidDetails.default.HilflosigkeitTab().click();\n_EntscheidHilflosigkeitTab.default.SelectArtderInvaliditätValue(\"Langdauernde Erwerbsunfähigkeit\");\n_EntscheidHilflosigkeitTab.default.SelectAusgleichskasseValue(\"10 - Ausgleichskasse des Kantons Freiburg\");\n_EntscheidHilflosigkeitTab.default.SelectAufenthaltbezValue(\"Zu Hause\");\n_EntscheidHilflosigkeitTab.default.SelectAnAuskleidenDate(today);\n_EntscheidHilflosigkeitTab.default.SelectAufstehenAbsitzenDate(today);\n_EntscheidHilflosigkeitTab.default.SelectEssenDate(today);\n_EntscheidHilflosigkeitTab.default.SpeichernBtn().click();\n_EntscheidHilflosigkeitTab.default.ConfirmBtn().click();\n_EntscheidDetails.default.ValidateOrangeHilflosigkeitTabColor(\"rgb(255, 165, 0)\");\n_EntscheidHilflosigkeitTab.default.ValidateAblaufWartefristValue(nextyear);\n_EntscheidHilflosigkeitTab.default.ValidateWFGradValue(\"20 %\");\n_EntscheidHilflosigkeitTab.default.ValidateTageValue(countOfdaysInYear);\n_EntscheidHilflosigkeitTab.default.ValidateGrenzgradValue(\"20 %\");\n_EntscheidHilflosigkeitTab.default.ValidateBeginnDate(today);\n_EntscheidHilflosigkeitTab.default.ValidateEndeDate(end);\n_EntscheidHilflosigkeitTab.default.ValidateAnzahlTageValue(countOfdaysInYear);\n_EntscheidHilflosigkeitTab.default.ValidateHEGradinValue(\"20\");\n_EntscheidHilflosigkeitTab.default.ValidateHEGradValue(\"Leicht\");\n_EntscheidHilflosigkeitTab.default.ValidateHEGradBeginnDate(firstday);\n_EntscheidHilflosigkeitTab.default.ValidateHeGradabDate(firstday);\n_EntscheidHilflosigkeitTab.default.ValidateHEGradVerlaufValue(\"Leicht\");\n_EntscheidDetails.default.FreitexteTab().click();\n_EntscheidDetails.default.ValidateOrangeFreitextColor(\"rgb(255, 165, 0)\");\n_EntscheidFreitexteTab.default.TextForm(\"test\");\n_EntscheidFreitexteTab.default.BegründungSpeichernBtn().click();\ncy.wait(15000);\n_EntscheidFreitexteTab.default.ValidateTextFormValue(\"test\");\n_EntscheidFreitexteTab.default.VerfügungBeiblattAK().click();\n_EntscheidFreitexteTab.default.FreitextgenerierenBtn().click();\n_EntscheidFreitexteTab.default.WarningconfirmBtn().click();\ncy.wait(3000);\n_EntscheidFreitexteTab.default.VerifyGeneratedSalutationText(\"Wait\");\n_EntscheidFreitexteTab.default.VerifyGeneratedAnspruchsbeginnabHeader(\"Anspruchsbeginn ab:\");\n_EntscheidFreitexteTab.default.VerifyGeneratedGradderHilflosigkeitValue(\"leichten Grades\");\n_EntscheidFreitexteTab.default.VerifyGeneratedGradderHilflosigkeitHeader(\"Grad der Hilflosigkeit\");\n_EntscheidFreitexteTab.default.VerifyGeneratedAnspruchsbeginnabValue(firstday);\n_EntscheidFreitexteTab.default.FreitextSpeichernBtn().click();\ncy.wait(5000);\n_EntscheidFreitexteTab.default.VerifyGeneratedSalutationTextWithoutColor(\"Wait\");\n_EntscheidFreitexteTab.default.VerifyGeneratedAnspruchsbeginnabHeaderWithoutColor(\"Anspruchsbeginn ab:\");\n_EntscheidFreitexteTab.default.VerifyGeneratedGradderHilflosigkeitValueWithoutColor(\"leichten Grades\");\n_EntscheidFreitexteTab.default.VerifyGeneratedGradderHilflosigkeitHeaderWithoutColor(\"Grad der Hilflosigkeit\");\n_EntscheidFreitexteTab.default.VerifyGeneratedAnspruchsbeginnabValueWithoutColor(firstday);\n_EntscheidFreitexteTab.default.GesetzlicheGrundlagen().click();\ncy.wait(1000);\n_EntscheidFreitexteTab.default.FreitextgenerierenGesetzlicheBtn().click();\n_EntscheidFreitexteTab.default.WarningconfirmBtn().click();\n_EntscheidDetails.default.ValidateNotOrangeFreitexteColor(\"rgb(255, 165, 0)\");\n_EntscheidDetails.default.EntscheidSendungenTab().click();\n_EntscheidEntscheidSendungenTab.default.EntscheidSendungGenerierenBtn().click();\n_EntscheidDetails.default.VerifyOrangeVisierenColor(\"rgb(255, 165, 0)\");\n_EntscheidDetails.default.ValidateNotOrangeEntscheidSendungenColor(\"rgb(255, 165, 0)\");\n_EntscheidEntscheidSendungenTab.default.VerifyExistedRow(\"Neu\");\n_EntscheidDetails.default.VisierenTab().click();\n_EntscheidEntscheidSendungenTab.default.VisumSpeichernBtn().click();\n_EntscheidEntscheidSendungenTab.default.WarningconfirmBtn().click();\n_EntscheidDetails.default.ValidateOrangeEntscheidSendungenColor(\"rgb(255, 165, 0)\");\ncy.wait(1000);\n_EntscheidDetails.default.VerifyNotOrangeVisierenColor(\"rgb(255, 165, 0)\");\n_EntscheidDetails.default.EntscheidSendungenTab().click();\n_EntscheidSendungenTab.default.SendungenTab().click();\n_EntscheidSendungenTab.default.findTableRowbyText(\"VRD\").click({\n  force: true\n});\n_Dashboard.default.HomeBtn().click();\n_SendungenDetails.default.FormularVariablen().click();\n_SendungenDetails.default.Betrifft().type(\"Formular Variablen\");\n_SendungenDetails.default.VariablenSpeichernBtn().click();\n_SendungenDetails.default.DruckVersandBtn().click();\n_SendungenDruckundVersand.default.DruckVorschauMW().click();\n_SendungenDruckundVersand.default.DruckVersandMW().click();\n_SendungenDruckundVersand.default.SelectDruckerAuswählen(\"Testdrucker\");\n_SendungenDetails.default.ModalOkBtn().click();\n_SendungenDetails.default.FrageJaBtn().click();\n_SendungenDetails.default.VerifyArbeitslists(\"Abgeschlossen\");",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `span`, but never found it. Queried from:\n\n              > cy.get([id=\"cke_3_contents\"]).find([class=\"WordSection1\"] tbody).eq(0)",
+                "estack": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `span`, but never found it. Queried from:\n\n              > cy.get([id=\"cke_3_contents\"]).find([class=\"WordSection1\"] tbody).eq(0)\n    at Object.VerifyGeneratedAnspruchsbeginnabHeaderWithoutColor (webpack:///./cypress/support/page_objects/EntscheidFreitexteTab.js:82:22)\n    at Context.eval (webpack:///./cypress/e2e/E2E_HE_ENT.js:131:26)",
+                "diff": null
+              },
+              "uuid": "dbf86512-e75f-41a5-8ff1-310ee0ee807a",
+              "parentUUID": "01351d0b-3847-461c-9505-ebf8657c8012",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "dbf86512-e75f-41a5-8ff1-310ee0ee807a"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 208527,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "ac512035-d94f-4fc6-affa-4613aac72207",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Entscheid - with or without travel expenses (Reisekosten).js",
+      "file": "cypress\\e2e\\Entscheid - with or without travel expenses (Reisekosten).js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c0d5a42a-ae42-473f-95d9-3f43a3463870",
+          "title": " Verify that the generation of freetext based on Bausteine takes into account the following validation: https://osiv-frtest.ivnet.ch",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "a. SYSTEM MUST NOT add any travel cost texts into CKEditor if the linked DFStelle has NO travel costs assigned",
+              "fullTitle": " Verify that the generation of freetext based on Bausteine takes into account the following validation: https://osiv-frtest.ivnet.ch a. SYSTEM MUST NOT add any travel cost texts into CKEditor if the linked DFStelle has NO travel costs assigned",
+              "timedOut": null,
+              "duration": 57481,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_Desktop.default.Versicherte().click();\n_VPGrid.default.typevpName(\"Käppeli-Erbeia Tom\");\n_VPGrid.default.vpSelectedRow().trigger(\"dblclick\");\ncy.wait(2000);\n_Dashboard.default.HomeBtn().click();\ncy.wait(3000);\n_VPDetails.default.Entscheide().click();\n_VPEntscheidGrid.default.findTableRowbyText(\"23'137\").dblclick();\n_Dashboard.default.HomeBtn().click();\n//entscheidDetails.FreitexteTab().click()\n//entscheidDetails.ValidateBausteinListHasValue('Reisekosten Auflistung')",
+              "err": {},
+              "uuid": "f1cd0aa1-9f79-444b-8852-fb59375463c2",
+              "parentUUID": "c0d5a42a-ae42-473f-95d9-3f43a3463870",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f1cd0aa1-9f79-444b-8852-fb59375463c2"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 57481,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "15380780-e8bc-4955-8cd0-a1dddf53e583",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Entscheid Copy.js",
+      "file": "cypress\\e2e\\Entscheid Copy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "55be8fe4-50b9-49e6-b27e-153283e2292c",
+          "title": "Test to copy Entscheid with all data https://osiv-frtest.ivnet.ch",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Open Entscheid and copy",
+              "fullTitle": "Test to copy Entscheid with all data https://osiv-frtest.ivnet.ch Open Entscheid and copy",
+              "timedOut": null,
+              "duration": 113698,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_Desktop.default.Versicherte().click();\n_VPGrid.default.typevpName(\"Wait Will\").type(\"{enter}\");\n_VPGrid.default.vpSelectedRow().trigger(\"dblclick\");\n//Here until I don't know how to handle new opened tab I put chain cy.wait -> homeBtn -> cy.wait\ncy.wait(3000);\n_Dashboard.default.HomeBtn().click();\ncy.wait(3000);\n_VPDetails.default.Entscheide().click();\n_VPEntscheidGrid.default.findTableRowbyText(\"Test notes on copy\").click();\n_VPEntscheidGrid.default.CopyBtn().click();\n_EntscheidNew.default.ValidateLeistungsgruppeValue(\"ABM\");\n_EntscheidNew.default.ValidateLeistungscodeValue(\"281 - (N) Gutachten SAHB Prothetik/Orthetik\");\n_EntscheidNew.default.ValidateGesuchValue(\"vom 01.02.2022\");\n_EntscheidNew.default.ValidateEreignisValue(\"Basis vom 22.11.2022\");\n_EntscheidNew.default.ValidateBereichValue(\"IV\");\n_EntscheidNew.default.ValidateBearbeiterValue(\"Hulk1 - Hulk Eins\");\n_EntscheidNew.default.ValidateArbeitslisteValue(\"Neu\");\n_EntscheidNew.default.ValidateNotizenValue(\"Test notes on copy\");\n_EntscheidNew.default.Notizen().clear().type(\"Copied\");\n_EntscheidNew.default.ModatOkBtn().click();\n_EntscheidNew.default.ConfirmBtn().click();\n_Dashboard.default.HomeBtn().click();\n_EntscheidDetails.default.ValidateArbeitslisteValue(\"Neu\");\n_EntscheidDetails.default.ValidateBearbeiterValue(\"Hulk1 - Hulk Eins\");\n_EntscheidDetails.default.ValidateLeistungsgruppeValue(\"ABM\");\n_EntscheidDetails.default.ValidateLeistungscodeValue(\"281 - (N) Gutachten SAHB Prothetik/Orthetik\");\n_EntscheidDetails.default.ValidateGesuchValue(\"vom 01.02.2022\");\n_EntscheidDetails.default.ValidateEreignisValue(\"Basis vom 22.11.2022\");\n_EntscheidDetails.default.ValidateBereichValue(\"IV\");\n_EntscheidDetails.default.ValidateNotizenValue(\"Copied\");\n_EntscheidDetails.default.DurchführungsstellenTab().click();\n//Need to try finding more elegant way to make assertion in grid\n_EntscheidDetails.default.DurchführungsstellenList().eq(1).invoke(\"text\").should(\"contain\", \"Schaeppi Grundstücke per Adresse: Stamm Immobilien AG, Holbeinstrasse 75, 4002 Basel\");\n_EntscheidDetails.default.DurchführungsstellenList().eq(2).invoke(\"text\").should(\"contain\", \"Basler Orthopädie René Ruepp AG, Austrasse 109, 4051 Basel\");\n_EntscheidDetails.default.DurchführungsstellenList().eq(3).invoke(\"text\").should(\"contain\", \"Ergotherapie Rheinfelden, Petra Leisinger-Burns, Thermenstrasse 11, 4310 Rheinfelden\");\n_EntscheidDetails.default.VersicherungenTab().click();\n_EntscheidDetails.default.VersicherungenList(\"MV\").eq(1).invoke(\"text\").should(\"contain\", \"Personalfürsorgestiftung Grosspeter AG, St. Jakob-Strasse 72, 4132 Muttenz\");\n_EntscheidDetails.default.VersicherungenList(\"UVG\").eq(2).invoke(\"text\").should(\"contain\", \"Herr Dr. Peter Bont, Rechtsanwalt und Notar, Dornacherstrasse 26, Postfach, 4603 Olten\");\n// Over here I need to find EntscheidNM and save outside the test, I use settering gettering, to use it in futher in API call\n_EntscheidMetaInfo.default.MetaInfoTab().click();\n_EntscheidMetaInfo.default.SaveEntscheidIdNMtoGlobalValue();",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `[class=\"dhx_toolbar_btn dhxtoolbar_btn_pres\"]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `[class=\"dhx_toolbar_btn dhxtoolbar_btn_pres\"]`, but never found it.\n    at Object.HomeBtn (webpack:///./cypress/support/page_objects/Dashboard.js:7:14)\n    at Context.eval (webpack:///./cypress/e2e/Entscheid Copy.js:45:14)",
+                "diff": null
+              },
+              "uuid": "67857b76-fa06-4984-bf93-810d7c09b1b5",
+              "parentUUID": "55be8fe4-50b9-49e6-b27e-153283e2292c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Compare responses of copied Entscheid",
+              "fullTitle": "Test to copy Entscheid with all data https://osiv-frtest.ivnet.ch Compare responses of copied Entscheid",
+              "timedOut": null,
+              "duration": 2287,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "// Getting saved number form outside and putting it in url, sends an API call and gets the responce body\ncy.task(\"getEntscheidIdNM\").then(EntscheidIdNM => {\n  cy.request(`${url}/web/Resource/Osiv.Entscheid.Entscheid.EntscheidBE?akQuery=%7B%22ui_context%22%3A%7B%22controlType%22%3A%22%22%2C%22container%22%3A%22%22%7D%2C%22filters%22%3A%7B%22logic%22%3A%22and%22%2C%22filters%22%3A%5B%7B%22field%22%3A%22entscheid_id%22%2C%22operator%22%3A%22eq%22%2C%22value%22%3A${EntscheidIdNM}%7D%5D%7D%2C%22fieldlist%22%3A%22*%22%7D&clientRequestId=164&filter=%7B%22orderBy%22%3A%22Entscheid_ID%20descending%22%7D&_ts=166972068-6678884243-66`).its(\"body\").then(body => {\n    const resbody = body.dsEntscheid.eEntscheid[0];\n    // Getting the body that was saved in fixture('CopiedinOsiv5') and compare values of both bodies key by key s I don't need to compare the whole bodies\n    cy.fixture(file).then(filebody => {\n      const fixbody = filebody.dsEntscheid.eEntscheid[0];\n      expect(fixbody.Ereignis_ID).to.deep.eq(resbody.Ereignis_ID);\n      expect(fixbody.Eingliederung_ID).to.deep.eq(resbody.Eingliederung_ID);\n      expect(fixbody.Stamm_ID).to.deep.eq(resbody.Stamm_ID);\n      expect(fixbody.Gesuch_ID).to.deep.eq(resbody.Gesuch_ID);\n      expect(fixbody.Eingl_Antrag_ID).to.deep.eq(resbody.Eingl_Antrag_ID);\n      expect(fixbody.Entscheidtyp_ID).to.deep.eq(resbody.Entscheidtyp_ID);\n      expect(fixbody.EntscheidtypBez).to.deep.eq(resbody.EntscheidtypBez);\n      expect(fixbody.Sprache_ID).to.deep.eq(resbody.Sprache_ID);\n      expect(fixbody.SpracheBez).to.deep.eq(resbody.SpracheBez);\n      expect(fixbody.Supertext_ID).to.deep.eq(resbody.Supertext_ID);\n      expect(fixbody.SupertextBez).to.deep.eq(resbody.SupertextBez);\n      // expect(fixbody.AK_ID).to.deep.eq(resbody.AK_ID)not equal ??\n      expect(fixbody.Gebrechen_ID).to.deep.eq(resbody.Gebrechen_ID);\n      expect(fixbody.Funktausfall_ID).to.deep.eq(resbody.Funktausfall_ID);\n      expect(fixbody.Grundsatzentscheid).to.deep.eq(resbody.Grundsatzentscheid);\n      expect(fixbody.Leistung_ID).to.deep.eq(resbody.Leistung_ID);\n      expect(fixbody.Leistungsgruppe).to.deep.eq(resbody.Leistungsgruppe);\n      expect(fixbody.Massnahme).to.deep.eq(resbody.Massnahme);\n      expect(fixbody.Massnahme_Art_8a).to.deep.eq(resbody.Massnahme_Art_8a);\n      expect(fixbody.Ablehnungscode).to.deep.eq(resbody.Ablehnungscode);\n      expect(fixbody.AblehnungscodeBez).to.deep.eq(resbody.AblehnungscodeBez);\n      expect(fixbody.Beitragsart).to.deep.eq(resbody.Beitragsart);\n      //expect(fixbody.Ben_ID).to.deep.eq(resbody.Ben_ID) not equal\n      expect(fixbody.Arbeitsliste).to.deep.eq(resbody.Arbeitsliste);\n      expect(fixbody.AL_Bevor_Abgabe).to.deep.eq(resbody.AL_Bevor_Abgabe);\n      expect(fixbody.Fach_Ben_ID).to.deep.eq(resbody.Fach_Ben_ID);\n      expect(fixbody.Zust_Ben_ID).to.deep.eq(resbody.Zust_Ben_ID);\n      expect(fixbody.Bearb_Status).to.deep.eq(resbody.Bearb_Status);\n      expect(fixbody.Fall_existiert).to.deep.eq(resbody.Fall_existiert);\n      expect(fixbody.Diskussion_Dat).to.deep.eq(resbody.Diskussion_Dat);\n      expect(fixbody.DZ_Arzt).to.deep.eq(resbody.DZ_Arzt);\n      expect(fixbody.DZ_Arzt_Ben_ID).to.deep.eq(resbody.DZ_Arzt_Ben_ID);\n      expect(fixbody.DZ_Arzt_Statistik).to.deep.eq(resbody.DZ_Arzt_Statistik);\n      expect(fixbody.DZ_Jur).to.deep.eq(resbody.DZ_Jur);\n      expect(fixbody.DZ_Jur_Ben_ID).to.deep.eq(resbody.DZ_Jur_Ben_ID);\n      expect(fixbody.DZ_Jur_Statistik).to.deep.eq(resbody.DZ_Jur_Statistik);\n      expect(fixbody.DZ_Sach).to.deep.eq(resbody.DZ_Sach);\n      expect(fixbody.DZ_Sach_Ben_ID).to.deep.eq(resbody.DZ_Sach_Ben_ID);\n      expect(fixbody.DZ_Sach_Statistik).to.deep.eq(resbody.DZ_Sach_Statistik);\n      expect(fixbody.DZ_Kad).to.deep.eq(resbody.DZ_Kad);\n      expect(fixbody.DZ_Kad_Ben_ID).to.deep.eq(resbody.DZ_Kad_Ben_ID);\n      expect(fixbody.DZ_Kad_Statistik).to.deep.eq(resbody.DZ_Kad_Statistik);\n      expect(fixbody.DZ_Dir).to.deep.eq(resbody.DZ_Dir);\n      expect(fixbody.DZ_Dir_Ben_ID).to.deep.eq(resbody.DZ_Dir_Ben_ID);\n      expect(fixbody.DZ_Dir_Statistik).to.deep.eq(resbody.DZ_Dir_Statistik);\n      expect(fixbody.Revision).to.deep.eq(resbody.Revision);\n      expect(fixbody.Revisionsart).to.deep.eq(resbody.Revisionsart);\n      expect(fixbody.Entscheid).to.deep.eq(resbody.Entscheid);\n      expect(fixbody.Erhalten).to.deep.eq(resbody.Erhalten);\n      expect(fixbody.Bereich).to.deep.eq(resbody.Bereich);\n      expect(fixbody.Beschluss_Dat).to.deep.eq(resbody.Beschluss_Dat);\n      expect(fixbody.BG_Volltext_ID).to.deep.eq(resbody.BG_Volltext_ID);\n      expect(fixbody.GG_Volltext_ID).to.deep.eq(resbody.GG_Volltext_ID);\n      expect(fixbody.VM_Versand_Dat).to.deep.eq(resbody.VM_Versand_Dat);\n      expect(fixbody.VM_Volltext_ID).to.deep.eq(resbody.VM_Volltext_ID);\n      expect(fixbody.MB_Versand_Dat).to.deep.eq(resbody.MB_Versand_Dat);\n      expect(fixbody.MB_Volltext_ID).to.deep.eq(resbody.MB_Volltext_ID);\n      expect(fixbody.VB_Versand_Dat).to.deep.eq(resbody.VB_Versand_Dat);\n      expect(fixbody.VB_Volltext_ID).to.deep.eq(resbody.VB_Volltext_ID);\n      expect(fixbody.VB_Frist_Protokoll).to.deep.eq(resbody.VB_Frist_Protokoll);\n      expect(fixbody.Sendungen_kreiert).to.deep.eq(resbody.Sendungen_kreiert);\n      expect(fixbody.VisumBearbeiter).to.deep.eq(resbody.VisumBearbeiter);\n      expect(fixbody.Visum_Ben_ID).to.deep.eq(resbody.Visum_Ben_ID);\n      expect(fixbody.Visum_Dat).to.deep.eq(resbody.Visum_Dat);\n      expect(fixbody.ErstVisumBearbeiter).to.deep.eq(resbody.ErstVisumBearbeiter);\n      expect(fixbody.Erstvisum_Ben_ID).to.deep.eq(resbody.Erstvisum_Ben_ID);\n      expect(fixbody.Erstvisum_Dat).to.deep.eq(resbody.Erstvisum_Dat);\n      expect(fixbody.ZAS_Mutiert_Dat).to.deep.eq(resbody.ZAS_Mutiert_Dat);\n      expect(fixbody.ZAS_Melde_Fehler).to.deep.eq(resbody.ZAS_Melde_Fehler);\n      expect(fixbody.ZAS_Gemeldet).to.deep.eq(resbody.ZAS_Gemeldet);\n      expect(fixbody.ZAS_Ungueltig_Gemeldet).to.deep.eq(resbody.ZAS_Ungueltig_Gemeldet);\n      expect(fixbody.ZAS_Melde_Dat).to.deep.eq(resbody.ZAS_Melde_Dat);\n      expect(fixbody.Verfuegungsnummer).to.deep.eq(resbody.Verfuegungsnummer);\n      expect(fixbody.Himi_Bez).to.deep.eq(resbody.Himi_Bez);\n      expect(fixbody.Himi_Keine_Rueckgabe).to.deep.eq(resbody.Himi_Keine_Rueckgabe);\n      expect(fixbody.Himi_Rueckgabe_Dat).to.deep.eq(resbody.Himi_Rueckgabe_Dat);\n      expect(fixbody.Himi_Text).to.deep.eq(resbody.Himi_Text);\n      expect(fixbody.RE_Verfahren).to.deep.eq(resbody.RE_Verfahren);\n      expect(fixbody.RE_AU_Grenzgrad).to.deep.eq(resbody.RE_AU_Grenzgrad);\n      expect(fixbody.RE_AU_Dauer).to.deep.eq(resbody.RE_AU_Dauer);\n      expect(fixbody.RE_AU_Grad_DS).to.deep.eq(resbody.RE_AU_Grad_DS);\n      expect(fixbody.RE_Ablauf_WF).to.deep.eq(resbody.RE_Ablauf_WF);\n      expect(fixbody.RE_Versp_Anmeldung).to.deep.eq(resbody.RE_Versp_Anmeldung);\n      expect(fixbody.RE_AU_Grad).to.deep.eq(resbody.RE_AU_Grad);\n      expect(fixbody.RE_AU_Rente).to.deep.eq(resbody.RE_AU_Rente);\n      expect(fixbody.RE_Sistierung_Dat).to.deep.eq(resbody.RE_Sistierung_Dat);\n      expect(fixbody.RE_Kuerzung).to.deep.eq(resbody.RE_Kuerzung);\n      expect(fixbody.HE_Besitzstand).to.deep.eq(resbody.HE_Besitzstand);\n      expect(fixbody.EG_Nur_eine_DFStelle).to.deep.eq(resbody.EG_Nur_eine_DFStelle);\n      expect(fixbody.EG_Entschaedigung).to.deep.eq(resbody.EG_Entschaedigung);\n      expect(fixbody.Zehrgeld).to.deep.eq(resbody.Zehrgeld);\n      expect(fixbody.Reisekosten).to.deep.eq(resbody.Reisekosten);\n      expect(fixbody.Taggeld).to.deep.eq(resbody.Taggeld);\n      expect(fixbody.Assistenzbeitrag_Monat).to.deep.eq(resbody.Assistenzbeitrag_Monat);\n      expect(fixbody.Assistenzbeitrag_Anz_Monate).to.deep.eq(resbody.Assistenzbeitrag_Anz_Monate);\n      expect(fixbody.AnzahlDFStellen).to.deep.eq(resbody.AnzahlDFStellen);\n      expect(fixbody.HE_Aufenthalt).to.deep.eq(resbody.HE_Aufenthalt);\n      expect(fixbody.HE_Zusatz).to.deep.eq(resbody.HE_Zusatz);\n      expect(fixbody.TGM_Entscheid_ID).to.deep.eq(resbody.TGM_Entscheid_ID);\n      expect(fixbody.TG_Entscheid_ID).to.deep.eq(resbody.TG_Entscheid_ID);\n      expect(fixbody.TG_Rente).to.deep.eq(resbody.TG_Rente);\n      expect(fixbody.TG_Taetigkeit).to.deep.eq(resbody.TG_Taetigkeit);\n      expect(fixbody.TG_Lohn_Mt).to.deep.eq(resbody.TG_Lohn_Mt);\n      expect(fixbody.AK_Bem).to.deep.eq(resbody.AK_Bem);\n      expect(fixbody.AK_Nachzahlung).to.deep.eq(resbody.AK_Nachzahlung);\n      expect(fixbody.AK_Mon_Zahlung).to.deep.eq(resbody.AK_Mon_Zahlung);\n      expect(fixbody.AK_Tag_Zahlung).to.deep.eq(resbody.AK_Tag_Zahlung);\n      expect(fixbody.Beginn_Dat).to.deep.eq(resbody.Beginn_Dat);\n      expect(fixbody.Ende_Dat).to.deep.eq(resbody.Ende_Dat);\n      expect(fixbody.Effektiv_Beginn_Dat).to.deep.eq(resbody.Effektiv_Beginn_Dat);\n      expect(fixbody.Effektiv_Ende_Dat).to.deep.eq(resbody.Effektiv_Ende_Dat);\n      expect(fixbody.Effektiv_Nicht_Angetreten).to.deep.eq(resbody.Effektiv_Nicht_Angetreten);\n      expect(fixbody.Grund_Aenderung_Dauer).to.deep.eq(resbody.Grund_Aenderung_Dauer);\n      expect(fixbody.Revision_Dat).to.deep.eq(resbody.Revision_Dat);\n      expect(fixbody.Revisionsliste).to.deep.eq(resbody.Revisionsliste);\n      expect(fixbody.Ignorieren).to.deep.eq(resbody.Ignorieren);\n      expect(fixbody.Ungueltig).to.deep.eq(resbody.Ungueltig);\n      expect(fixbody.Ungueltig_Ben_ID).to.deep.eq(resbody.Ungueltig_Ben_ID);\n      expect(fixbody.Ungueltig_Dat).to.deep.eq(resbody.Ungueltig_Dat);\n      expect(fixbody.Rueckgaengig_Visum).to.deep.eq(resbody.Rueckgaengig_Visum);\n      expect(fixbody.Rueckgaengig_Ben_ID).to.deep.eq(resbody.Rueckgaengig_Ben_ID);\n      expect(fixbody.Rueckgaengig_Dat).to.deep.eq(resbody.Rueckgaengig_Dat);\n      expect(fixbody.Reaktiviert_Ben_ID).to.deep.eq(resbody.Reaktiviert_Ben_ID);\n      expect(fixbody.Reaktiviert_Dat).to.deep.eq(resbody.Reaktiviert_Dat);\n      expect(fixbody.Geloescht).to.deep.eq(resbody.Geloescht);\n      expect(fixbody.Geloescht_Ben_ID).to.deep.eq(resbody.Geloescht_Ben_ID);\n      expect(fixbody.Geloescht_Dat).to.deep.eq(resbody.Geloescht_Dat);\n      //expect(fixbody.Geloescht_Grund).to.deep.eq(resbody.Geloescht_Grund) expected null to deeply equal ''\n      //expect(fixbody.Bem).to.deep.eq(resbody.Bem) notizen are not equal as was changed in test\n      expect(fixbody.VE_Taetigkeit).to.deep.eq(resbody.VE_Taetigkeit);\n      expect(fixbody.VE_Jahr).to.deep.eq(resbody.VE_Jahr);\n      expect(fixbody.VE_Einkommen).to.deep.eq(resbody.VE_Einkommen);\n      //expect(fixbody.VE_Zum_Einkommen).to.deep.eq(resbody.VE_Zum_Einkommen) expected 0 to deeply equal null\n      expect(fixbody.VE_Quelle).to.deep.eq(resbody.VE_Quelle);\n      expect(fixbody.VE_Lohnart).to.deep.eq(resbody.VE_Lohnart);\n      expect(fixbody.VE_Lohn).to.deep.eq(resbody.VE_Lohn);\n      expect(fixbody.VE_Std_pro_Tag).to.deep.eq(resbody.VE_Std_pro_Tag);\n      expect(fixbody.VE_Tag_pro_Woche).to.deep.eq(resbody.VE_Tag_pro_Woche);\n      expect(fixbody.VE_Anzahl_ML).to.deep.eq(resbody.VE_Anzahl_ML);\n      //expect(fixbody.Erf_Zeit).to.deep.eq(resbody.Erf_Zeit) is not uniqe ??\n      //expect(fixbody.Erf_Ben_ID).to.deep.eq(resbody.Erf_Ben_ID) is not uniqe ??\n      //expect(fixbody.Mut_Zeit).to.deep.eq(resbody.Mut_Zeit) is not unique ??\n      //expect(fixbody.Mut_Ben_ID).to.deep.eq(resbody.Mut_Ben_ID) is not unique ??\n      expect(fixbody.Leistung_Leistungscode).to.deep.eq(resbody.Leistung_Leistungscode);\n      expect(fixbody.Leistung_Leistungsgruppe).to.deep.eq(resbody.Leistung_Leistungsgruppe);\n      expect(fixbody.Gebrechen_Gebrechenscode).to.deep.eq(resbody.Gebrechen_Gebrechenscode);\n      expect(fixbody.VMVersandDatValue).to.deep.eq(resbody.VMVersandDatValue);\n      expect(fixbody.EntscheidValue).to.deep.eq(resbody.EntscheidValue);\n      expect(fixbody.BeschwerdeValue).to.deep.eq(resbody.BeschwerdeValue);\n      expect(fixbody.StatusCode).to.deep.eq(resbody.StatusCode);\n      expect(fixbody.VersichertenName).to.deep.eq(resbody.VersichertenName);\n      expect(fixbody.Leistung).to.deep.eq(resbody.Leistung);\n      expect(fixbody.Gebrechen).to.deep.eq(resbody.Gebrechen);\n      expect(fixbody.Funktausfall).to.deep.eq(resbody.Funktausfall);\n      expect(fixbody.GrundsatzentscheidValue).to.deep.eq(resbody.GrundsatzentscheidValue);\n      expect(fixbody.Entscheidtyp_Entscheidtyp).to.deep.eq(resbody.Entscheidtyp_Entscheidtyp);\n      expect(fixbody.ArbeitslisteValue).to.deep.eq(resbody.ArbeitslisteValue);\n      expect(fixbody.Leistung_Bez).to.deep.eq(resbody.Leistung_Bez);\n      expect(fixbody.Gebrechen_Bez).to.deep.eq(resbody.Gebrechen_Bez);\n      expect(fixbody.Funktausfall_Funktausfallcode).to.deep.eq(resbody.Funktausfall_Funktausfallcode);\n      expect(fixbody.Funktausfall_Bez).to.deep.eq(resbody.Funktausfall_Bez);\n      expect(fixbody.Stamm_Vorname).to.deep.eq(resbody.Stamm_Vorname);\n      expect(fixbody.Stamm_Nr_Stamm_Nr).to.deep.eq(resbody.Stamm_Nr_Stamm_Nr);\n      expect(fixbody.Entscheidtyp_Entscheid_AK).to.deep.eq(resbody.Entscheidtyp_Entscheid_AK);\n      expect(fixbody.Leistung_ICD_Zwingend).to.deep.eq(resbody.Leistung_ICD_Zwingend);\n      expect(fixbody.EreignisText).contains(resbody.EreignisText);\n      //expect(fixbody.Bearbeiter).to.deep.eq(resbody.Bearbeiter) is not unique user\n      expect(fixbody.Diagnose_GebrechenscodeICD).to.deep.eq(resbody.Diagnose_GebrechenscodeICD);\n      expect(fixbody.GesuchText).contains(resbody.GesuchText);\n      //expect(fixbody.ErfBenutzer).to.deep.eq(resbody.ErfBenutzer) is not unique user\n      //expect(fixbody.MutBenutzer).to.deep.eq(resbody.MutBenutzer) is not unique user\n      //expect(fixbody.MutZeit).to.deep.eq(resbody.MutZeit) date\n      //expect(fixbody.ErfZeit).to.deep.eq(resbody.ErfZeit) time\n      expect(fixbody.Entscheidtyp_VM_Formular_ID).to.deep.eq(resbody.Entscheidtyp_VM_Formular_ID);\n      expect(fixbody.VMSendungStatus).to.deep.eq(resbody.VMSendungStatus);\n      expect(fixbody.MeldungAktiv).to.deep.eq(resbody.MeldungAktiv);\n      expect(fixbody.MeldungText).to.deep.eq(resbody.MeldungText);\n      expect(fixbody.Stamm_Hoheit_Ben_ID).to.deep.eq(resbody.Stamm_Hoheit_Ben_ID);\n      expect(fixbody.HoheitBenutzer).to.deep.eq(resbody.HoheitBenutzer);\n      expect(fixbody.FachBenutzer).to.deep.eq(resbody.FachBenutzer);\n      expect(fixbody.ZustBenutzer).to.deep.eq(resbody.ZustBenutzer);\n      expect(fixbody.MBSendungStatus).to.deep.eq(resbody.MBSendungStatus);\n      expect(fixbody.VBSendungStatus).to.deep.eq(resbody.VBSendungStatus);\n      expect(fixbody.Entscheidtyp_AHV_Leistung).to.deep.eq(resbody.Entscheidtyp_AHV_Leistung);\n      expect(fixbody.Entscheidtyp_Grenzgaenger).to.deep.eq(resbody.Entscheidtyp_Grenzgaenger);\n      expect(fixbody.Stamm_Geburts_Dat_Char).to.deep.eq(resbody.Stamm_Geburts_Dat_Char);\n      expect(fixbody.Supertext_Def_Beginn_Dat).to.deep.eq(resbody.Supertext_Def_Beginn_Dat);\n      expect(fixbody.Supertext_Def_Ende_Dat).to.deep.eq(resbody.Supertext_Def_Ende_Dat);\n      expect(fixbody.Supertext_Nr).to.deep.eq(resbody.Supertext_Nr);\n      expect(fixbody.ArztBearbeiter).to.deep.eq(resbody.ArztBearbeiter);\n      expect(fixbody.Supertext_Def_Revision_Dat).to.deep.eq(resbody.Supertext_Def_Revision_Dat);\n      expect(fixbody.JuristBearbeiter).to.deep.eq(resbody.JuristBearbeiter);\n      expect(fixbody.Supertext_Ablehnungscode).to.deep.eq(resbody.Supertext_Ablehnungscode);\n      expect(fixbody.Leistung_DF_Stellen_noetig).to.deep.eq(resbody.Leistung_DF_Stellen_noetig);\n      expect(fixbody.SachBearbeiter).to.deep.eq(resbody.SachBearbeiter);\n      expect(fixbody.KaderBearbeiter).to.deep.eq(resbody.KaderBearbeiter);\n      expect(fixbody.Leistung_EG_Artikel_8a).to.deep.eq(resbody.Leistung_EG_Artikel_8a);\n      expect(fixbody.DirektionBearbeiter).to.deep.eq(resbody.DirektionBearbeiter);\n      expect(fixbody.Leistung_Eingliederung_erweitert).to.deep.eq(resbody.Leistung_Eingliederung_erweitert);\n      expect(fixbody.Leistung_Hilfsmittel).to.deep.eq(resbody.Leistung_Hilfsmittel);\n      expect(fixbody.Stamm_Grenzgaenger).to.deep.eq(resbody.Stamm_Grenzgaenger);\n      expect(fixbody.ZehrgeldBez).to.deep.eq(resbody.ZehrgeldBez);\n      expect(fixbody.Leistung_Revision).to.deep.eq(resbody.Leistung_Revision);\n      expect(fixbody.Leistung_Taggeld).to.deep.eq(resbody.Leistung_Taggeld);\n      expect(fixbody.Leistung_Taggeldmitteilung).to.deep.eq(resbody.Leistung_Taggeldmitteilung);\n      expect(fixbody.Leistung_Wartetaggeld).to.deep.eq(resbody.Leistung_Wartetaggeld);\n      expect(fixbody.CanVisieren).to.deep.eq(resbody.CanVisieren);\n      expect(fixbody.VMVolltextMuss).to.deep.eq(resbody.VMVolltextMuss);\n      expect(fixbody.MBVolltextMuss).to.deep.eq(resbody.MBVolltextMuss);\n      expect(fixbody.VBVolltextMuss).to.deep.eq(resbody.VBVolltextMuss);\n      expect(fixbody.GGVolltextMuss).to.deep.eq(resbody.GGVolltextMuss);\n      expect(fixbody.AnzahlDFStellenBez).to.deep.eq(resbody.AnzahlDFStellenBez);\n      expect(fixbody.LeistungText).to.deep.eq(resbody.LeistungText);\n      expect(fixbody.Leistung_Rente).to.deep.eq(resbody.Leistung_Rente);\n      expect(fixbody.Leistung_HE).to.deep.eq(resbody.Leistung_HE);\n      expect(fixbody.UngueltigBenutzer).to.deep.eq(resbody.UngueltigBenutzer);\n      expect(fixbody.HeAufenthaltText).to.deep.eq(resbody.HeAufenthaltText);\n      expect(fixbody.HeZusatzText).to.deep.eq(resbody.HeZusatzText);\n      expect(fixbody.Leistung_Assistenzbeitrag).to.deep.eq(resbody.Leistung_Assistenzbeitrag);\n      expect(fixbody.CanUpdateBesitzstand).to.deep.eq(resbody.CanUpdateBesitzstand);\n      expect(fixbody.CanMove).to.deep.eq(resbody.CanMove);\n      expect(fixbody.HasVersicherung).to.deep.eq(resbody.HasVersicherung);\n      expect(fixbody.NumberDFStellen).to.deep.eq(resbody.NumberDFStellen);\n      expect(fixbody.Leistung_Aufhebung_moeglich).to.deep.eq(resbody.Leistung_Aufhebung_moeglich);\n      expect(fixbody.LeadEingliederungSelfHdl).to.deep.eq(resbody.LeadEingliederungSelfHdl);\n      expect(fixbody.TaggeldmitteilungSelfHdl).to.deep.eq(resbody.TaggeldmitteilungSelfHdl);\n      expect(fixbody.Entscheidtyp_MB_Formular_ID).to.deep.eq(resbody.Entscheidtyp_MB_Formular_ID);\n      expect(fixbody.Entscheidtyp_VB_Formular_ID).to.deep.eq(resbody.Entscheidtyp_VB_Formular_ID);\n      expect(fixbody.Supertext_MB_Supertext_ID).to.deep.eq(resbody.Supertext_MB_Supertext_ID);\n      expect(fixbody.Supertext_GG_Supertext_ID).to.deep.eq(resbody.Supertext_GG_Supertext_ID);\n      expect(fixbody.HasBegruendungDynamisch).to.deep.eq(resbody.HasBegruendungDynamisch);\n      // expect(fixbody.WEIV_DFStelle).to.deep.eq(resbody.WEIV_DFStelle) is not unique ??\n      expect(fixbody.TGVMVersandDat).to.deep.eq(resbody.TGVMVersandDat);\n      expect(fixbody.HasTaggeldmitteilung).to.deep.eq(resbody.HasTaggeldmitteilung);\n      expect(fixbody.Verfuegungsart).to.deep.eq(resbody.Verfuegungsart);\n      expect(fixbody.Leistung_WEIV_Zusatz).to.deep.eq(resbody.Leistung_WEIV_Zusatz);\n      expect(fixbody.TGLeistungText).to.deep.eq(resbody.TGLeistungText);\n      expect(fixbody.TGEntscheid).to.deep.eq(resbody.TGEntscheid);\n      expect(fixbody.TGEntscheidSelfHdl).to.deep.eq(resbody.TGEntscheidSelfHdl);\n      expect(fixbody.TGRenteBez).to.deep.eq(resbody.TGRenteBez);\n      //expect(fixbody.AKBez).to.deep.eq(resbody.AKBez) is not unique ??\n      //expect(fixbody.Stamm_AK_ID).to.deep.eq(resbody.Stamm_AK_ID) is not unique ??\n      expect(fixbody.WEIV_DFOrt).to.deep.eq(resbody.WEIV_DFOrt);\n      //expect(fixbody.Ausgleichskasse_SelfHdl).to.deep.eq(resbody.Ausgleichskasse_SelfHdl) is not unique ??\n      expect(fixbody.WEIV_VerfCoaching).to.deep.eq(resbody.WEIV_VerfCoaching);\n      expect(fixbody.HasICD).to.deep.eq(resbody.HasICD);\n      expect(fixbody.WEIV_Unfalldeckung).to.deep.eq(resbody.WEIV_Unfalldeckung);\n      expect(fixbody.HasDurchfuehrungsstellen).to.deep.eq(resbody.HasDurchfuehrungsstellen);\n      expect(fixbody.WEIV_Haftpflicht).to.deep.eq(resbody.WEIV_Haftpflicht);\n      expect(fixbody.WEIV_ExtMedFall).to.deep.eq(resbody.WEIV_ExtMedFall);\n      expect(fixbody.WEIV_Einigungsverfahren).to.deep.eq(resbody.WEIV_Einigungsverfahren);\n      expect(fixbody.WEIV_Verfahrensphase).to.deep.eq(resbody.WEIV_Verfahrensphase);\n      expect(fixbody.WEIV_Revisionscode).to.deep.eq(resbody.WEIV_Revisionscode);\n      expect(fixbody.WEIV_AblehnungMassnahme).to.deep.eq(resbody.WEIV_AblehnungMassnahme);\n      expect(fixbody.AblehnungMassnahmeBez).to.deep.eq(resbody.AblehnungMassnahmeBez);\n      expect(fixbody.WEIV_Auflage).to.deep.eq(resbody.WEIV_Auflage);\n      expect(fixbody.WEIV_Auflage_Dat).to.deep.eq(resbody.WEIV_Auflage_Dat);\n      expect(fixbody.WEIV_Auflage_Ergebnis).to.deep.eq(resbody.WEIV_Auflage_Ergebnis);\n      expect(fixbody.WEIV_ZAS_Gemeldet_Beendigung).to.deep.eq(resbody.WEIV_ZAS_Gemeldet_Beendigung);\n      expect(fixbody.WEIV_Beendigung).to.deep.eq(resbody.WEIV_Beendigung);\n      expect(fixbody.WEIV_Beendigung_Dat).to.deep.eq(resbody.WEIV_Beendigung_Dat);\n      expect(fixbody.WEIV_Beendigung_Ergebnis).to.deep.eq(resbody.WEIV_Beendigung_Ergebnis);\n      expect(fixbody.WEIV_ZAS_Gemeldet_Auflage).to.deep.eq(resbody.WEIV_ZAS_Gemeldet_Auflage);\n      expect(fixbody.akRowSec).to.deep.eq(resbody.akRowSec);\n      expect(fixbody.akUiActions).to.deep.eq(resbody.akUiActions);\n      expect(fixbody.akUiOptions).to.deep.eq(resbody.akUiOptions);\n      expect(fixbody.UserChangedHdl).to.deep.eq(resbody.UserChangedHdl);\n      expect(fixbody.UserCreatedHdl).to.deep.eq(resbody.UserCreatedHdl);\n      expect(fixbody.akImageFilename).to.deep.eq(resbody.akImageFilename);\n      expect(fixbody.akTextHtml).to.deep.eq(resbody.akTextHtml);\n      expect(fixbody.akTextAscii).to.deep.eq(resbody.akTextAscii);\n      expect(fixbody.SmartCopiedFrom).to.deep.eq(resbody.SmartCopiedFrom);\n      expect(fixbody.OwnUrsprung).to.deep.eq(resbody.OwnUrsprung);\n      expect(fixbody.OwnUrsprung).to.deep.eq(resbody.OwnUrsprung);\n      expect(fixbody.seq).to.deep.eq(resbody.seq);\n    });\n  });\n});",
+              "err": {
+                "message": "CypressError: `cy.task('getEntscheidIdNM')` failed with the following error:\n\nThe task 'getEntscheidIdNM' returned undefined. You must return a value, null, or a promise that resolves to a value or null to indicate that the task was handled.\n\nThe task handler was:\n\n() => {\n            return EntscheidIdNM;\n          }\n\nFix this in your setupNodeEvents method here:\nC:\\osiv-cypress-tests\\cypress.config.js\n\nhttps://on.cypress.io/api/task",
+                "estack": "CypressError: `cy.task('getEntscheidIdNM')` failed with the following error:\n\nThe task 'getEntscheidIdNM' returned undefined. You must return a value, null, or a promise that resolves to a value or null to indicate that the task was handled.\n\nThe task handler was:\n\n() => {\n            return EntscheidIdNM;\n          }\n\nFix this in your setupNodeEvents method here:\nC:\\osiv-cypress-tests\\cypress.config.js\n\nhttps://on.cypress.io/api/task\n    at <unknown> (https://osiv-frtest.ivnet.ch/__cypress/runner/cypress_runner.js:144427:80)\n    at tryCatcher (https://osiv-frtest.ivnet.ch/__cypress/runner/cypress_runner.js:11327:23)\n    at Promise._settlePromiseFromHandler (https://osiv-frtest.ivnet.ch/__cypress/runner/cypress_runner.js:9262:31)\n    at Promise._settlePromise (https://osiv-frtest.ivnet.ch/__cypress/runner/cypress_runner.js:9319:18)\n    at Promise._settlePromise0 (https://osiv-frtest.ivnet.ch/__cypress/runner/cypress_runner.js:9364:10)\n    at Promise._settlePromises (https://osiv-frtest.ivnet.ch/__cypress/runner/cypress_runner.js:9440:18)\n    at _drainQueueStep (https://osiv-frtest.ivnet.ch/__cypress/runner/cypress_runner.js:6034:12)\n    at _drainQueue (https://osiv-frtest.ivnet.ch/__cypress/runner/cypress_runner.js:6027:9)\n    at ../../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://osiv-frtest.ivnet.ch/__cypress/runner/cypress_runner.js:6043:5)\n    at Async.drainQueues (https://osiv-frtest.ivnet.ch/__cypress/runner/cypress_runner.js:5913:14)\nFrom Your Spec Code:\n    at Context.eval (webpack:///./cypress/e2e/Entscheid Copy.js:69:7)",
+                "diff": null
+              },
+              "uuid": "56fa5257-1849-42e3-8cf0-a83817b68e81",
+              "parentUUID": "55be8fe4-50b9-49e6-b27e-153283e2292c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "67857b76-fa06-4984-bf93-810d7c09b1b5",
+            "56fa5257-1849-42e3-8cf0-a83817b68e81"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 115985,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "45144667-afd1-4a4a-b2b1-b6ea71aa9c92",
+      "title": "",
+      "fullFile": "cypress\\e2e\\newAdress.js",
+      "file": "cypress\\e2e\\newAdress.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "fdb88be3-fd85-499e-b73c-010bdefc1c7b",
+          "title": "Test to add a new adress with Frau solutation https://osiv-frtest.ivnet.ch",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Creating adress",
+              "fullTitle": "Test to add a new adress with Frau solutation https://osiv-frtest.ivnet.ch Creating adress",
+              "timedOut": null,
+              "duration": 55671,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.UILoginWithSession(Cypress.env(\"username\"), Cypress.env(\"password\"));\n_LoginPage.default.open(url);\n_Desktop.default.Adressen().click();\n_AdressGrid.default.AddAdressBtn().click();\n_AdressNew.default.SelectAdressTypeValue(\"024\");\n_AdressNew.default.SelectLanguageTypeValue(\"Deutsch\");\n_AdressNew.default.SelectSalutationValue(\"Frau\");\n_AdressNew.default.SelectTitleValue(\"Dr\");\n_AdressNew.default.Name().type(\"Anna\");\n_AdressNew.default.Surename().type(\"Striha\");\n_AdressNew.default.SelectPostalcodeValue(\"1000\");\n_AdressNew.default.GenerateBtn().click();\ncy.wait(1000);\n_AdressNew.default.ModalOkBtn().click();\n_AdressNew.default.ConfirmBtn().click();",
+              "err": {},
+              "uuid": "a3e41bda-1b65-45dc-83a1-1465ca6292e3",
+              "parentUUID": "fdb88be3-fd85-499e-b73c-010bdefc1c7b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "a3e41bda-1b65-45dc-83a1-1465ca6292e3"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 55671,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "cdcb301a-1890-46c4-a7b1-1153673196fa",
+      "title": "",
+      "fullFile": "cypress\\e2e\\ProtocolsCreateAndDelete.js",
+      "file": "cypress\\e2e\\ProtocolsCreateAndDelete.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4e14d49d-9ad2-4313-8ccf-75476e8ebd48",
+          "title": "Test to create protocol, softly remove it, undo it and again remove it",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "create protocol",
+              "fullTitle": "Test to create protocol, softly remove it, undo it and again remove it create protocol",
+              "timedOut": null,
+              "duration": 67660,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_Desktop.default.Versicherte().click();\n_VPGrid.default.typevpName(\"OConnor Gregory\").type(\"{enter}\");\n_VPGrid.default.vpSelectedRow().trigger(\"dblclick\");\ncy.wait(3000);\n_Dashboard.default.HomeBtn().click();\ncy.wait(3000);\n//cy.wait I used here cause the element Protocol tab exists on page but it is not clickable\n_VPDetails.default.Protocol().click();\n_ProtocolDetails.default.ProtokollNewBtn().click();\n_ProtocolDetails.default.SelectNewProtocoltype(\"BB\");\n_ProtocolDetails.default.SelectNewProtocolFormtext(\"test\");\n_ProtocolDetails.default.ModalOkBtn().click();\ncy.wait(4000);\n_ProtocolDetails.default.ProSelectedRow().dblclick();",
+              "err": {},
+              "uuid": "adea5956-07b7-4d83-a0a1-22410a801d68",
+              "parentUUID": "4e14d49d-9ad2-4313-8ccf-75476e8ebd48",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Soft removing of a protocol",
+              "fullTitle": "Test to create protocol, softly remove it, undo it and again remove it Soft removing of a protocol",
+              "timedOut": null,
+              "duration": 75637,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_Desktop.default.Versicherte().click();\n_VPGrid.default.typevpName(\"OConnor Gregory\").type(\"{enter}\");\n_VPGrid.default.vpSelectedRow().trigger(\"dblclick\");\ncy.wait(3000);\n_Dashboard.default.HomeBtn().click();\ncy.wait(3000);\n//cy.wait I used here cause the element Protocol tab exists on page but it is not clickable\n_VPDetails.default.Protocol().click();\n_ProtocolDetails.default.ProSelectedRow().dblclick();\n_Dashboard.default.HomeBtn().click();\n_ProtocolDetails.default.InDenPapierkorbBtn().click();\n_ProtocolDetails.default.SelectLöschGrund(\"Falsche Information\");\n_ProtocolDetails.default.ModalOkBtn().click();\ncy.wait(1000);",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `[class=\"dhxrb_3rows_button\"][title=\"In den Papierkorb\"]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `[class=\"dhxrb_3rows_button\"][title=\"In den Papierkorb\"]`, but never found it.\n    at Object.InDenPapierkorbBtn (webpack:///./cypress/support/page_objects/ProtocolDetails.js:14:18)\n    at Context.eval (webpack:///./cypress/e2e/ProtocolsCreateAndDelete.js:45:20)",
+                "diff": null
+              },
+              "uuid": "2010ebdb-a7e8-4342-aee1-6387e1744208",
+              "parentUUID": "4e14d49d-9ad2-4313-8ccf-75476e8ebd48",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Hard removing of a protocol",
+              "fullTitle": "Test to create protocol, softly remove it, undo it and again remove it Hard removing of a protocol",
+              "timedOut": null,
+              "duration": 79230,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_Desktop.default.Versicherte().click();\n_VPGrid.default.typevpName(\"OConnor Gregory\").type(\"{enter}\");\n_VPGrid.default.vpSelectedRow().trigger(\"dblclick\");\ncy.wait(3000);\n_Dashboard.default.HomeBtn().click();\ncy.wait(3000);\n//cy.wait I used here cause the element Protocol tab exists on page but it is not clickable\n_VPDetails.default.Protocol().click();\n_ProtocolDetails.default.ToggleGeloescht().click();\n_ProtocolDetails.default.ProSelectedRow().dblclick();\n_Dashboard.default.HomeBtn().click();\n_ProtocolDetails.default.WiederherstellenBtn().click();\n_ProtocolDetails.default.ConfirmOKBtn().click();\n_ProtocolDetails.default.InDenPapierkorbBtn().click();\n_ProtocolDetails.default.SelectLöschGrund(\"Falsche Information\");\n_ProtocolDetails.default.ModalOkBtn().click();\n_ProtocolDetails.default.ProtokollBearbLöschenBtn().click();\n_ProtocolDetails.default.ConfirmBestätigenBtn().click();",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `[class=\"dhxrb_3rows_button\"][title=\"Wiederherstellen\"]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `[class=\"dhxrb_3rows_button\"][title=\"Wiederherstellen\"]`, but never found it.\n    at Object.WiederherstellenBtn (webpack:///./cypress/support/page_objects/ProtocolDetails.js:18:18)\n    at Context.eval (webpack:///./cypress/e2e/ProtocolsCreateAndDelete.js:62:20)",
+                "diff": null
+              },
+              "uuid": "3bb3f493-a82c-474b-b9b0-7cc0b2e167b2",
+              "parentUUID": "4e14d49d-9ad2-4313-8ccf-75476e8ebd48",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "adea5956-07b7-4d83-a0a1-22410a801d68"
+          ],
+          "failures": [
+            "2010ebdb-a7e8-4342-aee1-6387e1744208",
+            "3bb3f493-a82c-474b-b9b0-7cc0b2e167b2"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 222527,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "e7ef4a2f-3cfe-49d2-b93a-b2e5af752ab5",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Show (no show) Dynamic Baustein.js",
+      "file": "cypress\\e2e\\Show (no show) Dynamic Baustein.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "adbd20f3-cc7a-4a61-bf20-3e3f3f462b03",
+          "title": "Test to verify if Freetext tab shows or not Baustein 1013+ (Reisekosten Auflistung) https://osiv-frtest.ivnet.ch",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Test verifies that Freetext tab shows Baustein 1013+",
+              "fullTitle": "Test to verify if Freetext tab shows or not Baustein 1013+ (Reisekosten Auflistung) https://osiv-frtest.ivnet.ch Test verifies that Freetext tab shows Baustein 1013+",
+              "timedOut": null,
+              "duration": 105759,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_Desktop.default.Versicherte().click();\n_VPGrid.default.typevpName(\"Dynamic-Baustein Emilia\").type(\"{enter}\");\n_VPGrid.default.vpSelectedRow().trigger(\"dblclick\");\ncy.wait(3000);\n_Dashboard.default.HomeBtn().click();\ncy.wait(3000);\n_VPDetails.default.Entscheide().click();\n_VPEntscheidGrid.default.findTableRowbyText(\"23'039\").dblclick();\n_Dashboard.default.HomeBtn().click();\n_EntscheidDetails.default.FreitexteTab().click();\n_EntscheidDetails.default.ValidateBausteinListHasValue(\"Reisekosten Auflistung\");",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `#active-panel .objbox`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `#active-panel .objbox`, but never found it.\n    at Object.findTableRowbyText (https://osiv-frtest.ivnet.ch/__cypress/tests?p=cypress\\e2e\\Show%20no%20show%20Dynamic%20Baustein.js:533:15)\n    at Context.eval (https://osiv-frtest.ivnet.ch/__cypress/tests?p=cypress\\e2e\\Show%20no%20show%20Dynamic%20Baustein.js:141:30)",
+                "diff": null
+              },
+              "uuid": "3f63f4d2-c46e-437d-8e89-331581e45f3e",
+              "parentUUID": "adbd20f3-cc7a-4a61-bf20-3e3f3f462b03",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Test verifies that Freetext tab does NOT show Baustein 1013+ (Reisekosten Auflistung)",
+              "fullTitle": "Test to verify if Freetext tab shows or not Baustein 1013+ (Reisekosten Auflistung) https://osiv-frtest.ivnet.ch Test verifies that Freetext tab does NOT show Baustein 1013+ (Reisekosten Auflistung)",
+              "timedOut": null,
+              "duration": 72905,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_Desktop.default.Versicherte().click();\n_VPGrid.default.typevpName(\"Dynamic-Baustein Emilia\");\n_VPGrid.default.vpSelectedRow().trigger(\"dblclick\");\ncy.wait(2000);\n_Dashboard.default.HomeBtn().click();\ncy.wait(3000);\n_VPDetails.default.Entscheide().click();\n_VPEntscheidGrid.default.findTableRowbyText(\"23'040\").dblclick();\n_Dashboard.default.HomeBtn().click();\n_EntscheidDetails.default.FreitexteTab().click();\n_EntscheidDetails.default.ValidateBausteinListHasNotValue(\"Reisekosten Auflistung\");",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `#active-panel .objbox`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `#active-panel .objbox`, but never found it.\n    at Object.findTableRowbyText (https://osiv-frtest.ivnet.ch/__cypress/tests?p=cypress\\e2e\\Show%20no%20show%20Dynamic%20Baustein.js:533:15)\n    at Context.eval (https://osiv-frtest.ivnet.ch/__cypress/tests?p=cypress\\e2e\\Show%20no%20show%20Dynamic%20Baustein.js:154:30)",
+                "diff": null
+              },
+              "uuid": "bda3261e-56ad-4709-a0b9-07ce27a2193c",
+              "parentUUID": "adbd20f3-cc7a-4a61-bf20-3e3f3f462b03",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "3f63f4d2-c46e-437d-8e89-331581e45f3e",
+            "bda3261e-56ad-4709-a0b9-07ce27a2193c"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 178664,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "1b5904be-e0a2-4009-9b32-863d331a3ada",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Add Hilflosigkeit data_Happy case.js",
+      "file": "cypress\\e2e\\Add Hilflosigkeit data_Happy case.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "10cd1fd4-e74b-449d-b4fb-20d81d420dbf",
+          "title": "Add Hilflosigkeit data_Happy case https://osiv-frtest.ivnet.ch",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Check the system calculation",
+              "fullTitle": "Add Hilflosigkeit data_Happy case https://osiv-frtest.ivnet.ch Check the system calculation",
+              "timedOut": null,
+              "duration": 80828,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_Desktop.default.Entscheid().click();\n_ENTGrid.default.EntscheidID(\"22783\").click();\n_ENTGrid.default.entSelectedRow(\"22783\").dblclick();\ncy.wait(4000);\n_Dashboard.default.HomeBtn().click();\ncy.wait(3000);\n_EntscheidDetails.default.HilflosigkeitTab().click();\n_EntscheidHilflosigkeitTab.default.SelectArtderInvaliditätValue(\"Langdauernde Erwerbsunfähigkeit\");\n_EntscheidHilflosigkeitTab.default.SelectAusgleichskasseValue(\"10 - Ausgleichskasse des Kantons Freiburg\");\n_EntscheidHilflosigkeitTab.default.SelectAnAuskleidenDate(today);\n_EntscheidHilflosigkeitTab.default.SelectAufstehenAbsitzenDate(today);\n_EntscheidHilflosigkeitTab.default.SelectEssenDate(today);\n_EntscheidHilflosigkeitTab.default.SpeichernBtn().click();\n_EntscheidHilflosigkeitTab.default.ValidateTextOfWarningmeg(\"(OSCIENT:465)\");\n_EntscheidHilflosigkeitTab.default.ConfirmBtn().click();\n_EntscheidHilflosigkeitTab.default.ValidateAblaufWartefristValue(nextyear);\n_EntscheidHilflosigkeitTab.default.ValidateWFGradValue(\"20 %\");\n_EntscheidHilflosigkeitTab.default.ValidateTageValue(countOfdaysInYear);\n_EntscheidHilflosigkeitTab.default.ValidateGrenzgradValue(\"20 %\");\n_EntscheidHilflosigkeitTab.default.ValidateBeginnDate(today);\n_EntscheidHilflosigkeitTab.default.ValidateEndeDate(end);\n_EntscheidHilflosigkeitTab.default.ValidateAnzahlTageValue(countOfdaysInYear);\n_EntscheidHilflosigkeitTab.default.ValidateHEGradinValue(\"20\");\n_EntscheidHilflosigkeitTab.default.ValidateHEGradValue(\"Leicht\");\n_EntscheidHilflosigkeitTab.default.ValidateHEGradBeginnDate(firstday);\n_EntscheidHilflosigkeitTab.default.ValidateHeGradabDate(firstday);\n_EntscheidHilflosigkeitTab.default.ValidateHEGradVerlaufValue(\"Leicht\");",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `[class=\"akUserInfo\"]`, but never found it.\n\nThis error occurred while creating the session. Because the session setup failed, we failed the test.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Add Hilflosigkeit data_Happ...`",
+                "estack": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `[class=\"akUserInfo\"]`, but never found it.\n\nThis error occurred while creating the session. Because the session setup failed, we failed the test.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Add Hilflosigkeit data_Happ...`\n    at Object.UserInfo (webpack:///./cypress/support/page_objects/Dashboard.js:3:14)\n    at Object.eval [as setup] (webpack:///./cypress/support/commands.js:40:14)",
+                "diff": null
+              },
+              "uuid": "1a0977a8-1895-4932-a7bf-4bdd53630339",
+              "parentUUID": "10cd1fd4-e74b-449d-b4fb-20d81d420dbf",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "1a0977a8-1895-4932-a7bf-4bdd53630339"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 80828,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

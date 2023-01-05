@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="57.300" tests="1" failures="0">
+  <testsuite name="Root Suite" timestamp="2023-01-05T08:43:21" tests="0" file="cypress\e2e\newAdress.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Test to add a new adress with Frau solutation https://osiv-frtest.ivnet.ch" timestamp="2023-01-05T08:43:21" tests="1" time="57.288" failures="0">
+    <testcase name="Test to add a new adress with Frau solutation https://osiv-frtest.ivnet.ch Creating adress" time="55.671" classname="Creating adress">
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -2,14 +2,12 @@ import * as commonButtons from "./CommonButtons.js";
 export default {
 
     ...commonButtons,
-
+  // --------------------------------
+  // Buttons
+  // --------------------------------
     ProtokollNewBtn() {
         return cy.get( '[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_Protokoll Ribbon Block"]' )
           .find( '[title="Neu"]' );
-      },
-
-    ProSelectedRow() {
-        return cy.get( '[akid="ProtokollQueryGrid"]' ).find( '[class=" ev_material rowselected"]' ).should( "contain.text", "test" );
       },
     
     InDenPapierkorbBtn() {
@@ -31,9 +29,21 @@ export default {
         .contains( "Bestätigen" );
     },
 
+  // --------------------------------
+  // Elements
+  // --------------------------------
+
     ToggleGeloescht(){
         return cy.get('[title="Toggle Geloescht"] > .fa-stack > .far')
     },
+
+    ProSelectedRow() {
+        return cy.get( '[akid="ProtokollQueryGrid"]' ).find( '[class=" ev_material rowselected"]' ).should( "contain.text", "test" );
+      },
+
+  // --------------------------------
+  // Selection the value of fields
+  // --------------------------------
 
     SelectLöschGrund( value ) {
         cy.get( '[akid="sProtokollInPapierkorbForm-geloeschtgrund"]' ).click();
