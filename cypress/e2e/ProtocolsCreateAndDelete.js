@@ -1,6 +1,4 @@
 import { getBaseUrl } from "../support/utility";
-//import pressButton    from "../support/page_objects/Buttons";
-//import dropdownValue  from "../support/page_objects/dropdownSelection";
 import loginPage      from "../support/page_objects/LoginPage";
 import dashboard      from "../support/page_objects/Dashboard";
 import vpGrid         from "../support/page_objects/VPGrid";
@@ -8,7 +6,6 @@ import desktop        from "../support/page_objects/Desktop";
 import VPDetails      from "../support/page_objects/VPDetails";
 import protocolDetails from "../support/page_objects/ProtocolDetails";
 
-//const { inputTo } = require( "../support/page_objects/inputFields" );
 const url         = getBaseUrl();
 
 describe( "Test to create protocol, softly remove it, undo it and again remove it", () => {

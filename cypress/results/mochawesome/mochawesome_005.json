@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-01-05T08:43:21.919Z",
+    "end": "2023-01-05T08:44:19.219Z",
+    "duration": 57300,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "45144667-afd1-4a4a-b2b1-b6ea71aa9c92",
+      "title": "",
+      "fullFile": "cypress\\e2e\\newAdress.js",
+      "file": "cypress\\e2e\\newAdress.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "fdb88be3-fd85-499e-b73c-010bdefc1c7b",
+          "title": "Test to add a new adress with Frau solutation https://osiv-frtest.ivnet.ch",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Creating adress",
+              "fullTitle": "Test to add a new adress with Frau solutation https://osiv-frtest.ivnet.ch Creating adress",
+              "timedOut": null,
+              "duration": 55671,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.UILoginWithSession(Cypress.env(\"username\"), Cypress.env(\"password\"));\n_LoginPage.default.open(url);\n_Desktop.default.Adressen().click();\n_AdressGrid.default.AddAdressBtn().click();\n_AdressNew.default.SelectAdressTypeValue(\"024\");\n_AdressNew.default.SelectLanguageTypeValue(\"Deutsch\");\n_AdressNew.default.SelectSalutationValue(\"Frau\");\n_AdressNew.default.SelectTitleValue(\"Dr\");\n_AdressNew.default.Name().type(\"Anna\");\n_AdressNew.default.Surename().type(\"Striha\");\n_AdressNew.default.SelectPostalcodeValue(\"1000\");\n_AdressNew.default.GenerateBtn().click();\ncy.wait(1000);\n_AdressNew.default.ModalOkBtn().click();\n_AdressNew.default.ConfirmBtn().click();",
+              "err": {},
+              "uuid": "a3e41bda-1b65-45dc-83a1-1465ca6292e3",
+              "parentUUID": "fdb88be3-fd85-499e-b73c-010bdefc1c7b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "a3e41bda-1b65-45dc-83a1-1465ca6292e3"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 55671,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 0,
+    "pending": 0,
+    "failures": 2,
+    "start": "2023-01-05T08:48:07.796Z",
+    "end": "2023-01-05T08:51:10.221Z",
+    "duration": 182425,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "e7ef4a2f-3cfe-49d2-b93a-b2e5af752ab5",
+      "title": "",
+      "fullFile": "cypress\\e2e\\Show (no show) Dynamic Baustein.js",
+      "file": "cypress\\e2e\\Show (no show) Dynamic Baustein.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "adbd20f3-cc7a-4a61-bf20-3e3f3f462b03",
+          "title": "Test to verify if Freetext tab shows or not Baustein 1013+ (Reisekosten Auflistung) https://osiv-frtest.ivnet.ch",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Test verifies that Freetext tab shows Baustein 1013+",
+              "fullTitle": "Test to verify if Freetext tab shows or not Baustein 1013+ (Reisekosten Auflistung) https://osiv-frtest.ivnet.ch Test verifies that Freetext tab shows Baustein 1013+",
+              "timedOut": null,
+              "duration": 105759,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_Desktop.default.Versicherte().click();\n_VPGrid.default.typevpName(\"Dynamic-Baustein Emilia\").type(\"{enter}\");\n_VPGrid.default.vpSelectedRow().trigger(\"dblclick\");\ncy.wait(3000);\n_Dashboard.default.HomeBtn().click();\ncy.wait(3000);\n_VPDetails.default.Entscheide().click();\n_VPEntscheidGrid.default.findTableRowbyText(\"23'039\").dblclick();\n_Dashboard.default.HomeBtn().click();\n_EntscheidDetails.default.FreitexteTab().click();\n_EntscheidDetails.default.ValidateBausteinListHasValue(\"Reisekosten Auflistung\");",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `#active-panel .objbox`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `#active-panel .objbox`, but never found it.\n    at Object.findTableRowbyText (https://osiv-frtest.ivnet.ch/__cypress/tests?p=cypress\\e2e\\Show%20no%20show%20Dynamic%20Baustein.js:533:15)\n    at Context.eval (https://osiv-frtest.ivnet.ch/__cypress/tests?p=cypress\\e2e\\Show%20no%20show%20Dynamic%20Baustein.js:141:30)",
+                "diff": null
+              },
+              "uuid": "3f63f4d2-c46e-437d-8e89-331581e45f3e",
+              "parentUUID": "adbd20f3-cc7a-4a61-bf20-3e3f3f462b03",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Test verifies that Freetext tab does NOT show Baustein 1013+ (Reisekosten Auflistung)",
+              "fullTitle": "Test to verify if Freetext tab shows or not Baustein 1013+ (Reisekosten Auflistung) https://osiv-frtest.ivnet.ch Test verifies that Freetext tab does NOT show Baustein 1013+ (Reisekosten Auflistung)",
+              "timedOut": null,
+              "duration": 72905,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "_Desktop.default.Versicherte().click();\n_VPGrid.default.typevpName(\"Dynamic-Baustein Emilia\");\n_VPGrid.default.vpSelectedRow().trigger(\"dblclick\");\ncy.wait(2000);\n_Dashboard.default.HomeBtn().click();\ncy.wait(3000);\n_VPDetails.default.Entscheide().click();\n_VPEntscheidGrid.default.findTableRowbyText(\"23'040\").dblclick();\n_Dashboard.default.HomeBtn().click();\n_EntscheidDetails.default.FreitexteTab().click();\n_EntscheidDetails.default.ValidateBausteinListHasNotValue(\"Reisekosten Auflistung\");",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `#active-panel .objbox`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 50000ms: Expected to find element: `#active-panel .objbox`, but never found it.\n    at Object.findTableRowbyText (https://osiv-frtest.ivnet.ch/__cypress/tests?p=cypress\\e2e\\Show%20no%20show%20Dynamic%20Baustein.js:533:15)\n    at Context.eval (https://osiv-frtest.ivnet.ch/__cypress/tests?p=cypress\\e2e\\Show%20no%20show%20Dynamic%20Baustein.js:154:30)",
+                "diff": null
+              },
+              "uuid": "bda3261e-56ad-4709-a0b9-07ce27a2193c",
+              "parentUUID": "adbd20f3-cc7a-4a61-bf20-3e3f3f462b03",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "3f63f4d2-c46e-437d-8e89-331581e45f3e",
+            "bda3261e-56ad-4709-a0b9-07ce27a2193c"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 178664,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/mochawesome",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
