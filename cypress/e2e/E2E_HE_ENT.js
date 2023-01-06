@@ -146,7 +146,7 @@ describe( `E2E test of createting and sending Entscheide for HE code ${  url}`, 
     entscheidEntscheidSendungenTab.VisumSpeichernBtn().click();
     entscheidEntscheidSendungenTab.WarningconfirmBtn().click();
     entscheidDetails.ValidateOrangeEntscheidSendungenColor( "rgb(255, 165, 0)" );
-    cy.wait( 1000 );
+    cy.wait( 3000 );
     entscheidDetails.VerifyNotOrangeVisierenColor( "rgb(255, 165, 0)" );
     entscheidDetails.EntscheidSendungenTab().click();
     entscheidSendungenTab.SendungenTab().click();
