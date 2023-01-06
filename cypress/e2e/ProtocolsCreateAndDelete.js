@@ -30,6 +30,8 @@ describe( "Test to create protocol, softly remove it, undo it and again remove i
     protocolDetails.ModalOkBtn().click()
     cy.wait( 4000 );
     protocolDetails.ProSelectedRow().dblclick()
+    dashboard.HomeBtn().click();
+    protocolDetails.VerifyProtocolFormtext( "test" )
   } );
   it( 'Soft removing of a protocol', () => {
     desktop.Versicherte().click();
@@ -46,6 +48,7 @@ describe( "Test to create protocol, softly remove it, undo it and again remove i
     protocolDetails.SelectLöschGrund( "Falsche Information" )
     protocolDetails.ModalOkBtn().click()
     cy.wait( 1000 )
+    protocolDetails.VerifyDisabledInDenPapierkorbBtn()
   } );
   it( 'Hard removing of a protocol', () => {
     desktop.Versicherte().click();
@@ -66,5 +69,6 @@ describe( "Test to create protocol, softly remove it, undo it and again remove i
     protocolDetails.ModalOkBtn().click()
     protocolDetails.ProtokollBearbLöschenBtn().click()
     protocolDetails.ConfirmBestätigenBtn().click()
+    protocolDetails.VerifyProSelectedRow( "test" )
   } );
 } );
