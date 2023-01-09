@@ -1,4 +1,8 @@
+import * as commonButtons from "./CommonButtons.js";
 export default {
+
+  ...commonButtons,
+
   Leistungsgruppe() {
     return cy.get( '[akid="EntscheidDetailBasisDatenForm-leistungsgruppe"]' );
   },
@@ -73,6 +77,15 @@ export default {
       .find( '[title="Bearbeitung einleiten"]' );
   },
 
+
+  KorrekturfunktionenBtn() {
+    return cy.get( '[class="dhxrb_block_base ribbonBlock"]' ).find( '[class="dhxrb_3rows_button"]' ).contains( 'Korrekturfunktionen' )
+  },
+
+  SupertextEntscheidtypändernBtn() {
+    return cy.get('[class="dhtmlxMebu_SubLevelArea_Tbl"]').find('tr').eq(6).find('td').eq(1).find('div').should('have.text','Supertext, Entscheidtyp ändern')
+  },
+
   modalOkBtn( user ) {
     cy.get( '[class="dhxwin_active"][modalwindow="true"]' ).find( '[akid="EntscheidBearbeitungEinleitenForm"]' )
       .then( basicdata => {
@@ -83,11 +96,6 @@ export default {
           } ) );
       } );
     cy.get( '[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]' ).click();
-  },
-
-  WarningConfirmBtn() {
-    return cy.waitUntil( () => cy.get( '[class="swal-modal warningModal"]' ).should( "be.visible" ) )
-      .find( '[class="swal-button swal-button--okreply default"]' ).contains( "Ok" );
   },
 
   DurchführungsstellenTab() {
@@ -288,13 +296,24 @@ export default {
 
   VerifySupertextfieldisReadOnly() {
     return cy.get( '[akid="EntscheidDetailBasisDatenForm-supertextbez"]' ).parent().should( "have.class", "akReadOnlyDynselect" );
-    /* .find('[id="select2-dynSelect_SupertextBez_e0bf9690-7100-4f8e-a314-9d0204e5e813_1670828151606-container"]')
-        .contains('aria-readonly', value) */
+
   },
 
   VerifySupertextfieldisNOTReadOnly() {
     return cy.get( '[akid="EntscheidDetailBasisDatenForm-supertextbez"]' ).parent().should( "not.have.class", "akReadOnlyDynselect" );
-    /* .find('[id="select2-dynSelect_SupertextBez_e0bf9690-7100-4f8e-a314-9d0204e5e813_1670828151606-container"]')
-        .contains('aria-readonly', value) */
+    
+  },
+
+  VerifyEntscheidTypfieldisReadOnly() {
+    return cy.get( '[akid="EntscheidDetailBasisDatenForm-entscheidtypbez"]' ).parent().should( "have.class", "akReadOnlyDynselect" );
+  },
+
+  VerifyEntscheidTypfieldisNOTReadOnly() {
+     return cy.get( '[akid="EntscheidDetailBasisDatenForm-entscheidtypbez"]' ).parent().should( "not.have.class", "akReadOnlyDynselect" );
+  },
+
+  VerifyDisabledSupertextEntscheidtypändernBtn() {
+     return cy.get('[class="dhtmlxMebu_SubLevelArea_Tbl"]').find('tr').eq(6).should('have.class', 'sub_item_dis');
   }
+
 };

@@ -1,12 +1,13 @@
 // https://osiv.testrail.net/index.php?/cases/view/50397
-import { getBaseUrl }  from "../support/utility";
-import loginPage       from "../support/page_objects/LoginPage";
-import desktop         from "../support/page_objects/Desktop";
-import vpGrid          from "../support/page_objects/VPGrid";
-import dashboard       from "../support/page_objects/Dashboard";
-import vpDetails       from "../support/page_objects/VPDetails";
-import vpEntscheidGrid from "../support/page_objects/VPEntscheidGrid";
-// import entscheidDetails from "../support/page_objects/EntscheidDetails";
+import { getBaseUrl }                from "../support/utility";
+import loginPage                     from "../support/page_objects/LoginPage";
+import desktop                       from "../support/page_objects/Desktop";
+import vpGrid                        from "../support/page_objects/VPGrid";
+import dashboard                     from "../support/page_objects/Dashboard";
+import vpDetails                     from "../support/page_objects/VPDetails";
+import vpEntscheidGrid               from "../support/page_objects/VPEntscheidGrid";
+import entscheidDetails              from "../support/page_objects/EntscheidDetails";
+import entscheidFreitexteTab         from "../support/page_objects/EntscheidFreitexteTab";
 const url = getBaseUrl();
 
 describe( ` Verify that the generation of freetext based on Bausteine takes into account the following validation: ${  url}`, () => {
@@ -24,7 +25,10 @@ describe( ` Verify that the generation of freetext based on Bausteine takes into
     vpDetails.Entscheide().click();
     vpEntscheidGrid.findTableRowbyText( "23'137" ).dblclick();
     dashboard.HomeBtn().click();
-    //entscheidDetails.FreitexteTab().click()
+    entscheidDetails.BearbeitungEinleitenBtn().click();
+    entscheidDetails.FreitexteTab().click()
+    entscheidFreitexteTab.FreitextgenerierenBtn().click();
+    entscheidFreitexteTab.ConfirmOKBtn().click();
     //entscheidDetails.ValidateBausteinListHasValue('Reisekosten Auflistung')
 
   } );

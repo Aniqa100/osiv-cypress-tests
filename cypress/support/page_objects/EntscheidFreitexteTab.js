@@ -1,4 +1,8 @@
+import * as commonButtons from "./CommonButtons.js";
 export default {
+
+  ...commonButtons,
+
   TextForm( text ) {
     cy.get( '[akid="BegruendungHTMLTextForm"]' ).find( ".cke_wysiwyg_div" ).type( text );
   },
@@ -11,11 +15,6 @@ export default {
   FreitextgenerierenBtn() {
     return cy.get( '[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidVerfuegungBeiblattAKBlock"]' )
       .find( '[title="Freitext generieren"]' );
-  },
-
-  WarningconfirmBtn() {
-    return cy.get( '[class="swal-modal warningModal"]' ).find( '[class="swal-button swal-button--okreply default"]' )
-      .contains( "Ok" );
   },
 
   FreitextSpeichernBtn() {

@@ -1,4 +1,8 @@
+import * as commonButtons from "./CommonButtons.js";
 export default {
+
+  ...commonButtons,
+
   EntscheidSendungGenerierenBtn() {
     return cy.get( '[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidEntscheidSendungenBlock"]' )
       .find( '[title="Entscheid-Sendungen generieren"]' );
@@ -12,8 +16,8 @@ export default {
     return cy.get( '[class="dhxrb_3rows_button"][title="Visum speichern"]' );
   },
 
-  WarningconfirmBtn() {
+  /* WarningconfirmBtn() {
     return cy.get( '[class="swal-modal warningModal"]' ).find( '[class="swal-button swal-button--okreply default"]' )
       .contains( "Ok" );
-  }
+  } */
 };
