@@ -17,7 +17,7 @@ describe( `Test that it should be possible to edit "Supertext" and "Entscheidtyp
     loginPage.open( url );
   } );
 
-  it.only( 'Test that "Supertext, Entscheidtyp ändern" option  is not available in dynselect', () => {
+  it( 'Test that "Supertext, Entscheidtyp ändern" option  is not available in dynselect and Supertext, Entscheidtyp ändern button is enabled', () => {
     desktop.Entscheid().click();
     entGrid.EntscheidID( "22738" ).click();
     entGrid.entSelectedRow( "22738" ).dblclick();
@@ -25,22 +25,35 @@ describe( `Test that it should be possible to edit "Supertext" and "Entscheidtyp
     dashboard.HomeBtn().click();
     cy.wait( 3000 );
     entscheidDetails.VerifySupertextfieldisReadOnly();
-    //entscheidDetails.VerifySupertextfieldisNOTReadOnly()
+    entscheidDetails.VerifyEntscheidTypfieldisReadOnly();
+    entscheidDetails.KorrekturfunktionenBtn().click();
+    entscheidDetails.SupertextEntscheidtypändernBtn().click();
+    entscheidDetails.ConfirmOKBtn().click();
+    entscheidDetails.InfoModalOkBtn().click();
   } );
 
-  it( 'Test that fields "Supertext" and "Entscheidtyp" are enabled', () => {
-    desktop.Versicherte().click();
+  it( 'Test that fields "Supertext" and "Entscheidtyp" are enabled, Supertext, Entscheidtyp ändern button is disabled', () => {
+    desktop.Entscheid().click();
+    entGrid.EntscheidID( "22738" ).click();
+    entGrid.entSelectedRow( "22738" ).dblclick();
+    cy.wait( 4000 );
+    dashboard.HomeBtn().click();
+    cy.wait( 3000 );
+    entscheidDetails.VerifySupertextfieldisNOTReadOnly();
+    entscheidDetails.VerifyEntscheidTypfieldisNOTReadOnly();
+    entscheidDetails.KorrekturfunktionenBtn().click();
+    entscheidDetails.VerifyDisabledSupertextEntscheidtypändernBtn();
   } );
 
   it( "Test that Sendungs (VM, VB or MB) in status Neu are deleted", () => {
-    desktop.Versicherte().click();
+    desktop.Entscheid().click();
   } );
 
   it( "Test that Sendung MK (For ENT1 ) has status Korrigiren and not deleted", () => {
-    desktop.Versicherte().click();
+    desktop.Entscheid().click();
   } );
 
   it( "Test that Other sendungs are not deleted (for ENT2)", () => {
-    desktop.Versicherte().click();
+    desktop.Entscheid().click();
   } );
 } );

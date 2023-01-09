@@ -1,4 +1,13 @@
+import * as commonButtons from "./CommonButtons.js";
 export default {
+
+  ...commonButtons,
+
+  EntscheideNew() {
+    cy.get( '[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidBlock"]' )
+      .find( '[title="Neu"]' ).click();
+  },
+
   Leistungsgruppe() {
     return cy.get( '[class="dhxwin_active"][modalwindow="true"]' )
       .find( '[akid="CreateEntscheidForm-leistungsgruppe"]' );
@@ -48,10 +57,10 @@ export default {
       .find( '[class="swal-button swal-button--replyok"]' ).contains( "Ok" );
   },
 
-  WarningConfirmBtn() {
+  /* WarningConfirmBtn() {
     return cy.get( '[class="swal-modal warningModal"]' ).find( '[class="swal-button swal-button--okreply default"]' )
       .contains( "Ok" );
-  },
+  }, */
 
   SelectLeistungsgruppeValue( value ) {
     return cy.get( '[class="dhxwin_active"][modalwindow="true"]' )

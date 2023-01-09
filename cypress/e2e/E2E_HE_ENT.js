@@ -1,6 +1,6 @@
 //E2E test for HE workflow, this test case doesn't have any testRail test
 import { getBaseUrl }                 from "../support/utility";
-import pressButton                    from "../support/page_objects/Buttons";
+//import pressButton                    from "../support/page_objects/Buttons";
 import loginPage                      from "../support/page_objects/LoginPage";
 import desktop                        from "../support/page_objects/Desktop";
 import vpGrid                         from "../support/page_objects/VPGrid";
@@ -46,7 +46,7 @@ describe( `E2E test of createting and sending Entscheide for HE code ${  url}`, 
     cy.wait( 4000 );
     //cy.wait I used here cause the element Entscheide tab exists on page but it is not clickable
     vpDetails.Entscheide().click();
-    pressButton.EntscheideNew();
+    //pressButton.EntscheideNew();
     vpEntscheidGrid.NewBtn().click();
     entscheidNew.SelectLeistungsgruppeValue( "Hilflosenentschädigung" ).click();
     entscheidNew.SelectLeistungscodeValue( "Hilflosenentschädigung" ).click();
@@ -56,7 +56,7 @@ describe( `E2E test of createting and sending Entscheide for HE code ${  url}`, 
     entscheidNew.ValidateBearbeiterValue( "Hulk1 - Hulk Eins" );
     entscheidNew.ValidateArbeitslisteValue( "Neu" );
     entscheidNew.ModatOkBtn().click();
-    entscheidNew.WarningConfirmBtn().click();
+    entscheidNew.ConfirmOKBtn().click();
     dashboard.HomeBtn().click();
     entscheidDetails.ValidateOrangeBasicDataColor( "rgb(255, 165, 0)" );
     entscheidDetails.ValidateOrangeDetailsTabColor( "rgb(255, 165, 0)" );
@@ -79,7 +79,7 @@ describe( `E2E test of createting and sending Entscheide for HE code ${  url}`, 
     entscheidDetails.SelectFunktausfallValue( "01" );
     entscheidDetails.SelectBeginnValue( today );
     entscheidDetails.SpeicherBtn().click();
-    entscheidDetails.WarningConfirmBtn().click();
+    entscheidDetails.ConfirmOKBtn().click();
     entscheidDetails.ValidateNotOrangeEntscheidSendungenColor( "rgb(255, 165, 0)" );
     entscheidDetails.ValidateNotOrangeBasicDataColor( "rgb(255, 165, 0)" );
     entscheidDetails.ValidateNoShouldbefilledMsg( "Es müssen noch folgende Felder ausgefüllt werden: Entscheid, Supertext, Entscheidtyp, Gebrechen, Funktionsausfall. (OSCIENT:523)" );
@@ -118,7 +118,7 @@ describe( `E2E test of createting and sending Entscheide for HE code ${  url}`, 
     entscheidFreitexteTab.ValidateTextFormValue( "test" );
     entscheidFreitexteTab.VerfügungBeiblattAK().click();
     entscheidFreitexteTab.FreitextgenerierenBtn().click();
-    entscheidFreitexteTab.WarningconfirmBtn().click();
+    entscheidFreitexteTab.ConfirmOKBtn().click();
     cy.wait( 3000 );
     entscheidFreitexteTab.VerifyGeneratedSalutationText( "Wait" );
     entscheidFreitexteTab.VerifyGeneratedAnspruchsbeginnabHeader( "Anspruchsbeginn ab:" );
@@ -135,7 +135,7 @@ describe( `E2E test of createting and sending Entscheide for HE code ${  url}`, 
     entscheidFreitexteTab.GesetzlicheGrundlagen().click();
     cy.wait( 1000 );
     entscheidFreitexteTab.FreitextgenerierenGesetzlicheBtn().click();
-    entscheidFreitexteTab.WarningconfirmBtn().click();
+    entscheidFreitexteTab.ConfirmOKBtn().click();
     entscheidDetails.ValidateNotOrangeFreitexteColor( "rgb(255, 165, 0)" );
     entscheidDetails.EntscheidSendungenTab().click();
     entscheidEntscheidSendungenTab.EntscheidSendungGenerierenBtn().click();
@@ -144,7 +144,7 @@ describe( `E2E test of createting and sending Entscheide for HE code ${  url}`, 
     entscheidEntscheidSendungenTab.VerifyExistedRow( "Neu" );
     entscheidDetails.VisierenTab().click();
     entscheidEntscheidSendungenTab.VisumSpeichernBtn().click();
-    entscheidEntscheidSendungenTab.WarningconfirmBtn().click();
+    entscheidEntscheidSendungenTab.ConfirmOKBtn().click();
     entscheidDetails.ValidateOrangeEntscheidSendungenColor( "rgb(255, 165, 0)" );
     cy.wait( 3000 );
     entscheidDetails.VerifyNotOrangeVisierenColor( "rgb(255, 165, 0)" );
