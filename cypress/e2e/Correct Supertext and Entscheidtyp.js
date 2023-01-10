@@ -1,4 +1,5 @@
 // https://osiv.testrail.net/index.php?/cases/view/44194
+//NOT FINISHED
 import { getBaseUrl }   from "../support/utility";
 import loginPage        from "../support/page_objects/LoginPage";
 import desktop          from "../support/page_objects/Desktop";

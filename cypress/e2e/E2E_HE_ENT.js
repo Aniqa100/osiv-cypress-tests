@@ -1,6 +1,6 @@
 //E2E test for HE workflow, this test case doesn't have any testRail test
+//FINISHED
 import { getBaseUrl }                 from "../support/utility";
-//import pressButton                    from "../support/page_objects/Buttons";
 import loginPage                      from "../support/page_objects/LoginPage";
 import desktop                        from "../support/page_objects/Desktop";
 import vpGrid                         from "../support/page_objects/VPGrid";

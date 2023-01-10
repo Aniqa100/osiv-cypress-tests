@@ -1,4 +1,5 @@
 //This test case doesn't have any testRail test
+//FINISHED
 import { getBaseUrl } from "../support/utility";
 import loginPage      from "../support/page_objects/LoginPage";
 import dashboard      from "../support/page_objects/Dashboard";
