@@ -1,4 +1,5 @@
 //https://osiv.testrail.net/index.php?/cases/view/39770
+//FINISHED
 import utility           from "../support/utility";
 import desktop           from "../support/page_objects/Desktop";
 import loginPage         from "../support/page_objects/LoginPage";

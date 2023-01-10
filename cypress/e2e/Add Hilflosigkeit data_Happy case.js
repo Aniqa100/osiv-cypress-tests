@@ -1,5 +1,6 @@
 //This test can be run only one time per day as the modal window shows up only for the first calculation
-//https://osiv.testrail.net/index.php?/cases/view/44744
+//https://osiv.testrail.net/index.php?/cases/view/44744 
+//FINISHED
 import { getBaseUrl }      from "../support/utility";
 import loginPage           from "../support/page_objects/LoginPage";
 import desktop             from "../support/page_objects/Desktop";
