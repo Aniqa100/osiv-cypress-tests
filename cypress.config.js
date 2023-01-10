@@ -41,7 +41,7 @@ module.exports = defineConfig(
         "**/2-advanced-examples/*",
       ],
       requestTimeout: 50000,
-      //numTestsKeptInMemory: 0,
+      numTestsKeptInMemory: 0,
       responseTimeout: 50000,
       pageLoadTimeout: 50_000,
       defaultCommandTimeout: 50_000,

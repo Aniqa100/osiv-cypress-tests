@@ -20,4 +20,18 @@ export default {
     return cy.get( '[class="swal-modal warningModal"]' ).find( '[class="swal-button swal-button--okreply default"]' )
       .contains( "Ok" );
   } */
+
+   VerifyEntscheidSendungenGridNotHasFormular( value ) {
+    cy.get( '[akid="eSendungQueryVPContextB"]' )
+      .find( '[class="objbox"] tbody td' ).each( ( $td ) =>  {
+        cy.wrap( $td ).invoke( "text" ).then( text => {
+          expect( text ).not.contain( value );
+        } );
+      } );
+   },
+
+   VerifyEntscheidSendungenGridHasFormular( value ) {
+    cy.get( '[akid="eSendungQueryVPContextB"]' ).contains( value )
+   }
+
 };

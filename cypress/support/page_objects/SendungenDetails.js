@@ -1,4 +1,8 @@
+import * as commonButtons from "./CommonButtons.js";
 export default {
+
+  ...commonButtons,
+
   FormularVariablen() {
     return cy.get( '[akid="SendungDetailsTabTabbar-Formular Variablen"]' );
   },
@@ -15,9 +19,9 @@ export default {
     return cy.get( '[class="dhxrb_3rows_button"][title="Druck/Versand"]' );
   },
 
-  ModalOkBtn() {
+  /* ModalOkBtn() {
     return cy.get( '[class="dhx_toolbar_btn dhxtoolbar_btn_def"][title="Ok"]' );
-  },
+  }, */
 
   FrageJaBtn() {
     return cy.get( '[class="swal-modal confirmModal"]' ).find( '[class="swal-footer"]' )

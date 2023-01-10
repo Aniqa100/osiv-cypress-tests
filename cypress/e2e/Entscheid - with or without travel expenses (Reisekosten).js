@@ -1,5 +1,5 @@
 // https://osiv.testrail.net/index.php?/cases/view/50397
-//NOT FINISHED
+// NOT FINISHED
 import { getBaseUrl }                from "../support/utility";
 import loginPage                     from "../support/page_objects/LoginPage";
 import desktop                       from "../support/page_objects/Desktop";
@@ -27,9 +27,10 @@ describe( ` Verify that the generation of freetext based on Bausteine takes into
     vpEntscheidGrid.findTableRowbyText( "23'137" ).dblclick();
     dashboard.HomeBtn().click();
     entscheidDetails.BearbeitungEinleitenBtn().click();
-    entscheidDetails.modalOkBtn( 'User2 - User2 Zwei' );
+    //entscheidDetails.modalOkBtn( 'User2 - User2 Zwei' );
     entscheidDetails.FreitexteTab().click()
     entscheidFreitexteTab.FreitextgenerierenBtn().click();
+    entscheidFreitexteTab.ConfirmOKBtn().click();
     entscheidFreitexteTab.ConfirmOKBtn().click();
     //entscheidDetails.ValidateBausteinListHasValue('Reisekosten Auflistung')
 
