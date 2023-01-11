@@ -4,8 +4,10 @@ export default {
   },
 
   findTableRowbyText( text ) {
-    return cy.get( "#active-panel .objbox" ).find( "tbody" ).should( "contain.text", text ).find( '[class="akcelllink"]' );
+    return cy.get( "#active-panel .objbox" ).find( "tbody" ).find( '[class="akcelllink"]' ).contains( text )
   },
+
+
   
   VerifyEntscheidSendungenGridHasFormular( value ) {
     cy.get( '[akid="eSendungQueryVPContextB"]' ).contains( value )

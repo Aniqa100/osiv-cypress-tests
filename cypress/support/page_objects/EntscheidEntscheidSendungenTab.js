@@ -30,8 +30,6 @@ export default {
       } );
    },
 
-   VerifyEntscheidSendungenGridHasFormular( value ) {
-    cy.get( '[akid="eSendungQueryVPContextB"]' ).contains( value )
-   }
+   
 
 };
