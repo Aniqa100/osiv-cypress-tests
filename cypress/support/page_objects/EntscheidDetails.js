@@ -118,6 +118,10 @@ export default {
     return cy.get( '[akid="EntscheidDetailBasisFrameTabbar-Hilflosigkeit"]' );
   },
 
+  DiskutierenTab() {
+    return cy.get( 'akid="EntscheidDetailBasisFrameTabbar-Diskutieren"' );
+  },
+  
   SelectEntscheidValue( value ) {
     cy.get( '[akid="EntscheidDetailBasisDatenForm-entscheidvalue"]' ).click();
     cy.get( '[class="select2-results__options"]' ).contains( value ).click();

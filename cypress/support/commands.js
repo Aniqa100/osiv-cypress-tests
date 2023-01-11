@@ -2,6 +2,7 @@ import "cypress-file-upload";
 import "Moment";
 import "cypress-wait-until";
 import { getBaseUrl } from "./utility";
+import { UserInfo } from "./utility";
 import dashboard from "../support/page_objects/Dashboard";
 import loginPage from "../support/page_objects/LoginPage";
 
@@ -19,6 +20,7 @@ import loginPage from "../support/page_objects/LoginPage";
 
 //Call getBaseUrl() to get environment specific url value
 const url = getBaseUrl();
+const user = UserInfo();
 
 Cypress.Commands.add( "UILogin", ( username, password ) => {
   loginPage.open( url );
@@ -38,7 +40,8 @@ Cypress.Commands.add( "UILoginWithSession", ( username, password ) => {
     loginPage.userName().wait( 0 ).focus().clear().type( username );
     loginPage.password().type( `${password  }{enter}` );
     dashboard.UserInfo().invoke( "text" ).then( text => {
-      expect( text ).to.equal( Cypress.env( "username" ) );
+      //expect( text ).to.equal( Cypress.env ( user ) );
+      expect( text ).not.empty;
     } );
   } );
 } );

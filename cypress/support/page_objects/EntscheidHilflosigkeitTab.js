@@ -8,6 +8,32 @@ export default {
       .find( '[title="Speichern"]' );
   },
 
+  AusgleichkasseändernBtn() {
+    return cy.get( '[class="dhxrb_block_base ribbonBlock"]' )
+    .find( '[title="Ausgleichkasse ändern"]' )
+  },
+  GrenzgradAb30TBtn() {
+    return cy.get( '[class="dhxrb_block_base ribbonBlock"]' )
+    .find( '[title="Grenzgrad ab 30T"]' )
+  },
+
+  WartefristBearbeitenBtn() {
+    return cy.get( '[class="dhxrb_block_base ribbonBlock"]' )
+    .find( '[title="Wartefrist Bearbeiten"]' )
+  },
+
+  HEGradbearbeiten() {
+    return cy.get( '[class="dhxrb_block_base ribbonBlock"]' )
+    .find( '[title="HE-Grad bearbeiten"]' )
+  },
+
+  ArtderInvalidität() {
+    return cy.get( '[akid="EntscheidHilflosigkeitForm-verfahrenbez"]' )
+  },
+  Ausgleichskasse() {
+    return cy.get( '[akid="EntscheidHilflosigkeitForm-akbez"]' )
+  },
+  
   SelectArtderInvaliditätValue( value ) {
     cy.get( '[akid="EntscheidHilflosigkeitForm-verfahrenbez"]' ).click();
     cy.get( '[class="select2-results__options"]' ).contains( value ).click();
@@ -90,5 +116,40 @@ export default {
 
   ValidateTextOfWarningmeg( value ) {
     cy.get( '[class="swal-modal warningModal"]' ).find( '[class="swal-content"]' ).contains( value );
-  }
+  }, 
+
+  ValidateSpeichernBtnIsDisabled() {
+    cy.get( '[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidHilflosigkeitBlock"]' )
+      .find( '[title="Speichern"]' ).should( 'contain.class', 'dhxrb_item_disable' )
+  },
+
+  ValidateAusgleichkasseändernBtnIsDisabled() {
+    cy.get( '[class="dhxrb_block_base ribbonBlock"]' )
+      .find( '[title="Ausgleichkasse ändern"]' ).should( 'contain.class', 'dhxrb_item_disable' )
+  },
+
+  ValidateGrenzgradAb30TBtnIsDisabled() {
+    cy.get( '[class="dhxrb_block_base ribbonBlock"]' )
+      .find( '[title="Grenzgrad ab 30T"]' ).should( 'contain.class', 'dhxrb_item_disable' )
+  },
+
+  ValidateWartefristBearbeitenBtnIsDisabled() {
+    cy.get( '[class="dhxrb_block_base ribbonBlock"]' )
+    .find( '[title="Wartefrist Bearbeiten"]' ).should( 'contain.class', 'dhxrb_item_disable' )
+  },
+
+  ValidateHEGradbearbeitenIsDisabled() {
+    cy.get( '[class="dhxrb_block_base ribbonBlock"]' )
+    .find( '[title="HE-Grad bearbeiten"]' ).should( 'contain.class', 'dhxrb_item_disable' )
+  }, 
+
+  ValidateArtderInvaliditätIsReadOnly() {
+    cy.get( '[akid="EntscheidHilflosigkeitForm-verfahrenbez"]' ).parent().should( "have.class", "akReadOnlyDynselect" );
+  },
+
+  ValidateAusgleichskasseIsReadOnly() {
+    cy.get( '[akid="EntscheidHilflosigkeitForm-akbez"]' ).parent().should( "have.class", "akReadOnlyDynselect" );
+  },
+
+
 };

@@ -18,7 +18,7 @@ describe( ` Closing ENT after Verfugung sendung is closed: ${  url}`, () => {
     cy.UILoginWithSession( Cypress.env( "username" ), Cypress.env( "password" ) );
     loginPage.open( url );
   } );
-  it.only( ` Test if revision date is set, ENT moved to revision state after all ENT sendungs are closed (with revision date set)`, () => {
+  it( ` Test if revision date is set, ENT moved to revision state after all ENT sendungs are closed (with revision date set)`, () => {
     desktop.Entscheid().click();
     entGrid.EntscheidID( "23033" ).click();
     entGrid.entSelectedRow( "23033" ).dblclick();
