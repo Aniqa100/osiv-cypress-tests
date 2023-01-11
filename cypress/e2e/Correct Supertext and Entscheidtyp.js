@@ -85,7 +85,7 @@ describe( `Test that it should be possible to edit "Supertext" and "Entscheidtyp
     entscheidDetails.VerifyDisabledSupertextEntscheidtypändernBtn();
   } );
 
-  it.only( 'Test (ENT1: 22739) that fields "Supertext" and "Entscheidtyp" are enabled, Supertext, Entscheidtyp ändern button is disabled', () => {
+  it( 'Test (ENT1: 22739) that fields "Supertext" and "Entscheidtyp" are enabled, Supertext, Entscheidtyp ändern button is disabled', () => {
     desktop.Entscheid().click();
     entGrid.EntscheidID( "22739" ).click();
     entGrid.entSelectedRow( "22739" ).dblclick();
