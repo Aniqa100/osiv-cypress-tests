@@ -5,7 +5,7 @@ import loginPage        from "../support/page_objects/LoginPage";
 import desktop          from "../support/page_objects/Desktop";
 import dashboard        from "../support/page_objects/Dashboard";
 import entscheidDetails from "../support/page_objects/EntscheidDetails";
-import entGrid from "../support/page_objects/ENTGrid";
+import entGrid          from "../support/page_objects/ENTGrid";
 import entscheidEntscheidSendungenTab from "../support/page_objects/EntscheidEntscheidSendungenTab";
 import entscheidSendungenTab from "../support/page_objects/EntscheidSendungenTab";
 const url = getBaseUrl();

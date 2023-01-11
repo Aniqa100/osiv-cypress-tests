@@ -24,11 +24,11 @@ export default {
   },
 
   Bearbeiter() {
-    return cy.get( '[akid="EntscheidDetailBasisDatenForm-bearbeiter"]' ).find( "input" );
+    return cy.get( '[akid="EntscheidDetailBasisDatenForm-bearbeiter"] input' );
   },
 
   Arbeitsliste() {
-    return cy.get( '[akid="EntscheidDetailBasisDatenForm-arbeitslistevalue"]' ).find( "input" );
+    return cy.get( '[akid="EntscheidDetailBasisDatenForm-arbeitslistevalue"] input' );
   },
 
   Notizen() {
@@ -80,6 +80,10 @@ export default {
 
   KorrekturfunktionenBtn() {
     return cy.get( '[class="dhxrb_block_base ribbonBlock"]' ).find( '[class="dhxrb_3rows_button"]' ).contains( 'Korrekturfunktionen' )
+  },
+
+  AbschliessenBtn() {
+    return cy.get( '[class="dhxrb_block_base ribbonBlock"]' ).find( '[title="Abschliessen"]' )
   },
 
   SupertextEntscheidtypändernBtn() {
