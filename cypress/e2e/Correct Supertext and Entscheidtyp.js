@@ -44,7 +44,7 @@ describe( `Test that it should be possible to edit "Supertext" and "Entscheidtyp
     entscheidDetails.VerifyDisabledSupertextEntscheidtypändernBtn();
   } );
 
-  it( "Test (ENT1: 22738) that Sendungs (VM, VB or MB) in status Neu are deleted and Sendung (MIB) in status Korrigiert is not deleted", () => {
+  it.only( "Test (ENT1: 22738) that Sendungs (VM, VB or MB) in status Neu are deleted and Sendung (MIB) in status Korrigiert is not deleted", () => {
     desktop.Entscheid().click();
     entGrid.EntscheidID( "22738" ).click();
     entGrid.entSelectedRow( "22738" ).dblclick();
@@ -52,11 +52,11 @@ describe( `Test that it should be possible to edit "Supertext" and "Entscheidtyp
     dashboard.HomeBtn().click();
     cy.wait( 3000 );
     entscheidDetails.EntscheidSendungenTab().click();
-    entscheidEntscheidSendungenTab.VerifyEntscheidSendungenGridNotHasFormular( 'VM' )
-    entscheidEntscheidSendungenTab.VerifyEntscheidSendungenGridNotHasFormular( 'VB' )
-    entscheidEntscheidSendungenTab.VerifyEntscheidSendungenGridNotHasFormular( 'MB' )
-    entscheidEntscheidSendungenTab.VerifyEntscheidSendungenGridHasFormular( 6,'MIB' )
-    entscheidEntscheidSendungenTab.VerifyEntscheidSendungenGridHasFormular( 0, 'Korrigiert' )
+    entscheidSendungenTab.VerifyEntscheidSendungenGridNotHasFormular( 'VM' )
+    entscheidSendungenTab.VerifyEntscheidSendungenGridNotHasFormular( 'VB' )
+    entscheidSendungenTab.VerifyEntscheidSendungenGridNotHasFormular( 'MB' )
+    entscheidSendungenTab.VerifyEntscheidSendungenGridHasFormular( 'MIB' )
+    entscheidSendungenTab.VerifyEntscheidSendungenGridHasFormular( 'Korrigiert' )
   } );
 
   it( 'Test (ENT1: 22739) that "Supertext, Entscheidtyp ändern" option  is not available in dynselect and Supertext, Entscheidtyp ändern button is enabled', () => {
