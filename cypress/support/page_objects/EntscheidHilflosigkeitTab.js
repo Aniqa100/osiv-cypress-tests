@@ -62,6 +62,26 @@ export default {
     cy.get( '[akid="EntscheidHilflosigkeitForm-essvondat"] input' ).type( today ).click();
   },
 
+  SelectPersÜberwachung( today ) {
+    cy.get( '[akid="EntscheidHilflosigkeitForm-uebvondat"] input' ).type( today ).click();
+  },
+  
+  ClearAnAuskleidenDate() {
+    cy.get( '[akid="EntscheidHilflosigkeitForm-aakvondat"] input' ).clear();
+  },
+
+  ClearAufstehenAbsitzenDate() {
+    cy.get( '[akid="EntscheidHilflosigkeitForm-aaavondat"] input' ).clear();
+  },
+
+  ClreatSelectEssenDate() {
+    cy.get( '[akid="EntscheidHilflosigkeitForm-essvondat"] input' ).clear();
+  },
+
+  ClearPersÜberwachung( today ) {
+    cy.get( '[akid="EntscheidHilflosigkeitForm-uebvondat"] input' ).clear();
+  },
+
   ValidateAblaufWartefristValue( date ) {
     cy.get( '[akid="EntscheidHilflosigkeitForm-re_ablauf_wf"] input' ).invoke( "prop", "value" ).should( "contain", date );
   },

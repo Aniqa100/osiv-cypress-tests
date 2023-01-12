@@ -13,7 +13,7 @@ const url               = getBaseUrl();
 
 describe( `Possibility to edit data on Hillflosigkeit tab when discussion started/ended ${  url}`, () => {
   beforeEach( "Login", () => {
-    cy.UILoginWithSession( Cypress.env( "username1" ), Cypress.env( "password1" ) );
+    cy.UILoginWithSession( Cypress.env( "username" ), Cypress.env( "password" ) );
     loginPage.open( url );
   } );
   it( "Test that Hilflosigkeit data can't be edited in ENT has AL = D and also options in ribbon block Entscheid Hillflosigkeit spezifische Funktionen are disabled", () => {
@@ -23,9 +23,9 @@ describe( `Possibility to edit data on Hillflosigkeit tab when discussion starte
     cy.wait( 4000 );
     dashboard.HomeBtn().click();
     cy.wait( 3000 );
-    /* entscheidDetails.BearbeitungEinleitenBtn().click();
+    entscheidDetails.BearbeitungEinleitenBtn().click();
     entscheidDetails.ModalOkBtn().click();
-    entscheidDetails.HilflosigkeitTab().click(); */
+    entscheidDetails.HilflosigkeitTab().click();
 
     //THere shoudl be verification if all fields and buttons are enabled
     
@@ -42,7 +42,9 @@ describe( `Possibility to edit data on Hillflosigkeit tab when discussion starte
     entscheidHilflosigkeitTab.ValidateHEGradbearbeitenIsDisabled();
     entscheidHilflosigkeitTab.ValidateArtderInvaliditätIsReadOnly();
     entscheidHilflosigkeitTab.ValidateAusgleichskasseIsReadOnly();
+
     //Do I need to verify every field? or it's enough to verify just a few?
+    
     entscheidDetails.DiskutierenTab().click();
     diskutierenDetails.DiskussionfürübrigeTeilnehmerabbrechen().click();
     diskutierenDetails.Meldung( "blablabla" );
