@@ -1,4 +1,4 @@
-//Test can be run onlu one time a day
+//Test can be run only one time a day
 //https://osiv.testrail.net/index.php?/cases/view/47702
 //FINISHED
 import { getBaseUrl }                from "../support/utility";

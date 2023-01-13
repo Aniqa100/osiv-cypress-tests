@@ -6,7 +6,6 @@ import desktop          from "../support/page_objects/Desktop";
 import dashboard        from "../support/page_objects/Dashboard";
 import entscheidDetails from "../support/page_objects/EntscheidDetails";
 import entGrid          from "../support/page_objects/ENTGrid";
-import entscheidEntscheidSendungenTab from "../support/page_objects/EntscheidEntscheidSendungenTab";
 import entscheidSendungenTab from "../support/page_objects/EntscheidSendungenTab";
 const url = getBaseUrl();
 
@@ -44,7 +43,7 @@ describe( `Test that it should be possible to edit "Supertext" and "Entscheidtyp
     entscheidDetails.VerifyDisabledSupertextEntscheidtypändernBtn();
   } );
 
-  it.only( "Test (ENT1: 22738) that Sendungs (VM, VB or MB) in status Neu are deleted and Sendung (MIB) in status Korrigiert is not deleted", () => {
+  it( "Test (ENT1: 22738) that Sendungs (VM, VB or MB) in status Neu are deleted and Sendung (MIB) in status Korrigiert is not deleted", () => {
     desktop.Entscheid().click();
     entGrid.EntscheidID( "22738" ).click();
     entGrid.entSelectedRow( "22738" ).dblclick();
