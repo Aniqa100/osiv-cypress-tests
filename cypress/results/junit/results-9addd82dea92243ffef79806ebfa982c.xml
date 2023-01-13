@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="51.879" tests="1" failures="0">
-  <testsuite name="Root Suite" timestamp="2023-01-05T08:35:53" tests="0" file="cypress\e2e\Correct Supertext and Entscheidtyp.js" time="0.000" failures="0">
-  </testsuite>
-  <testsuite name="Test that it should be possible to edit &quot;Supertext&quot; and &quot;Entscheidtyp&quot; with the function &quot;Supertext, Entscheidtyp ändern&quot;https://osiv-frtest.ivnet.ch" timestamp="2023-01-05T08:35:53" tests="1" time="51.867" failures="0">
-    <testcase name="Test that it should be possible to edit &quot;Supertext&quot; and &quot;Entscheidtyp&quot; with the function &quot;Supertext, Entscheidtyp ändern&quot;https://osiv-frtest.ivnet.ch Test that &quot;Supertext, Entscheidtyp ändern&quot; option  is not available in dynselect" time="50.266" classname="Test that &quot;Supertext, Entscheidtyp ändern&quot; option  is not available in dynselect">
-    </testcase>
-  </testsuite>
-</testsuites>
