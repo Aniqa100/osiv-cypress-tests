@@ -47,7 +47,7 @@ module.exports = defineConfig(
       defaultCommandTimeout: 50_000,
       hideXHR: true,
       chromeWebSecurity: false,
-      video: false,
+      video: true,
       retries: {
         runMode: 1,
         openMode: 0,
