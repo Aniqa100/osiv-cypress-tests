@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="59.661" tests="1" failures="0">
-  <testsuite name="Root Suite" timestamp="2023-01-05T08:40:20" tests="0" file="cypress\e2e\Entscheid - with or without travel expenses (Reisekosten).js" time="0.000" failures="0">
-  </testsuite>
-  <testsuite name=" Verify that the generation of freetext based on Bausteine takes into account the following validation: https://osiv-frtest.ivnet.ch" timestamp="2023-01-05T08:40:20" tests="1" time="59.645" failures="0">
-    <testcase name=" Verify that the generation of freetext based on Bausteine takes into account the following validation: https://osiv-frtest.ivnet.ch a. SYSTEM MUST NOT add any travel cost texts into CKEditor if the linked DFStelle has NO travel costs assigned" time="57.481" classname="a. SYSTEM MUST NOT add any travel cost texts into CKEditor if the linked DFStelle has NO travel costs assigned">
-    </testcase>
-  </testsuite>
-</testsuites>

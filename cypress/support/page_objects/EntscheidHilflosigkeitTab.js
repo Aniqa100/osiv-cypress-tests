@@ -51,19 +51,31 @@ export default {
   },
 
   SelectAnAuskleidenDate( today ) {
-    cy.get( '[akid="EntscheidHilflosigkeitForm-aakvondat"] input' ).type( today ).click();
+    cy.get( '[akid="EntscheidHilflosigkeitForm-aakvondat"] input' ).type( today );
   },
 
   SelectAufstehenAbsitzenDate( today ) {
-    cy.get( '[akid="EntscheidHilflosigkeitForm-aaavondat"] input' ).type( today ).click();
+    cy.get( '[akid="EntscheidHilflosigkeitForm-aaavondat"] input' ).type( today );
   },
 
   SelectEssenDate( today ) {
-    cy.get( '[akid="EntscheidHilflosigkeitForm-essvondat"] input' ).type( today ).click();
+    cy.get( '[akid="EntscheidHilflosigkeitForm-essvondat"] input' ).type( today );
   },
 
   SelectPersÜberwachung( today ) {
-    cy.get( '[akid="EntscheidHilflosigkeitForm-uebvondat"] input' ).type( today ).click();
+    cy.get( '[akid="EntscheidHilflosigkeitForm-uebvondat"] input' ).type( today );
+  },
+  
+  SelectWohnenDate( today ) {
+    cy.get( '[akid="EntscheidHilflosigkeitForm-whnvondat"] input' ).type( today );
+  },
+   
+  SelectBegleitungDate( today ) {
+    cy.get( '[akid="EntscheidHilflosigkeitForm-begvondat"] input' ).type( today );
+  },
+  
+  SelectIsolationDate( today ) {
+    cy.get( '[akid="EntscheidHilflosigkeitForm-isovondat"] input' ).type( today );
   },
   
   ClearAnAuskleidenDate() {
@@ -78,9 +90,24 @@ export default {
     cy.get( '[akid="EntscheidHilflosigkeitForm-essvondat"] input' ).clear();
   },
 
-  ClearPersÜberwachung( today ) {
+  ClearPersÜberwachung() {
     cy.get( '[akid="EntscheidHilflosigkeitForm-uebvondat"] input' ).clear();
   },
+
+  ClearWohnenDate() {
+    cy.get( '[akid="EntscheidHilflosigkeitForm-whnvondat"] input' ).clear();
+  },
+   
+  ClearBegleitungDate() {
+    cy.get( '[akid="EntscheidHilflosigkeitForm-begvondat"] input' ).clear();
+  },
+  
+  ClearIsolationDate() {
+    cy.get( '[akid="EntscheidHilflosigkeitForm-isovondat"] input' ).clear();
+  },
+
+
+  
 
   ValidateAblaufWartefristValue( date ) {
     cy.get( '[akid="EntscheidHilflosigkeitForm-re_ablauf_wf"] input' ).invoke( "prop", "value" ).should( "contain", date );

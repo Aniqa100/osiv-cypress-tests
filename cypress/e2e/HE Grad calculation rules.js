@@ -32,14 +32,22 @@ describe( `Verify HE-Grad is calculated correctly ${  url}`, () => {
     entHilflosigkeitTab.SelectAnAuskleidenDate( today );
     entHilflosigkeitTab.SelectAufstehenAbsitzenDate( today );
     entHilflosigkeitTab.SpeichernBtn().click();
-    cy.wait( 2000 );
+    cy.wait( 1000 );
     entHilflosigkeitTab.ConfirmBtn().click();
     entHilflosigkeitTab.ValidateHEGradValue( "Leicht" );
+    cy.wait( 1000 );
     entHilflosigkeitTab.SelectEssenDate( today );
+    dashboard.HomeBtn().click();
     entHilflosigkeitTab.SpeichernBtn().click();
-    entHilflosigkeitTab.ValidateHEGradValue( "Leicht" );
     entHilflosigkeitTab.ConfirmBtn().click();
-
+    entHilflosigkeitTab.ValidateHEGradValue( "Leicht" );
+    entHilflosigkeitTab.ClearAnAuskleidenDate();
+    dashboard.HomeBtn().click();
+    entHilflosigkeitTab.ClearAufstehenAbsitzenDate();
+    entHilflosigkeitTab.ClreatSelectEssenDate();
+    entHilflosigkeitTab.SpeichernBtn().click();
+    cy.wait( 1000 );
+    
   } );
   it( "HE-Grad shows Leicht when personal supervision is needed", () => {
     desktop.Entscheid().click();
@@ -50,15 +58,48 @@ describe( `Verify HE-Grad is calculated correctly ${  url}`, () => {
     cy.wait( 3000 );
     entscheidDetails.HilflosigkeitTab().click();
     cy.wait( 10000 );
-    entHilflosigkeitTab.ClearAnAuskleidenDate();
-    entHilflosigkeitTab.ClearAufstehenAbsitzenDate();
-    entHilflosigkeitTab.ClreatSelectEssenDate();
     entHilflosigkeitTab.SelectPersÜberwachung( today );
     entHilflosigkeitTab.SpeichernBtn().click();
     entHilflosigkeitTab.ConfirmBtn().click();
     cy.wait( 2000 );
     entHilflosigkeitTab.ValidateHEGradValue( "Leicht" );
-
+    entHilflosigkeitTab.ClearPersÜberwachung();
+    dashboard.HomeBtn().click();
+    entHilflosigkeitTab.SpeichernBtn().click();
+    cy.wait( 1000 );
     
   } );
+  it( "HE-Grad shows Leicht when at least one of the 3 areas of practical life assistance is fulfilled", () => {
+    desktop.Entscheid().click();
+    entGrid.EntscheidID( "22690" ).click();
+    entGrid.entSelectedRow( "22690" ).dblclick();
+    cy.wait( 4000 );
+    dashboard.HomeBtn().click();
+    cy.wait( 3000 );
+    entscheidDetails.HilflosigkeitTab().click();
+    cy.wait( 10000 );
+    entHilflosigkeitTab.SelectWohnenDate( today );
+    entHilflosigkeitTab.SpeichernBtn().click();
+    entHilflosigkeitTab.ConfirmBtn().click();
+    cy.wait( 1000 );
+    entHilflosigkeitTab.ValidateHEGradValue( "Leicht" );
+    entHilflosigkeitTab.SelectBegleitungDate( today );
+    dashboard.HomeBtn().click();
+    entHilflosigkeitTab.SpeichernBtn().click();
+    entHilflosigkeitTab.ConfirmBtn().click();
+    cy.wait( 1000 );
+    entHilflosigkeitTab.ValidateHEGradValue( "Leicht" );
+    entHilflosigkeitTab.SelectIsolationDate( today );
+    dashboard.HomeBtn().click();
+    entHilflosigkeitTab.SpeichernBtn().click();
+    entHilflosigkeitTab.ConfirmBtn().click();
+    cy.wait( 1000 );
+    entHilflosigkeitTab.ValidateHEGradValue( "Leicht" );
+    entHilflosigkeitTab.ClearWohnenDate();
+    dashboard.HomeBtn().click();
+    entHilflosigkeitTab.ClearBegleitungDate();
+    entHilflosigkeitTab.ClearIsolationDate();
+    entHilflosigkeitTab.SpeichernBtn().click();
+    cy.wait( 1000 );
+} );
 } );
