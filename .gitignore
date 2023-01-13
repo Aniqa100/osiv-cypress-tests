@@ -37,4 +37,4 @@ build/Release
 node_modules
 cypress/videos
 cypress/screenshots
-.vscode
+.vs
