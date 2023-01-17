@@ -63,14 +63,19 @@ describe( `Test to copy Entscheid with all data ${  url}`, () => {
     // Over here I need to find EntscheidNM and save outside the test, I use settering gettering, to use it in futher in API call
     entscheidMetaInfo.MetaInfoTab().click();
     entscheidMetaInfo.SaveEntscheidIdNMtoGlobalValue();
+    
   } );
 
   it( "Compare responses of copied Entscheid", () => {
     // Getting saved number form outside and putting it in url, sends an API call and gets the responce body
     cy.task( "getEntscheidIdNM" ).then( EntscheidIdNM => {
+      console.log( EntscheidIdNM )
+      console.log( `${url }`)
+      console.log( `${ EntscheidIdNM }`)
       cy.request( `${url  }/web/Resource/Osiv.Entscheid.Entscheid.EntscheidBE?akQuery=%7B%22ui_context%22%3A%7B%22controlType%22%3A%22%22%2C%22container%22%3A%22%22%7D%2C%22filters%22%3A%7B%22logic%22%3A%22and%22%2C%22filters%22%3A%5B%7B%22field%22%3A%22entscheid_id%22%2C%22operator%22%3A%22eq%22%2C%22value%22%3A${ EntscheidIdNM }%7D%5D%7D%2C%22fieldlist%22%3A%22*%22%7D&clientRequestId=164&filter=%7B%22orderBy%22%3A%22Entscheid_ID%20descending%22%7D&_ts=166972068-6678884243-66` )
         .its( "body" )
         .then( body => {
+          console.log( body )
           const resbody = body.dsEntscheid.eEntscheid[ 0 ];
           // Getting the body that was saved in fixture('CopiedinOsiv5') and compare values of both bodies key by key s I don't need to compare the whole bodies
           cy.fixture( file ).then( filebody => {

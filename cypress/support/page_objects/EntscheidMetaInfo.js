@@ -11,6 +11,8 @@ export default {
     cy.get( '[akid="EntscheidMetaInfoForm-entscheid_id"] input' )
       .invoke( "prop", "value" ).then( EntscheidIdNM => {
         cy.task( "setEntscheidIdNM", EntscheidIdNM );
+        console.log(EntscheidIdNM);
       } );
+      
   }
 };
