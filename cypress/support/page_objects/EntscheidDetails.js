@@ -298,7 +298,7 @@ export default {
     return cy.contains( msg );
   },
 
-  ValidateNoShouldbefilledMsg( msg ) {
+  ValidateNotShouldbefilledMsg( msg ) {
     return cy.contains( msg ).should( "not.exist" );
   },
 

@@ -82,7 +82,7 @@ describe( `E2E test of createting and sending Entscheide for HE code ${  url}`, 
     entscheidDetails.ConfirmOKBtn().click();
     entscheidDetails.ValidateNotOrangeEntscheidSendungenColor( "rgb(255, 165, 0)" );
     entscheidDetails.ValidateNotOrangeBasicDataColor( "rgb(255, 165, 0)" );
-    entscheidDetails.ValidateNoShouldbefilledMsg( "Es müssen noch folgende Felder ausgefüllt werden: Entscheid, Supertext, Entscheidtyp, Gebrechen, Funktionsausfall. (OSCIENT:523)" );
+    entscheidDetails.ValidateNotShouldbefilledMsg( "Es müssen noch folgende Felder ausgefüllt werden: Entscheid, Supertext, Entscheidtyp, Gebrechen, Funktionsausfall. (OSCIENT:523)" );
     entscheidDetails.BearbeitungEinleitenBtn().click();
     entscheidDetails.modalOkBtn( "Hulk1 - Hulk Eins" );
     entscheidDetails.ValidateNotOrangeFreitexteColor( "rgb(255, 165, 0)" );
@@ -143,7 +143,7 @@ describe( `E2E test of createting and sending Entscheide for HE code ${  url}`, 
     entscheidDetails.ValidateNotOrangeEntscheidSendungenColor( "rgb(255, 165, 0)" );
     entscheidEntscheidSendungenTab.VerifyExistedRow( "Neu" );
     entscheidDetails.VisierenTab().click();
-    entscheidEntscheidSendungenTab.VisumSpeichernBtn().click();
+    entscheidEntscheidSendungenTab.VisumSpeichernBtn();
     entscheidEntscheidSendungenTab.ConfirmOKBtn().click();
     entscheidDetails.ValidateOrangeEntscheidSendungenColor( "rgb(255, 165, 0)" );
     cy.wait( 3000 );

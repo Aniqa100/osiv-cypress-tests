@@ -35,10 +35,10 @@ describe( ` Closing ENT after Verfugung sendung is closed: ${  url}`, () => {
     desktop.Entscheid().click();
     entGrid.EntscheidID( "23033" ).click();
     entGrid.entSelectedRow( "23033" ).dblclick();
-    cy.wait( 4000 );
     dashboard.HomeBtn().click();
-    cy.wait( 3000 );
     entscheidDetails.ValidateArbeitslisteValue( 'Revision' );
+    cy.wait( 1000 );
+
     
   } );
   it( ` Test that ENT is closed after all ENT sendungs are closed (just start date is set)`, () => {
@@ -58,10 +58,9 @@ describe( ` Closing ENT after Verfugung sendung is closed: ${  url}`, () => {
     desktop.Entscheid().click();
     entGrid.EntscheidID( "23034" ).click();
     entGrid.entSelectedRow( "23034" ).dblclick();
-    cy.wait( 4000 );
     dashboard.HomeBtn().click();
-    cy.wait( 3000 );
     entscheidDetails.ValidateArbeitslisteValue( 'Abgeschlossen' );
+    cy.wait( 1000 );
     
   } );
 

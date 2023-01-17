@@ -13,7 +13,8 @@ export default {
   },
 
   VisumSpeichernBtn() {
-    return cy.get( '[class="dhxrb_3rows_button"][title="Visum speichern"]' );
+    cy.get( '[akid="EntscheidVisierenForm-visumtypebez"]' ).find( '[title="Visieren (Einzelvisum)"]' )
+    cy.get( '[class="dhxrb_3rows_button"][title="Visum speichern"]' ).click()
   },  
 
 };
