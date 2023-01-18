@@ -32,6 +32,7 @@ describe( `Possibility to edit data on Hillflosigkeit tab when discussion starte
     entscheidDetails.DiskutierenTab().click();
     diskutierenDetails.SelectArztValue( " Wenger, Alex (awe)" );
     diskutierenDetails.DiskussionStartenBtn().click();
+    diskutierenDetails.ConfirmOKBtn().click();
     entscheidDetails.HilflosigkeitTab().click();
     entscheidHilflosigkeitTab.ValidateSpeichernBtnIsDisabled();
     if (url != "https://osiv-nrtest.ivnet.ch/"){
