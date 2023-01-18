@@ -28,7 +28,7 @@ describe( `Add Hilflosigkeit data_Happy case ${  url}`, () => {
     entGrid.entSelectedRow( "22783" ).dblclick();
     cy.wait( 4000 );
     dashboard.HomeBtn().click();
-    cy.wait( 3000 );
+    cy.wait( 3000 ); 
     entscheidDetails.HilflosigkeitTab().click();
     entHilflosigkeitTab.SelectArtderInvaliditätValue( "Langdauernde Erwerbsunfähigkeit" );
     entHilflosigkeitTab.SelectAusgleichskasseValue( "10 - Ausgleichskasse des Kantons Freiburg" );
@@ -49,6 +49,6 @@ describe( `Add Hilflosigkeit data_Happy case ${  url}`, () => {
     entHilflosigkeitTab.ValidateHEGradValue( "Leicht" );
     entHilflosigkeitTab.ValidateHEGradBeginnDate( firstday );
     entHilflosigkeitTab.ValidateHeGradabDate( firstday );
-    entHilflosigkeitTab.ValidateHEGradVerlaufValue( "Leicht" );
+    entHilflosigkeitTab.ValidateHEGradVerlaufValue( "Leicht" ); 
   } );
 } );
