@@ -18,7 +18,7 @@ describe( ` Closing ENT after Verfugung sendung is closed: ${  url}`, () => {
     cy.UILoginWithSession( Cypress.env( "username" ), Cypress.env( "password" ) );
     loginPage.open( url );
   } );
-  it.only( ` Test if revision date is set, ENT moved to revision state after all ENT sendungs are closed (with revision date set)`, () => {
+  it( ` Test if revision date is set, ENT moved to revision state after all ENT sendungs are closed (with revision date set)`, () => {
     desktop.Entscheid().click();
     entGrid.EntscheidID( "23033" ).click();
     entGrid.entSelectedRow( "23033" ).dblclick();
@@ -35,7 +35,9 @@ describe( ` Closing ENT after Verfugung sendung is closed: ${  url}`, () => {
     desktop.Entscheid().click();
     entGrid.EntscheidID( "23033" ).click();
     entGrid.entSelectedRow( "23033" ).dblclick();
+    cy.wait( 2000 );
     dashboard.HomeBtn().click();
+    cy.wait( 1000 );
     entscheidDetails.ValidateArbeitslisteValue( 'Revision' );
     cy.wait( 1000 );
 
@@ -58,7 +60,9 @@ describe( ` Closing ENT after Verfugung sendung is closed: ${  url}`, () => {
     desktop.Entscheid().click();
     entGrid.EntscheidID( "23034" ).click();
     entGrid.entSelectedRow( "23034" ).dblclick();
+    cy.wait( 2000 );
     dashboard.HomeBtn().click();
+    cy.wait( 1000 );
     entscheidDetails.ValidateArbeitslisteValue( 'Abgeschlossen' );
     cy.wait( 1000 );
     
