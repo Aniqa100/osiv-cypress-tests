@@ -28,7 +28,7 @@ describe( `Verify HE-Grad is calculated correctly ${  url}`, () => {
     dashboard.HomeBtn().click();
     cy.wait( 3000 );
     entscheidDetails.HilflosigkeitTab().click();
-    cy.wait( 10000 );
+    cy.wait( 5000 );
     entHilflosigkeitTab.SelectAnAuskleidenDate( today );
     entHilflosigkeitTab.SelectAufstehenAbsitzenDate( today );
     entHilflosigkeitTab.SpeichernBtn().click();
@@ -57,7 +57,7 @@ describe( `Verify HE-Grad is calculated correctly ${  url}`, () => {
     dashboard.HomeBtn().click();
     cy.wait( 3000 );
     entscheidDetails.HilflosigkeitTab().click();
-    cy.wait( 10000 );
+    cy.wait( 5000 );
     entHilflosigkeitTab.SelectPersÜberwachung( today );
     entHilflosigkeitTab.SpeichernBtn().click();
     entHilflosigkeitTab.ConfirmBtn().click();
@@ -77,7 +77,7 @@ describe( `Verify HE-Grad is calculated correctly ${  url}`, () => {
     dashboard.HomeBtn().click();
     cy.wait( 3000 );
     entscheidDetails.HilflosigkeitTab().click();
-    cy.wait( 10000 );
+    cy.wait( 5000 );
     entHilflosigkeitTab.SelectWohnenDate( today );
     entHilflosigkeitTab.SpeichernBtn().click();
     entHilflosigkeitTab.ConfirmBtn().click();
