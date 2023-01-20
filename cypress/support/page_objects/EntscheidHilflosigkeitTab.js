@@ -77,7 +77,23 @@ export default {
   SelectIsolationDate( today ) {
     cy.get( '[akid="EntscheidHilflosigkeitForm-isovondat"] input' ).type( today );
   },
-  
+
+  SelectKörperpflegeDate( today ) {
+    cy.get( '[akid="EntscheidHilflosigkeitForm-kpfvondat"] input' ).type( today );
+  },
+
+  SelectFortbewegungDate( today ) {
+    cy.get( '[akid="EntscheidHilflosigkeitForm-fbwvondat"] input' ).type( today );
+  },
+
+  SelectVerrichtenderNDDate( today ) {
+    cy.get( '[akid="EntscheidHilflosigkeitForm-vdnvondat"] input' ).type( today );
+  },
+
+  SelectMedPflegeDate( today ) {
+    cy.get( '[akid="EntscheidHilflosigkeitForm-mpfvondat"] input' ).type( today );
+  }, 
+
   ClearAnAuskleidenDate() {
     cy.get( '[akid="EntscheidHilflosigkeitForm-aakvondat"] input' ).clear();
   },
