@@ -28,7 +28,7 @@ describe( `Possibility to edit data on Hillflosigkeit tab when discussion starte
     //THere shoudl be verification if all fields and buttons are enabled
     
     entscheidDetails.DiskutierenTab().click();
-    diskutierenDetails.SelectArztValue( " Wenger, Alex (awe)" );
+    diskutierenDetails.SelectArztValue( " Eins, Hulk (Hulk1)" );
     diskutierenDetails.DiskussionStartenBtn().click();
     diskutierenDetails.ConfirmOKBtn().click();
     entscheidDetails.HilflosigkeitTab().click();
