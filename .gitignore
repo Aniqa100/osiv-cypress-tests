@@ -9,6 +9,7 @@ logs
 *.videos
 *.results
 *.test
+*.vs
 
 
 
@@ -37,4 +38,4 @@ build/Release
 node_modules
 cypress/videos
 cypress/screenshots
-.vs
+cypress/results

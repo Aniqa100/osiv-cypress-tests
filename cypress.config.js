@@ -2,7 +2,8 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig(
   {
-    projectId: "sdkvf4",
+    //projectId: "sdkvf4",
+    projectId: "57f34p",
     viewportWidth: 2560,
     viewportHeight: 1240,
     reporter: "cypress-multi-reporters",

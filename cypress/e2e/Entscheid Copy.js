@@ -25,7 +25,7 @@ describe( `Test to copy Entscheid with all data ${  url}`, () => {
     desktop.Versicherte().click();
     vpGrid.typevpName( "Wait Will" ).type( "{enter}" );
     vpGrid.vpSelectedRow().trigger( "dblclick" );
-    //Here until I don't know how to handle new opened tab I put chain cy.wait -> homeBtn -> cy.wait
+    //Here until I don't know how to handle a new opened tab I put chain cy.wait -> homeBtn -> cy.wait
     cy.wait( 3000 );
     dashboard.HomeBtn().click();
     cy.wait( 3000 );
