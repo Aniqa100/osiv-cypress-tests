@@ -15,7 +15,7 @@ const today             = dateHelper.getCurrentDate();
 
 describe( `Verify HE-Grad is calculated correctly ${  url}`, () => {
   beforeEach( "Login", () => {
-    cy.UILoginWithSession( Cypress.env( "username" ), Cypress.env( "password" ) );
+    cy.UILoginWithSession( Cypress.env( "username1" ), Cypress.env( "password1" ) );
     loginPage.open( url );
   } );
 
@@ -27,7 +27,7 @@ describe( `Verify HE-Grad is calculated correctly ${  url}`, () => {
     dashboard.HomeBtn().click();
     cy.wait( 3000 );
     entscheidDetails.HilflosigkeitTab().click();
-    cy.wait( 5000 );
+    cy.wait( 7000 );
     entHilflosigkeitTab.SelectAnAuskleidenDate( today );
     entHilflosigkeitTab.SelectAufstehenAbsitzenDate( today );
     entHilflosigkeitTab.SpeichernBtn().click();
@@ -45,7 +45,7 @@ describe( `Verify HE-Grad is calculated correctly ${  url}`, () => {
     dashboard.HomeBtn().click();
     cy.wait( 3000 );
     entscheidDetails.HilflosigkeitTab().click();
-    cy.wait( 5000 );
+    cy.wait( 7000 );
     entHilflosigkeitTab.SelectAnAuskleidenDate( today );
     entHilflosigkeitTab.SelectAufstehenAbsitzenDate( today );
     entHilflosigkeitTab.SelectEssenDate( today );
@@ -64,7 +64,7 @@ describe( `Verify HE-Grad is calculated correctly ${  url}`, () => {
     dashboard.HomeBtn().click();
     cy.wait( 3000 );
     entscheidDetails.HilflosigkeitTab().click();
-    cy.wait( 5000 );
+    cy.wait( 7000 );
     entHilflosigkeitTab.SelectPersÜberwachung( today );
     entHilflosigkeitTab.SpeichernBtn().click();
     entHilflosigkeitTab.ConfirmBtn().click();
@@ -81,7 +81,7 @@ describe( `Verify HE-Grad is calculated correctly ${  url}`, () => {
     dashboard.HomeBtn().click();
     cy.wait( 3000 );
     entscheidDetails.HilflosigkeitTab().click();
-    cy.wait( 5000 );
+    cy.wait( 7000 );
     entHilflosigkeitTab.SelectWohnenDate( today );
     entHilflosigkeitTab.SpeichernBtn().click();
     entHilflosigkeitTab.ConfirmBtn().click();
@@ -98,7 +98,7 @@ it( "HE-Grad shows Leicht when at least 2 areas of practical life assistance is 
   dashboard.HomeBtn().click();
   cy.wait( 3000 );
   entscheidDetails.HilflosigkeitTab().click();
-  cy.wait( 5000 );
+  cy.wait( 7000 );
   entHilflosigkeitTab.SelectWohnenDate( today );
   entHilflosigkeitTab.SelectBegleitungDate( today );
   entHilflosigkeitTab.SpeichernBtn().click();
@@ -116,7 +116,7 @@ it( "HE-Grad shows Leicht when 3 areas of practical life assistance is fulfilled
   dashboard.HomeBtn().click();
   cy.wait( 3000 );
   entscheidDetails.HilflosigkeitTab().click();
-  cy.wait( 5000 );
+  cy.wait( 7000 );
   entHilflosigkeitTab.SelectWohnenDate( today );
   entHilflosigkeitTab.SelectBegleitungDate( today );
   entHilflosigkeitTab.SelectIsolationDate( today );
@@ -135,7 +135,7 @@ it( "HE-Grad shows Mittel when assistance is needed in 4 of the 6 daily living a
   dashboard.HomeBtn().click();
   cy.wait( 3000 );
   entscheidDetails.HilflosigkeitTab().click();
-  cy.wait( 5000 );
+  cy.wait( 7000 );
   entHilflosigkeitTab.SelectAnAuskleidenDate( today );
   entHilflosigkeitTab.SelectEssenDate( today );
   entHilflosigkeitTab.SelectKörperpflegeDate( today );

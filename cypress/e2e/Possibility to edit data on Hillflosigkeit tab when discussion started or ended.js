@@ -23,8 +23,9 @@ describe( `Possibility to edit data on Hillflosigkeit tab when discussion starte
     cy.wait( 4000 );
     dashboard.HomeBtn().click();
     cy.wait( 3000 );
+    entscheidDetails.BearbeitungEinleitenBtn().click();
     entscheidDetails.HilflosigkeitTab().click();
-
+    entscheidDetails.ModalOkBtn().click();
     //THere shoudl be verification if all fields and buttons are enabled
     
     entscheidDetails.DiskutierenTab().click();

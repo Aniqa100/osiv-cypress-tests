@@ -21,7 +21,7 @@ pipeline {
             steps{
                 bat "npm install cypress"
                 bat "npm audit fix"
-                bat "npx cypress run --env ${ENVIROMENT} --browser ${BROWSER} --spec ${SPEC} --record --key 76d7db74-4a96-437c-b64c-7f8462e45c4b"
+                bat "npx cypress run --env ${ENVIROMENT} --browser ${BROWSER} --spec ${SPEC} --record --key 98b59e8e-1932-416a-ab1e-ec515666b7cb"
             }
         }
         stage('Deploying'){
