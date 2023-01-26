@@ -13,7 +13,7 @@ const url               = getBaseUrl();
 
 describe( `Possibility to edit data on Hillflosigkeit tab when discussion started/ended ${  url}`, () => {
   beforeEach( "Login", () => {
-    cy.UILoginWithSession( Cypress.env( "username" ), Cypress.env( "password" ) );
+    cy.UILoginWithSession( Cypress.env( "username1" ), Cypress.env( "password1" ) );
     loginPage.open( url );
   } );
   it( "Test that Hilflosigkeit data can't be edited in ENT has AL = D and also options in ribbon block Entscheid Hillflosigkeit spezifische Funktionen are disabled", () => {

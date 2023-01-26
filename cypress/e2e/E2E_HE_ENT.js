@@ -46,7 +46,6 @@ describe( `E2E test of createting and sending Entscheide for HE code ${  url}`, 
     cy.wait( 4000 );
     //cy.wait I used here cause the element Entscheide tab exists on page but it is not clickable
     vpDetails.Entscheide().click();
-    //pressButton.EntscheideNew();
     vpEntscheidGrid.NewBtn().click();
     entscheidNew.SelectLeistungsgruppeValue( "Hilflosenentschädigung" ).click();
     entscheidNew.SelectLeistungscodeValue( "Hilflosenentschädigung" ).click();
