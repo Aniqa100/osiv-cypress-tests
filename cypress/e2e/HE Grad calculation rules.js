@@ -168,7 +168,7 @@ it( "HE-Grad shows Mittel when assistance is needed in 5 of the 6 daily living a
 
 } );
 
-it( "HE-Grad shows Mittel when assistance is needed in 5 of the 6 daily living activities", () => {
+it( "HE-Grad shows Mittel when assistance is needed in 2 of the 6 daily living activities and  personal supervision is needed", () => {
   desktop.Entscheid().click();
   entGrid.EntscheidID( "23233" ).click();
   entGrid.entSelectedRow( "23233" ).dblclick();
@@ -187,7 +187,7 @@ it( "HE-Grad shows Mittel when assistance is needed in 5 of the 6 daily living a
 
 } );
 
-it( "HE-Grad shows Mittel when assistance is needed in 5 of the 6 daily living activities", () => {
+it( "HE-Grad shows Mittel when assistance is required in at least 2 of the 6 daily living activities and  in addition, at least one of the 3 areas of practical life support is fulfilled ( Essen +  Körperpflege+Wohnen )", () => {
   desktop.Entscheid().click();
   entGrid.EntscheidID( "23234" ).click();
   entGrid.entSelectedRow( "23234" ).dblclick();
@@ -206,7 +206,7 @@ it( "HE-Grad shows Mittel when assistance is needed in 5 of the 6 daily living a
 
 } );
 
-it( "HE-Grad shows Mittel when assistance is needed in 5 of the 6 daily living activities", () => {
+it( "HE-Grad shows Schwer when assistance is required in all 6 daily living activities and in addition  medical-care assistance or personal supervision is required", () => {
   desktop.Entscheid().click();
   entGrid.EntscheidID( "23235" ).click();
   entGrid.entSelectedRow( "23235" ).dblclick();
