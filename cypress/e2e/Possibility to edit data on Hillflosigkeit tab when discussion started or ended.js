@@ -24,9 +24,14 @@ describe( `Possibility to edit data on Hillflosigkeit tab when discussion starte
     dashboard.HomeBtn().click();
     cy.wait( 3000 );
     entscheidDetails.BearbeitungEinleitenBtn().click();
-    entscheidDetails.HilflosigkeitTab().click();
     entscheidDetails.ModalOkBtn().click();
-    //THere shoudl be verification if all fields and buttons are enabled
+    entscheidDetails.HilflosigkeitTab().click();
+    entscheidHilflosigkeitTab.ValidateSpeichernBtnIsEnabled();
+    entscheidHilflosigkeitTab.ValidateGrenzgradAb30TBtnIsEnabled();
+    entscheidHilflosigkeitTab.ValidateWartefristBearbeitenBtnIsEnabled();
+    entscheidHilflosigkeitTab.ValidateHEGradbearbeitenIsEnabled();
+
+    //THere shoudl be verification if all fields are enabled
     
     entscheidDetails.DiskutierenTab().click();
     diskutierenDetails.SelectArztValue( " Eins, Hulk (Hulk1)" );
@@ -34,9 +39,6 @@ describe( `Possibility to edit data on Hillflosigkeit tab when discussion starte
     diskutierenDetails.ConfirmOKBtn().click();
     entscheidDetails.HilflosigkeitTab().click();
     entscheidHilflosigkeitTab.ValidateSpeichernBtnIsDisabled();
-    if (url != "https://osiv-nrtest.ivnet.ch/"){
-      entscheidHilflosigkeitTab.ValidateAusgleichkasseändernBtnIsDisabled();
-    }else{}
     entscheidHilflosigkeitTab.ValidateGrenzgradAb30TBtnIsDisabled();     
     entscheidHilflosigkeitTab.ValidateWartefristBearbeitenBtnIsDisabled();
     entscheidHilflosigkeitTab.ValidateHEGradbearbeitenIsDisabled();
@@ -51,8 +53,12 @@ describe( `Possibility to edit data on Hillflosigkeit tab when discussion starte
     diskutierenDetails.DiskussionbeendenBtn().click();
     diskutierenDetails.ConfirmOKBtn().click();
     entscheidDetails.HilflosigkeitTab().click();
+    entscheidHilflosigkeitTab.ValidateSpeichernBtnIsEnabled();
+    entscheidHilflosigkeitTab.ValidateGrenzgradAb30TBtnIsEnabled();
+    entscheidHilflosigkeitTab.ValidateWartefristBearbeitenBtnIsEnabled();
+    entscheidHilflosigkeitTab.ValidateHEGradbearbeitenIsEnabled();
 
-    //THere shoudl be verification if all fields and buttons are enabled
-
+    //THere shoudl be verification if all fields are enabled
+ 
   } );
 } );
