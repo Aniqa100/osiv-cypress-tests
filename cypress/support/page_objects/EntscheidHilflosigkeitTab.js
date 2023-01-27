@@ -181,6 +181,11 @@ export default {
     cy.get( '[class="swal-modal warningModal"]' ).find( '[class="swal-content"]' ).contains( value );
   }, 
 
+  ValidateSpeichernBtnIsEnabled() {
+    cy.get( '[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidHilflosigkeitBlock"]' )
+      .find( '[title="Speichern"]' ).should( 'not.contain.class', 'dhxrb_item_disable' )
+  },
+
   ValidateSpeichernBtnIsDisabled() {
     cy.get( '[class="dhxrb_block_base ribbonBlock"],[class="dhxrb_block_base ribbonBlock_EntscheidHilflosigkeitBlock"]' )
       .find( '[title="Speichern"]' ).should( 'contain.class', 'dhxrb_item_disable' )
@@ -189,6 +194,11 @@ export default {
   ValidateAusgleichkasseändernBtnIsDisabled() {
     cy.get( '[class="dhxrb_block_base ribbonBlock"]' )
       .find( '[title="Ausgleichkasse ändern"]' ).should( 'contain.class', 'dhxrb_item_disable' )
+  },
+
+  ValidateGrenzgradAb30TBtnIsEnabled() {
+    cy.get( '[class="dhxrb_block_base ribbonBlock"]' )
+      .find( '[title="Grenzgrad ab 30T"]' ).should( 'not.contain.class', 'dhxrb_item_disable' )
   },
 
   ValidateGrenzgradAb30TBtnIsDisabled() {
@@ -200,6 +210,16 @@ export default {
     cy.get( '[class="dhxrb_block_base ribbonBlock"]' )
     .find( '[title="Wartefrist Bearbeiten"]' ).should( 'contain.class', 'dhxrb_item_disable' )
   },
+
+  ValidateWartefristBearbeitenBtnIsEnabled() {
+    cy.get( '[class="dhxrb_block_base ribbonBlock"]' )
+    .find( '[title="Wartefrist Bearbeiten"]' ).should( 'not.contain.class', 'dhxrb_item_disable' )
+  },
+
+  ValidateHEGradbearbeitenIsEnabled() {
+    cy.get( '[class="dhxrb_block_base ribbonBlock"]' )
+    .find( '[title="HE-Grad bearbeiten"]' ).should( 'not.contain.class', 'dhxrb_item_disable' )
+  }, 
 
   ValidateHEGradbearbeitenIsDisabled() {
     cy.get( '[class="dhxrb_block_base ribbonBlock"]' )

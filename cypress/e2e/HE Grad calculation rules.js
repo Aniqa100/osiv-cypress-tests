@@ -1,4 +1,3 @@
-//This test case doesn't have any testRail test 
 //https://osiv.testrail.net/index.php?/cases/view/44746
 //FINISHED
 import { getBaseUrl }   from "../support/utility";
